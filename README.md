@@ -1,13 +1,17 @@
 # Proyecto_POO
 
 3 o 4 Integrantes
+
 UML: Diagrama de clases y de Actividades
+
 2 Entregas: 1 sin Gui otra con Gui
+
 Entrega final: Competencia con todos los estudiantes(los errores serán penalizados), debe ser facil de
 usar por alguien que no conoce el juego.
+
 ##Posibles proyectos(otros juegos pueden ser elegidos previa discusión con el profesor):
 
--Adivina Quien
+-[Adivina Quien]
 -Backgammon
 -Stratego
 -Sorry!(https://www.wikiwand.com/en/Sorry!_(game))

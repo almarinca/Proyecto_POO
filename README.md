@@ -11,7 +11,7 @@ usar por alguien que no conoce el juego.
 
 ##Posibles proyectos(otros juegos pueden ser elegidos previa discusión con el profesor):
 
--[Adivina Quien]
+-Adivina Quien
 -Backgammon
 -Stratego
 -Sorry!(https://www.wikiwand.com/en/Sorry!_(game))
@@ -23,4 +23,3 @@ usar por alguien que no conoce el juego.
 -Brain Challenge(https://www.wikiwand.com/en/Brain_Challenge)
 -Agricola(https://www.wikiwand.com/en/Agricola_(board_game))
 -Escape from Atlantis(https://www.wikiwand.com/en/Escape_from_Atlantis)
-

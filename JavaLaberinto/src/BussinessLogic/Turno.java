@@ -4,7 +4,7 @@ import Data.*;
 
 public class Turno {
     
-    public char[][] rotarFicha(Ficha f) {
+    public void rotarFicha(Ficha f) {
         
         char[][] matriz = f.getFicha();
         char[][] matrizrot = new char [3][3];
@@ -15,7 +15,8 @@ public class Turno {
                 matrizrot[i][j] = matriz[h-j][i];                   
             }                  
         }
-        return matrizrot;
+        
+        f.setFicha(matrizrot);
     } 
     
 }

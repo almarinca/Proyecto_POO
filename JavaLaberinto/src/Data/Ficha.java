@@ -5,10 +5,6 @@
  */
 package Data;
 
-/**
- *
- * @author alejomarin
- */
 public class Ficha {
 	private int posX;
 	private int posY;

@@ -39,7 +39,7 @@ public class Ficha {
 		this.fijaOMovil = fijaOMovil;
 	}
     
-	public static void setFicha(char[][] ficha) {
+	public void setFicha(char[][] ficha) {
 		Ficha.ficha = ficha;
 	}
         

@@ -1,14 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Data;
 
-/**
- *
- * @author alejomarin
- */
 public class Tablero {
-    
+	//ATRIBUTOS	
+	private Ficha[][] tablero;	
+	
+	
+	public Tablero(){
+		Ficha ficha = new Ficha(); 
+		ficha.setFicha(ficha.fichaRecta());		
+		
+		Ficha ficha1 = new Ficha(); 
+		ficha1.setFicha(ficha1.fichaT());		
+		
+		Ficha ficha2 = new Ficha();
+		ficha2.setFicha(ficha2.fichaEsquina());		
+	}
+	//METODOS
+	public Ficha[][] getTablero() {
+		return tablero;
+	}
+
+	public void setTablero(Ficha[][] tablero) {
+		this.tablero = tablero;
+	}	
+	
 }
+

@@ -5,23 +5,24 @@
  */
 package BussinessLogic;
 
-import Data.Ficha;
-import static Data.Ficha.setFicha;
-import Data.Tablero;
+import Data.*;
+import static BussinessLogic.Turno.rotarFicha;
 
 public class JavaLaberinto {
 
     public static void main(String[] args) {
         Ficha ficha = new Ficha();
-        setFicha(ficha.fichaRecta());
-        System.out.println(ficha.toString());
+        ficha.setFicha(ficha.fichaRecta());
         Ficha ficha1 = new Ficha();
-        setFicha(ficha.fichaT());
-        System.out.println(ficha.toString());
+        ficha1.setFicha(ficha.fichaT());
         Ficha ficha2 = new Ficha();
-        setFicha(ficha.fichaEsquina());
+        ficha2.setFicha(ficha.fichaEsquina());
         System.out.println(ficha.toString());
+        System.out.println(ficha1.toString());
+        System.out.println(ficha2.toString());
+        rotarFicha(ficha2);
+        System.out.println(ficha2.toString());
         Tablero tablero = new Tablero();
     }
-    
+
 }

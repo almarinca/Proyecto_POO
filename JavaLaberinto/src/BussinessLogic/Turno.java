@@ -1,14 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BussinessLogic;
 
-/**
- *
- * @author alejomarin
- */
+import Data.*;
+
 public class Turno {
+    
+    public char[][] rotarFicha(Ficha f) {
+        
+        char[][] matriz = f.getFicha();
+        char[][] matrizrot = new char [3][3];
+        int h = 2;
+        
+        for (int i = 0; i < 3; i++) {             
+            for (int j = 0; j < 3; j++) {               
+                matrizrot[i][j] = matriz[h-j][i];                   
+            }                  
+        }
+        return matrizrot;
+    } 
     
 }

@@ -16,6 +16,7 @@ public class JavaLaberinto {
         printBienvenida();
         boolean salir = false;
         while (!salir) {
+            dibujarTablero(tablero);
             printMensajeFichaLibre();
             printFicha(tablero.getFichasSobrantes().get(0));
             salir = true;

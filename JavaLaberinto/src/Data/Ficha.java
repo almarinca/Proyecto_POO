@@ -42,8 +42,9 @@ public class Ficha {
         public String toString(){
             String imprimir = "";
             for(int i=0;i<3;i++){
+                imprimir = imprimir + "|";
                 for(int j=0;j<3;j++){
-                    imprimir = imprimir + ficha[i][j];
+                    imprimir = imprimir + ficha[i][j] + "|";
                 }
                 imprimir = imprimir + "\n";
             }
@@ -51,7 +52,7 @@ public class Ficha {
         }
 	
 	//TIPO DE FICHAS...
-        char a = 1;
+        char a = '#';
 	
 	public char[][] fichaT(){
 		char[][] ficha = {{a,a,a},

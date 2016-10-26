@@ -25,7 +25,7 @@ public class Interfaz {
                     listaCaracteres.add(String.valueOf(matrizCaracteres[1][k]));
                 }
             }
-            for (int j = 0; j < 3; j++) {
+            for (int j = 0; j < 7; j++) {
                 for (int k = 0; k < 3; k++) {
                     char[][] matrizCaracteres = tab.getTablero()[i][j].getFicha();
                     listaCaracteres.add(String.valueOf(matrizCaracteres[2][k]));
@@ -40,26 +40,42 @@ public class Interfaz {
         for (int i = 0; i < 21; i++) {
             for (int j = 0; j < 21; j++) {
                 tablero[i][j] = listaCaracteres.get(z++);
-                if (z > (20)) {
-                    break;
-                }
-            }
-            if (z > (20)) { //ESTOS BREAKS SON PARA EVITAR QUE AL FINAL SE PASE DEL TAMAÑO
-                break;
             }
         }
 
         //ESTA SEGUNDA PARTE PASA EL ARRAYLIST A UNA MATRIZ 21X21
-        String printMatriz = "\n";
+        int cont = 4;
+        String printMatriz = "\n" + "\t       |  1  |     |  2  |     |  3  |     \n";
 
         for (int i = 0; i < 21; i++) {
-            printMatriz = printMatriz.concat("\t|");
+            printMatriz = printMatriz.concat("\t");
+            if ((i - 2) % 3 == 0) {
+                printMatriz = printMatriz.concat("_|");
+            } 
+            else if((i-4)%6==0){
+                printMatriz = printMatriz.concat(String.valueOf(cont)+"|");
+                cont++;
+            }else {
+                printMatriz = printMatriz.concat(" |");
+            }
+            
             for (int j = 0; j < 21; j++) {
                 printMatriz = printMatriz.concat(
                         String.valueOf(tablero[i][j]).concat("|"));
             }
+            
+            if ((i - 2) % 3 == 0) {
+                printMatriz = printMatriz.concat("_");
+            } 
+            else if((i-4)%6==0){
+                printMatriz = printMatriz.concat(String.valueOf(cont));
+                cont++;
+            }else {
+                printMatriz = printMatriz.concat(" ");
+            }
             printMatriz = printMatriz.concat("\n");
         }
+        printMatriz = printMatriz.concat("\t       |  10 |     |  11 |     |  12 |     \n");
 
         System.out.println(printMatriz);
 

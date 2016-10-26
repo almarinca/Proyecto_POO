@@ -9,17 +9,15 @@ UML: Diagrama de clases y de Actividades
 Entrega final: Competencia con todos los estudiantes(los errores serán penalizados), debe ser facil de
 usar por alguien que no conoce el juego.
 
-##Posibles proyectos(otros juegos pueden ser elegidos previa discusión con el profesor):
+##Juego de mesa: Laberinto
 
--Adivina Quien
--Backgammon
--Stratego
--Sorry!(https://www.wikiwand.com/en/Sorry!_(game))
--Serpientes y Escaleras
--Parchis
--Uno Spin
--Ajedrez
--Clue
--Brain Challenge(https://www.wikiwand.com/en/Brain_Challenge)
--Agricola(https://www.wikiwand.com/en/Agricola_(board_game))
--Escape from Atlantis(https://www.wikiwand.com/en/Escape_from_Atlantis)
+Juego de estrategia. Búsqueda de tesoros en un laberinto en movimiento.
+Un laberinto de pasadizos que uno puede mover a su antojo para encontrar la mayor cantidad posible de tesoros y secretos. El ganador será el que mueva más hábilmente los pasadizos. ¿Quién logrará desbaratar las trampas de este célebre laberinto para ser el primero en obtener todos sus tesoros? 
+
+[Explicación mas completa del juego](https://www.youtube.com/watch?v=rV9ZULvLudg "Explicacion del juego")
+
+![Tablero del juego](laberintobase.jpg)
+
+__Diagrama UML del programa:__
+
+![UML](UMLproyecto.png)

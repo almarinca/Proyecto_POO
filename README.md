@@ -14,5 +14,5 @@ usar por alguien que no conoce el juego.
 Juego de estrategia. Búsqueda de tesoros en un laberinto en movimiento.
 Un laberinto de pasadizos que uno puede mover a su antojo para encontrar la mayor cantidad posible de tesoros y secretos. El ganador será el que mueva más hábilmente los pasadizos. ¿Quién logrará desbaratar las trampas de este célebre laberinto para ser el primero en obtener todos sus tesoros?
 
-![Tablero del juego](Proyecto_POO/laberintobase.jpg)
+![Tablero del juego](/Proyecto_POO/laberintobase.jpg)
 

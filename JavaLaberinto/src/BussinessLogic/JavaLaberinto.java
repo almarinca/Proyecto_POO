@@ -6,12 +6,20 @@
 package BussinessLogic;
 
 import Data.*;
+import static UI.Interfaz.*;
 
 public class JavaLaberinto {
 
     public static void main(String[] args) {
-        
+
         Tablero tablero = new Tablero();
+        printBienvenida();
+        boolean salir = false;
+        while (!salir) {
+            printMensajeFichaLibre();
+            printFicha(tablero.getFichasSobrantes().get(0));
+            salir = true;
+        }
     }
 
 }

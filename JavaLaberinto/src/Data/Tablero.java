@@ -1,6 +1,5 @@
 package Data;
 
-import Data.Ficha;
 import java.util.ArrayList;
 import static BussinessLogic.Turno.rotarFicha;
 
@@ -8,7 +7,8 @@ public class Tablero {
     //ATRIBUTOS	
 
     private Ficha[][] tablero = new Ficha[7][7];
-    ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
+    ArrayList<Ficha> listaFichas = new ArrayList<>();
+    ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
 
     public Tablero() {
 
@@ -29,7 +29,7 @@ public class Tablero {
             ficha2.setFicha(ficha2.fichaEsquina());
             listaFichas.add(ficha2);
         }
-        ArrayList<Ficha> fichasSobrantes = (ArrayList<Ficha>) listaFichas.clone();
+        fichasSobrantes = (ArrayList<Ficha>) listaFichas.clone();
 
         tablero[0][0] = listaFichas.get(30);
         fichasSobrantes.remove(30);
@@ -88,17 +88,45 @@ public class Tablero {
         tablero[2][2] = listaFichas.get(24);
         fichasSobrantes.remove(13);
 
+        int contador = fichasSobrantes.size();
+
+        while (contador != 0) {
+            int posFicha = (int) (Math.random() * contador);
+            int rotar = (int) (Math.random() * 3);
+            while (rotar != 0) {
+                rotarFicha(fichasSobrantes.get(posFicha));
+                rotar--;
+            }
+            fichasSobrantes.add(fichasSobrantes.get(posFicha));
+            fichasSobrantes.remove(posFicha);
+            contador--;
+        }
+        contador = 33;
+
+        for (int i = 0; i <= 3; i++) {
+            tablero[i * 2][1] = fichasSobrantes.get(contador);
+            fichasSobrantes.remove(contador);
+            contador--;
+            tablero[i * 2][3] = fichasSobrantes.get(contador);
+            fichasSobrantes.remove(contador);
+            contador--;
+            tablero[i * 2][5] = fichasSobrantes.get(contador);
+            fichasSobrantes.remove(contador);
+            contador--;
+        }
+
+        for (int i = 0; i <= 2; i++) {
+            for (int j = 0; j <= 6; j++) {
+                tablero[(i * 2) + 1][j] = fichasSobrantes.get(contador);
+                fichasSobrantes.remove(contador);
+                contador--;
+            }
+        }
+
         /*char[][] ficha = tablero[0][4].getFicha();
         ficha[1][1] = '?';
         tablero[0][4].setFicha(ficha);*/
         
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                System.out.println(tablero[i * 2][j * 2].toString());
-            }
-        }
-
-        System.out.println(fichasSobrantes.size());
     }
     //METODOS
 
@@ -106,6 +134,14 @@ public class Tablero {
         return tablero;
     }
 
+    public ArrayList<Ficha> getFichasSobrantes() {
+        return fichasSobrantes;
+    }
+
+    public void setFichasSobrantes(ArrayList<Ficha> fichasSobrantes) {
+        this.fichasSobrantes = fichasSobrantes;
+    }
+    
     public void setTablero(Ficha[][] tablero) {
         this.tablero = tablero;
     }

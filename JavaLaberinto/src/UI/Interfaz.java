@@ -1,16 +1,12 @@
 package UI;
 
 import Data.*;
-<<<<<<< HEAD
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Interfaz {
 
     static Scanner in = new Scanner(System.in);
-=======
-import java.util.ArrayList;
-
-public class Interfaz {
 
     public static void dibujarTablero(Tablero tab) {
 
@@ -37,26 +33,23 @@ public class Interfaz {
             }
 
         }
-        
+
         //HASTA ACA EL METODO PASA CADA CARACTER DEL TABLERO A UN ARRAYLIST
-        
-        
-        String [][] tablero = new String[21][21];
+        String[][] tablero = new String[21][21];
         int z = 0;
-            for (int i = 0; i < 21; i++) {
-                for (int j = 0; j < 21; j++) {
-                    tablero[i][j] = listaCaracteres.get(z++);
-                    if (z > (20)) { 
-                        break;
-                    }
-                }
-                if (z > (20)) { //ESTOS BREAKS SON PARA EVITAR QUE AL FINAL SE PASE DEL TAMAÑO
+        for (int i = 0; i < 21; i++) {
+            for (int j = 0; j < 21; j++) {
+                tablero[i][j] = listaCaracteres.get(z++);
+                if (z > (20)) {
                     break;
                 }
             }
-            
+            if (z > (20)) { //ESTOS BREAKS SON PARA EVITAR QUE AL FINAL SE PASE DEL TAMAÑO
+                break;
+            }
+        }
+
         //ESTA SEGUNDA PARTE PASA EL ARRAYLIST A UNA MATRIZ 21X21
-        
         String printMatriz = "\n";
 
         for (int i = 0; i < 21; i++) {
@@ -69,11 +62,9 @@ public class Interfaz {
         }
 
         System.out.println(printMatriz);
-        
+
         //ESTA ULTIMA PARTE DIBUJA YA TODO EL TABLERO COMO UNA MATRIZ GRANDE
-        
     }
->>>>>>> refs/remotes/origin/master
 
     public static int leerInt() {
         int a;
@@ -113,5 +104,3 @@ public class Interfaz {
         System.out.println(ficha.toString());
     }
 }
-
-

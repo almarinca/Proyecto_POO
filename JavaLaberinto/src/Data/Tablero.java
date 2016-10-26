@@ -123,12 +123,6 @@ public class Tablero {
             }
         }
 
-        for (int i = 0; i <= 6; i++) {
-            for (int j = 0; j <= 6; j++) {
-                System.out.println(tablero[i][j].toString());
-            }
-        }
-
         /*char[][] ficha = tablero[0][4].getFicha();
         ficha[1][1] = '?';
         tablero[0][4].setFicha(ficha);*/

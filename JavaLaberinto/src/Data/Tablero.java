@@ -1,6 +1,5 @@
 package Data;
 
-import Data.Ficha;
 import java.util.ArrayList;
 import static BussinessLogic.Turno.rotarFicha;
 
@@ -87,18 +86,52 @@ public class Tablero {
         fichasSobrantes.remove(13);
         tablero[2][2] = listaFichas.get(24);
         fichasSobrantes.remove(13);
+       
+        int contador = fichasSobrantes.size();
 
+        while (contador != 0) {
+            int posFicha = (int) (Math.random() * contador);
+            int rotar = (int) (Math.random() * 3);
+            while (rotar != 0) {
+                rotarFicha(fichasSobrantes.get(posFicha));
+                rotar--;
+            }
+            fichasSobrantes.add(fichasSobrantes.get(posFicha));
+            fichasSobrantes.remove(posFicha);
+            contador--;
+        }
+        contador = 33;
+
+        for (int i = 0; i <= 3; i++) {
+            tablero[i * 2][1] = fichasSobrantes.get(contador);
+            fichasSobrantes.remove(contador);
+            contador--;
+            tablero[i * 2][3] = fichasSobrantes.get(contador);
+            fichasSobrantes.remove(contador);
+            contador--;
+            tablero[i * 2][5] = fichasSobrantes.get(contador);
+            fichasSobrantes.remove(contador);
+            contador--;
+        }
+
+        for (int i = 0; i <= 2; i++) {
+            for (int j = 0; j <= 6; j++) {
+                tablero[(i * 2) + 1][j] = fichasSobrantes.get(contador);
+                fichasSobrantes.remove(contador);
+                contador--;
+            }
+        }
+        
+        for(int i=0;i<=6;i++){
+            for(int j=0;j<=6;j++){
+                System.out.println(tablero[i][j].toString());
+            }
+        }
+        
         /*char[][] ficha = tablero[0][4].getFicha();
         ficha[1][1] = '?';
         tablero[0][4].setFicha(ficha);*/
         
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                System.out.println(tablero[i * 2][j * 2].toString());
-            }
-        }
-
-        System.out.println(fichasSobrantes.size());
     }
     //METODOS
 

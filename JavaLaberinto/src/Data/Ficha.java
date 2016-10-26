@@ -5,15 +5,11 @@
  */
 package Data;
 
-/**
- *
- * @author alejomarin
- */
 public class Ficha {
 	private int posX;
 	private int posY;
 	private boolean fijaOMovil;
-	private static char[][] ficha;
+	private char[][] ficha;
 	
 	
 	public int getPosX() {
@@ -40,7 +36,7 @@ public class Ficha {
 	}
     
 	public void setFicha(char[][] ficha) {
-		Ficha.ficha = ficha;
+		this.ficha = ficha;
 	}
         
         public String toString(){

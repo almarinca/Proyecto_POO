@@ -18,3 +18,6 @@ Un laberinto de pasadizos que uno puede mover a su antojo para encontrar la mayo
 
 ![Tablero del juego](laberintobase.jpg)
 
+__Diagrama UML del programa:__
+
+![UML](UMLproyecto.png)

@@ -7,7 +7,8 @@ public class Tablero {
     //ATRIBUTOS	
 
     private Ficha[][] tablero = new Ficha[7][7];
-    ArrayList<Ficha> listaFichas = new ArrayList<Ficha>();
+    ArrayList<Ficha> listaFichas = new ArrayList<>();
+    ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
 
     public Tablero() {
 
@@ -28,7 +29,7 @@ public class Tablero {
             ficha2.setFicha(ficha2.fichaEsquina());
             listaFichas.add(ficha2);
         }
-        ArrayList<Ficha> fichasSobrantes = (ArrayList<Ficha>) listaFichas.clone();
+        fichasSobrantes = (ArrayList<Ficha>) listaFichas.clone();
 
         tablero[0][0] = listaFichas.get(30);
         fichasSobrantes.remove(30);
@@ -86,7 +87,7 @@ public class Tablero {
         fichasSobrantes.remove(13);
         tablero[2][2] = listaFichas.get(24);
         fichasSobrantes.remove(13);
-       
+
         int contador = fichasSobrantes.size();
 
         while (contador != 0) {
@@ -121,13 +122,13 @@ public class Tablero {
                 contador--;
             }
         }
-        
-        for(int i=0;i<=6;i++){
-            for(int j=0;j<=6;j++){
+
+        for (int i = 0; i <= 6; i++) {
+            for (int j = 0; j <= 6; j++) {
                 System.out.println(tablero[i][j].toString());
             }
         }
-        
+
         /*char[][] ficha = tablero[0][4].getFicha();
         ficha[1][1] = '?';
         tablero[0][4].setFicha(ficha);*/
@@ -139,6 +140,14 @@ public class Tablero {
         return tablero;
     }
 
+    public ArrayList<Ficha> getFichasSobrantes() {
+        return fichasSobrantes;
+    }
+
+    public void setFichasSobrantes(ArrayList<Ficha> fichasSobrantes) {
+        this.fichasSobrantes = fichasSobrantes;
+    }
+    
     public void setTablero(Ficha[][] tablero) {
         this.tablero = tablero;
     }

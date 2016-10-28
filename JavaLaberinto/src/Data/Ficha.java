@@ -8,7 +8,7 @@ package Data;
 public class Ficha {
 
     private char[][] ficha;
-    private static final char muro = '#';
+    public static final char muro = '#';
     public static final char[][] fichaT = {{muro, muro, muro},
     {' ', ' ', ' '},
     {muro, ' ', muro}};

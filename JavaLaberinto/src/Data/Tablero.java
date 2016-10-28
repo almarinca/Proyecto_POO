@@ -6,7 +6,7 @@ import static BussinessLogic.Turno.rotarFicha;
 public class Tablero {
     //ATRIBUTOS	
 
-    private Ficha[][] tablero = new Ficha[7][7];
+    private static Ficha[][] tablero = new Ficha[7][7];
     ArrayList<Ficha> listaFichas = new ArrayList<>();
     ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
 
@@ -78,8 +78,17 @@ public class Tablero {
 
     public void crearFichaFija(char[][] tipo, int cantidad) {
 
-        for (int i = 0; i < cantidad; i++) {
+        for (int k = 0; k < cantidad; k++) {
+
+          /*char[][] matriz = new char[3][3];  // esta matriz la añadi por que cada ficha debe tener su matriz,
+            for (int i = 0; i < 3; i++) {      // sino al modificarla se modificarian todas las fichas del mismo tipo,
+                for (int j = 0; j < 3; j++) {  // ya que lo que se modifica es la matriz
+                    matriz[i][j] = tipo[i][j];
+                }
+            }*/
+
             Ficha ficha = new Ficha();
+            //ficha.setFicha(matriz); // para que funcione lo de arriba cambie la linea de abajo por esta
             ficha.setFicha(tipo);
             listaFichas.add(ficha);
         }

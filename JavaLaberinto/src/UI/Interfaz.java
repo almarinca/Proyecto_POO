@@ -117,6 +117,11 @@ public class Interfaz {
     }
 
     public static void printFicha(Ficha ficha) {
-        System.out.println(ficha.toString());
+        System.out.println(ficha.toString());        
+    }
+    
+    public static void printMovInvalido() {
+        System.out.println("No se puede mover a esta posicion, vuelva a intentarlo");
+        
     }
 }

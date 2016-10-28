@@ -12,23 +12,10 @@ public class Tablero {
 
     public Tablero() {
 
-        for (int i = 0; i < 13; i++) {
-            Ficha ficha = new Ficha();
-            ficha.setFicha(ficha.fichaRecta());
-            listaFichas.add(ficha);
-        }
+        crearFichaFija(Ficha.fichaR, 13);
+        crearFichaFija(Ficha.fichaT, 17);
+        crearFichaFija(Ficha.fichaL, 20);
 
-        for (int i = 0; i < 17; i++) {
-            Ficha ficha1 = new Ficha();
-            ficha1.setFicha(ficha1.fichaT());
-            listaFichas.add(ficha1);
-        }
-
-        for (int i = 0; i < 20; i++) {
-            Ficha ficha2 = new Ficha();
-            ficha2.setFicha(ficha2.fichaEsquina());
-            listaFichas.add(ficha2);
-        }
         fichasSobrantes = (ArrayList<Ficha>) listaFichas.clone();
 
         asignarFichaFija(0, 0, 0, 30);
@@ -89,13 +76,22 @@ public class Tablero {
     }
     //METODOS
 
-    private void asignarFichaFija(int rotaciones, int fila, int columna, int ficha) {
+    public void crearFichaFija(char[][] tipo, int cantidad) {
+
+        for (int i = 0; i < cantidad; i++) {
+            Ficha ficha = new Ficha();
+            ficha.setFicha(tipo);
+            listaFichas.add(ficha);
+        }
+
+    }
+
+    public void asignarFichaFija(int rotaciones, int fila, int columna, int ficha) {
 
         while (rotaciones != 0) {
             rotarFicha(listaFichas.get(ficha));
             rotaciones--;
         }
-
         int borrar = (ficha >= 30) ? 30 : 13;
         tablero[fila][columna] = listaFichas.get(ficha);
         fichasSobrantes.remove(borrar);

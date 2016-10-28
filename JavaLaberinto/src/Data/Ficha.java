@@ -6,70 +6,38 @@
 package Data;
 
 public class Ficha {
-	private int posX;
-	private int posY;
-	private boolean fijaOMovil;
-	private char[][] ficha;
-	
-	
-	public int getPosX() {
-		return posX;
-	}
-	public char[][] getFicha() {
-		return ficha;
-	}
-	public int getPosY() {
-		return posY;
-	}
-	public boolean isFijaOMovil() {
-		return fijaOMovil;
-	}
-	
-	public void setPosX(int posX) {
-		this.posX = posX;
-	}
-	public void setPosY(int posY) {
-		this.posY = posY;
-	}
-	public void setFijaOMovil(boolean fijaOMovil) {
-		this.fijaOMovil = fijaOMovil;
-	}
-    
-	public void setFicha(char[][] ficha) {
-		this.ficha = ficha;
-	}
-        
-        public String toString(){
-            String imprimir = "";
-            for(int i=0;i<3;i++){
-                imprimir = imprimir + "|";
-                for(int j=0;j<3;j++){
-                    imprimir = imprimir + ficha[i][j] + "|";
-                }
-                imprimir = imprimir + "\n";
+
+    private char[][] ficha;
+    private static final char muro = '#';
+    public static final char[][] fichaT = {{muro, muro, muro},
+    {' ', ' ', ' '},
+    {muro, ' ', muro}};
+
+    public static final char[][] fichaL = {{muro, muro, muro},
+    {muro, ' ', ' '},
+    {muro, ' ', muro}};
+
+    public static final char[][] fichaR = {{muro, muro, muro},
+    {' ', ' ', ' '},
+    {muro, muro, muro}};
+
+    public char[][] getFicha() {
+        return ficha;
+    }
+
+    public void setFicha(char[][] ficha) {
+        this.ficha = ficha;
+    }
+
+    public String toString() {
+        String imprimir = "";
+        for (int i = 0; i < 3; i++) {
+            imprimir = imprimir + "|";
+            for (int j = 0; j < 3; j++) {
+                imprimir = imprimir + ficha[i][j] + "|";
             }
-            return imprimir;
+            imprimir = imprimir + "\n";
         }
-	
-	//TIPO DE FICHAS...
-        char a = '#';
-	
-	public char[][] fichaT(){
-		char[][] ficha = {{a,a,a},
-                          {' ',' ',' '},
-                          {a,' ',a}};
-		return ficha;
-	}
-	public char[][] fichaEsquina(){
-		char[][] ficha = {{a,a,a},
-                          {a,' ',' '},
-                          {a,' ',a}};
-		return ficha;
-	}
-	public char[][] fichaRecta(){
-		char[][] ficha = {{a,a,a},
-                          {' ',' ',' '},
-                          {a,a,a}};
-		return ficha;
-	}	
+        return imprimir;
+    }
 }

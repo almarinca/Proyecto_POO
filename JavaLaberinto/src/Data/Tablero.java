@@ -12,81 +12,28 @@ public class Tablero {
 
     public Tablero() {
 
-        for (int i = 0; i < 13; i++) {
-            Ficha ficha = new Ficha();
-            ficha.setFicha(ficha.fichaRecta());
-            listaFichas.add(ficha);
-        }
+        crearFichaFija(Ficha.fichaR, 13);
+        crearFichaFija(Ficha.fichaT, 17);
+        crearFichaFija(Ficha.fichaL, 20);
 
-        for (int i = 0; i < 17; i++) {
-            Ficha ficha1 = new Ficha();
-            ficha1.setFicha(ficha1.fichaT());
-            listaFichas.add(ficha1);
-        }
-
-        for (int i = 0; i < 20; i++) {
-            Ficha ficha2 = new Ficha();
-            ficha2.setFicha(ficha2.fichaEsquina());
-            listaFichas.add(ficha2);
-        }
         fichasSobrantes = (ArrayList<Ficha>) listaFichas.clone();
 
-        tablero[0][0] = listaFichas.get(30);
-        fichasSobrantes.remove(30);
-        rotarFicha(listaFichas.get(31));
-        tablero[0][6] = listaFichas.get(31);
-        fichasSobrantes.remove(30);
-        rotarFicha(listaFichas.get(32));
-        rotarFicha(listaFichas.get(32));
-        tablero[6][6] = listaFichas.get(32);
-        fichasSobrantes.remove(30);
-        rotarFicha(listaFichas.get(33));
-        rotarFicha(listaFichas.get(33));
-        rotarFicha(listaFichas.get(33));
-        tablero[6][0] = listaFichas.get(33);
-        fichasSobrantes.remove(30);
-        tablero[0][2] = listaFichas.get(13);
-        fichasSobrantes.remove(13);
-        tablero[0][4] = listaFichas.get(14);
-        fichasSobrantes.remove(13);
-        tablero[2][4] = listaFichas.get(15);
-        fichasSobrantes.remove(13);
-        rotarFicha(listaFichas.get(16));
-        rotarFicha(listaFichas.get(17));
-        rotarFicha(listaFichas.get(18));
-        tablero[2][6] = listaFichas.get(16);
-        fichasSobrantes.remove(13);
-        tablero[4][6] = listaFichas.get(17);
-        fichasSobrantes.remove(13);
-        tablero[4][4] = listaFichas.get(18);
-        fichasSobrantes.remove(13);
-        rotarFicha(listaFichas.get(19));
-        rotarFicha(listaFichas.get(20));
-        rotarFicha(listaFichas.get(21));
-        rotarFicha(listaFichas.get(19));
-        rotarFicha(listaFichas.get(20));
-        rotarFicha(listaFichas.get(21));
-        tablero[6][2] = listaFichas.get(19);
-        fichasSobrantes.remove(13);
-        tablero[6][4] = listaFichas.get(20);
-        fichasSobrantes.remove(13);
-        tablero[4][2] = listaFichas.get(21);
-        fichasSobrantes.remove(13);
-        rotarFicha(listaFichas.get(22));
-        rotarFicha(listaFichas.get(23));
-        rotarFicha(listaFichas.get(24));
-        rotarFicha(listaFichas.get(22));
-        rotarFicha(listaFichas.get(23));
-        rotarFicha(listaFichas.get(24));
-        rotarFicha(listaFichas.get(22));
-        rotarFicha(listaFichas.get(23));
-        rotarFicha(listaFichas.get(24));
-        tablero[2][0] = listaFichas.get(22);
-        fichasSobrantes.remove(13);
-        tablero[4][0] = listaFichas.get(23);
-        fichasSobrantes.remove(13);
-        tablero[2][2] = listaFichas.get(24);
-        fichasSobrantes.remove(13);
+        asignarFichaFija(0, 0, 0, 30);
+        asignarFichaFija(1, 0, 6, 31);
+        asignarFichaFija(2, 6, 6, 32);
+        asignarFichaFija(3, 6, 0, 33);
+        asignarFichaFija(0, 0, 2, 13);
+        asignarFichaFija(0, 0, 4, 14);
+        asignarFichaFija(0, 2, 4, 15);
+        asignarFichaFija(1, 2, 6, 16);
+        asignarFichaFija(1, 4, 6, 17);
+        asignarFichaFija(1, 4, 4, 18);
+        asignarFichaFija(2, 6, 2, 19);
+        asignarFichaFija(2, 6, 4, 20);
+        asignarFichaFija(2, 4, 2, 21);
+        asignarFichaFija(3, 2, 0, 22);
+        asignarFichaFija(3, 4, 0, 23);
+        asignarFichaFija(3, 2, 2, 24);
 
         int contador = fichasSobrantes.size();
 
@@ -126,9 +73,29 @@ public class Tablero {
         /*char[][] ficha = tablero[0][4].getFicha();
         ficha[1][1] = '?';
         tablero[0][4].setFicha(ficha);*/
-        
     }
     //METODOS
+
+    public void crearFichaFija(char[][] tipo, int cantidad) {
+
+        for (int i = 0; i < cantidad; i++) {
+            Ficha ficha = new Ficha();
+            ficha.setFicha(tipo);
+            listaFichas.add(ficha);
+        }
+
+    }
+
+    public void asignarFichaFija(int rotaciones, int fila, int columna, int ficha) {
+
+        while (rotaciones != 0) {
+            rotarFicha(listaFichas.get(ficha));
+            rotaciones--;
+        }
+        int borrar = (ficha >= 30) ? 30 : 13;
+        tablero[fila][columna] = listaFichas.get(ficha);
+        fichasSobrantes.remove(borrar);
+    }
 
     public Ficha[][] getTablero() {
         return tablero;
@@ -141,7 +108,7 @@ public class Tablero {
     public void setFichasSobrantes(ArrayList<Ficha> fichasSobrantes) {
         this.fichasSobrantes = fichasSobrantes;
     }
-    
+
     public void setTablero(Ficha[][] tablero) {
         this.tablero = tablero;
     }

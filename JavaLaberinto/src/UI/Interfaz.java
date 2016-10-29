@@ -1,8 +1,11 @@
 package UI;
 
 import Data.*;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Interfaz {
 
@@ -10,7 +13,7 @@ public class Interfaz {
 
     public static void dibujarTablero(Tablero tab) {
 
-        ArrayList<String> listaCaracteres = new ArrayList<String>();
+        ArrayList<String> listaCaracteres = new ArrayList<>();
 
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
@@ -51,26 +54,24 @@ public class Interfaz {
             printMatriz = printMatriz.concat("\t");
             if ((i - 2) % 3 == 0) {
                 printMatriz = printMatriz.concat("_|");
-            } 
-            else if((i-4)%6==0){
-                printMatriz = printMatriz.concat(String.valueOf(cont)+"|");
+            } else if ((i - 4) % 6 == 0) {
+                printMatriz = printMatriz.concat(String.valueOf(cont) + "|");
                 cont++;
-            }else {
+            } else {
                 printMatriz = printMatriz.concat(" |");
             }
-            
+
             for (int j = 0; j < 21; j++) {
                 printMatriz = printMatriz.concat(
                         String.valueOf(tablero[i][j]).concat("|"));
             }
-            
+
             if ((i - 2) % 3 == 0) {
                 printMatriz = printMatriz.concat("_");
-            } 
-            else if((i-4)%6==0){
+            } else if ((i - 4) % 6 == 0) {
                 printMatriz = printMatriz.concat(String.valueOf(cont));
                 cont++;
-            }else {
+            } else {
                 printMatriz = printMatriz.concat(" ");
             }
             printMatriz = printMatriz.concat("\n");
@@ -117,11 +118,35 @@ public class Interfaz {
     }
 
     public static void printFicha(Ficha ficha) {
-        System.out.println(ficha.toString());        
+        System.out.println(ficha.toString());
     }
-    
+
     public static void printMovInvalido() {
         System.out.println("No se puede mover a esta posicion, vuelva a intentarlo");
-        
+    }
+
+    public static void printDeseaGirar() {
+        System.out.println("Deseas:\n1) Girar la ficha a la izquierda\n2) Girar la ficha a la derecha\n3) No girar la ficha\n");
+    }
+
+    public static void printIngreseFicha() {
+        System.out.println("Ingresa un número del 1 al 12 para seleccionar donde deseas ingresar la ficha\n");
+    }
+
+    public static void printError() {
+        System.out.println("Valor inválido, por favor inténtalo nuevamente\n");
+    }
+
+    public static void printMoverFicha() {
+        System.out.println("Mueve tu ficha con wasd o termina tu turno con f\n");
+    }
+
+    public static void printJugadores() {
+        System.out.println("¡Cuantos jugadores jugarán esta vez(ingresa 2, 3 o 4)?\n");
+    }
+
+    public static void printTurnoJugador(int contador) {
+        System.out.println("\n\n\n\n/////////////////////////\n"
+                + "Es el turno del jugador " + contador + "\n/////////////////////////");
     }
 }

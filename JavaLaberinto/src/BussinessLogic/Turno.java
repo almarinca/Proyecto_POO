@@ -51,65 +51,49 @@ public class Turno {
             salir = true;
             int casilla = leerInt();
             ArrayList<Ficha> fichasSobrantes = tablero.getFichasSobrantes();
-            int contador, Y, X;
-            boolean a;
+            int x = 0;
+            int y = 0;
+            int mx = 0;
+            int my = 0;
             switch (casilla) {
                 case 1:
                 case 2:
                 case 3:
-                    for (contador = 0; contador <= 6; contador++) {
-                        fichasSobrantes.add(tablero.getTablero()[contador][(casilla * 2) - 1]);
-                    }
-                    moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
-                    for (contador = 0; contador <= 6; contador++) {
-                        tablero.getTablero()[contador][(casilla * 2) - 1] = fichasSobrantes.get(0);
-                        fichasSobrantes.remove(0);
-                    }
-                    tablero.setFichasSobrantes(fichasSobrantes);
-                    break;
+                    x = (casilla * 2) - 1;
+                    my = 1;
                 case 4:
                 case 6:
                 case 8:
-                    for (contador = 0; contador <= 6; contador++) {
-                        fichasSobrantes.add(tablero.getTablero()[casilla - 3][contador]);
-                    }
-                    moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
-                    for (contador = 0; contador <= 6; contador++) {
-                        tablero.getTablero()[casilla - 3][contador] = fichasSobrantes.get(0);
-                        fichasSobrantes.remove(0);
-                    }
-                    tablero.setFichasSobrantes(fichasSobrantes);
+                    y = casilla - 3;
+                    mx = 1;
                     break;
                 case 5:
                 case 7:
                 case 9:
-                    for (contador = 6; contador >= 0; contador--) {
-                        fichasSobrantes.add(tablero.getTablero()[casilla - 4][contador]);
-                    }
-                    moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
-                    for (contador = 6; contador >= 0; contador--) {
-                        tablero.getTablero()[casilla - 4][contador] = fichasSobrantes.get(0);
-                        fichasSobrantes.remove(0);
-                    }
-                    tablero.setFichasSobrantes(fichasSobrantes);
+                    x = -6;
+                    y = casilla - 4;
+                    mx = 1;                    
                     break;
                 case 10:
                 case 11:
-                case 12:
-                    for (contador = 6; contador >= 0; contador--) {
-                        fichasSobrantes.add(tablero.getTablero()[contador][((casilla - 9) * 2) - 1]);
-                    }
-                    moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
-                    for (contador = 6; contador >= 0; contador--) {
-                        tablero.getTablero()[contador][((casilla - 9) * 2) - 1] = fichasSobrantes.get(0);
-                        fichasSobrantes.remove(0);
-                    }
-                    tablero.setFichasSobrantes(fichasSobrantes);
+                case 12:                    
+                    x = (casilla - 9) * 2 - 1;
+                    y = -6;
+                    my = 1;
                     break;
                 default:
                     salir = false;
                     break;
             }
+            for (int i = 0; i <= 6; i++) {
+                fichasSobrantes.add(tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)]);
+            }
+            moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
+            for (int i = 0; i <= 6; i++) {
+                tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
+                fichasSobrantes.remove(0);
+            }
+            tablero.setFichasSobrantes(fichasSobrantes);            
         }
 
         return tablero;

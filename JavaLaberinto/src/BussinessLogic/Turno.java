@@ -61,6 +61,7 @@ public class Turno {
                 case 3:
                     x = (casilla * 2) - 1;
                     my = 1;
+                    break;
                 case 4:
                 case 6:
                 case 8:
@@ -72,11 +73,11 @@ public class Turno {
                 case 9:
                     x = -6;
                     y = casilla - 4;
-                    mx = 1;                    
+                    mx = 1;
                     break;
                 case 10:
                 case 11:
-                case 12:                    
+                case 12:
                     x = (casilla - 9) * 2 - 1;
                     y = -6;
                     my = 1;
@@ -93,7 +94,7 @@ public class Turno {
                 tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
                 fichasSobrantes.remove(0);
             }
-            tablero.setFichasSobrantes(fichasSobrantes);            
+            tablero.setFichasSobrantes(fichasSobrantes);
         }
 
         return tablero;
@@ -140,8 +141,7 @@ public class Turno {
                         printTesoroEncontrado(jugador);
                         try {
                             jugador.getListaTarjetas().remove(0);
-                        }
-                        catch(Exception e){
+                        } catch (Exception e) {
                             printGanador(jugador);
                             JavaLaberinto.salir = true;
                         }
@@ -226,33 +226,32 @@ public class Turno {
     }
 
     public static void moverJugadorConFicha2(ArrayList<Ficha> fichasSobrantes, Tablero tablero, int casilla) {
-        for (int i = 0; i < 8; i++) {
-            int Y, X;
-            boolean a;
-            Y = Jugador.jugador1.getY();
-            X = Jugador.jugador1.getX();
-            a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
-            if (a) {
-                moverJugadorConFicha(Jugador.jugador1, casilla, tablero);
-            }
-            Y = Jugador.jugador2.getY();
-            X = Jugador.jugador2.getX();
-            a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
-            if (a) {
-                moverJugadorConFicha(Jugador.jugador2, casilla, tablero);
-            }
-            Y = Jugador.jugador3.getY();
-            X = Jugador.jugador3.getX();
-            a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
-            if (a) {
-                moverJugadorConFicha(Jugador.jugador3, casilla, tablero);
-            }
-            Y = Jugador.jugador4.getY();
-            X = Jugador.jugador4.getX();
-            a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
-            if (a) {
-                moverJugadorConFicha(Jugador.jugador4, casilla, tablero);
-            }
+
+        int Y, X;
+        boolean a;
+        Y = Jugador.jugador1.getY();
+        X = Jugador.jugador1.getX();
+        a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
+        if (a) {
+            moverJugadorConFicha(Jugador.jugador1, casilla, tablero);
+        }
+        Y = Jugador.jugador2.getY();
+        X = Jugador.jugador2.getX();
+        a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
+        if (a) {
+            moverJugadorConFicha(Jugador.jugador2, casilla, tablero);
+        }
+        Y = Jugador.jugador3.getY();
+        X = Jugador.jugador3.getX();
+        a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
+        if (a) {
+            moverJugadorConFicha(Jugador.jugador3, casilla, tablero);
+        }
+        Y = Jugador.jugador4.getY();
+        X = Jugador.jugador4.getX();
+        a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
+        if (a) {
+            moverJugadorConFicha(Jugador.jugador4, casilla, tablero);
         }
     }
 

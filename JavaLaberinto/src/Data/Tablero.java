@@ -133,8 +133,7 @@ public class Tablero {
         }
         int borrar = (ficha >= 30) ? 30 : 13;
         tablero[fila][columna] = listaFichas.get(ficha);
-        Ficha fichaAux = listaFichas.get(ficha);
-        fichaAux.getFicha()[1][1] = tarjeta.getSimbolo();
+        listaFichas.get(ficha).getFicha()[1][1] = tarjeta.getSimbolo();
         fichasSobrantes.remove(borrar);
     }
 

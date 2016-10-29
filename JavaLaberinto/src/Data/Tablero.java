@@ -18,22 +18,23 @@ public class Tablero {
 
         fichasSobrantes = (ArrayList<Ficha>) listaFichas.clone();
 
-        asignarFichaFija(0, 0, 0, 30);
-        asignarFichaFija(1, 0, 6, 31);
-        asignarFichaFija(2, 6, 6, 32);
-        asignarFichaFija(3, 6, 0, 33);
-        asignarFichaFija(0, 0, 2, 13);
-        asignarFichaFija(0, 0, 4, 14);
-        asignarFichaFija(0, 2, 4, 15);
-        asignarFichaFija(1, 2, 6, 16);
-        asignarFichaFija(1, 4, 6, 17);
-        asignarFichaFija(1, 4, 4, 18);
-        asignarFichaFija(2, 6, 2, 19);
-        asignarFichaFija(2, 6, 4, 20);
-        asignarFichaFija(2, 4, 2, 21);
-        asignarFichaFija(3, 2, 0, 22);
-        asignarFichaFija(3, 4, 0, 23);
-        asignarFichaFija(3, 2, 2, 24);
+        //FICHAS DONDE ESTAN UBICADOS LOS TESOROS
+        asignarFichaFija(0, 0, 0, 30, Tarjeta.Esquina1);
+        asignarFichaFija(1, 0, 6, 31, Tarjeta.Esquina3);
+        asignarFichaFija(2, 6, 6, 32, Tarjeta.Esquina4);
+        asignarFichaFija(3, 6, 0, 33, Tarjeta.Esquina2);
+        asignarFichaFija(0, 0, 2, 13, Tarjeta.Anillo);
+        asignarFichaFija(0, 0, 4, 14, Tarjeta.Mapa);
+        asignarFichaFija(0, 2, 4, 15, Tarjeta.Corona);
+        asignarFichaFija(1, 2, 6, 16, Tarjeta.Libro);
+        asignarFichaFija(1, 4, 6, 17, Tarjeta.BolsaDeMonedas);
+        asignarFichaFija(1, 4, 4, 18, Tarjeta.Llaves);
+        asignarFichaFija(2, 6, 2, 19, Tarjeta.Espada);
+        asignarFichaFija(2, 6, 4, 20, Tarjeta.Craneo);
+        asignarFichaFija(2, 4, 2, 21, Tarjeta.Esmeralda);
+        asignarFichaFija(3, 2, 0, 22, Tarjeta.Veladora);
+        asignarFichaFija(3, 4, 0, 23, Tarjeta.Sombrero);
+        asignarFichaFija(3, 2, 2, 24, Tarjeta.CofreDeTesoros);
 
         int contador = fichasSobrantes.size();
 
@@ -69,10 +70,6 @@ public class Tablero {
                 contador--;
             }
         }
-
-        /*char[][] ficha = tablero[0][4].getFicha();
-        ficha[1][1] = '?';
-        tablero[0][4].setFicha(ficha);*/
     }
     //METODOS
 
@@ -80,28 +77,31 @@ public class Tablero {
 
         for (int k = 0; k < cantidad; k++) {
 
-          char[][] matriz = new char[3][3];  // esta matriz la añadi por que cada ficha debe tener su matriz,
+            char[][] matriz = new char[3][3];  // esta matriz la añadi por que cada ficha debe tener su matriz,
             for (int i = 0; i < 3; i++) {      // sino al modificarla se modificarian todas las fichas del mismo tipo,
                 for (int j = 0; j < 3; j++) {  // ya que lo que se modifica es la matriz
                     matriz[i][j] = tipo[i][j];
                 }
             }
-
+            if (tipo == Ficha.fichaL) {
+                matriz = tesoroFichasSobrante(k, matriz);
+            }
             Ficha ficha = new Ficha();
-            ficha.setFicha(matriz);             
+            ficha.setFicha(matriz);
             listaFichas.add(ficha);
         }
 
     }
 
-    public void asignarFichaFija(int rotaciones, int fila, int columna, int ficha) {
-
+    public void asignarFichaFija(int rotaciones, int fila, int columna, int ficha, Tarjeta tarjeta) {
         while (rotaciones != 0) {
             rotarFicha(listaFichas.get(ficha));
             rotaciones--;
         }
         int borrar = (ficha >= 30) ? 30 : 13;
         tablero[fila][columna] = listaFichas.get(ficha);
+        Ficha fichaAux = listaFichas.get(ficha);
+        fichaAux.getFicha()[1][1] = tarjeta.getSimbolo();
         fichasSobrantes.remove(borrar);
     }
 
@@ -121,4 +121,48 @@ public class Tablero {
         this.tablero = tablero;
     }
 
+    public char[][] tesoroFichasSobrante(int i, char[][] ficha) {
+
+        switch (i) {
+            case 1:
+                ficha[1][1] = Tarjeta.Arana.getSimbolo();
+                break;
+            case 2:
+                ficha[1][1] = Tarjeta.Mariposa.getSimbolo();
+                break;
+            case 3:
+                ficha[1][1] = Tarjeta.Genio.getSimbolo();
+                break;
+            case 4:
+                ficha[1][1] = Tarjeta.Dragon.getSimbolo();
+                break;
+            case 5:
+                ficha[1][1] = Tarjeta.Lagartija.getSimbolo();
+                break;
+            case 6:
+                ficha[1][1] = Tarjeta.Cerdo.getSimbolo();
+                break;
+            case 7:
+                ficha[1][1] = Tarjeta.Buho.getSimbolo();
+                break;
+            case 8:
+                ficha[1][1] = Tarjeta.Raton.getSimbolo();
+                break;
+            case 9:
+                ficha[1][1] = Tarjeta.Bruja.getSimbolo();
+                break;
+            case 10:
+                ficha[1][1] = Tarjeta.Murcielago.getSimbolo();
+                break;
+            case 11:
+                ficha[1][1] = Tarjeta.Fantasma.getSimbolo();
+                break;
+            case 12:
+                ficha[1][1] = Tarjeta.Insecto.getSimbolo();
+                break;
+            default:
+                break;
+        }
+        return ficha;
+    }
 }

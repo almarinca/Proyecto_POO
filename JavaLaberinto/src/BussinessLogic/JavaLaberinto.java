@@ -26,7 +26,7 @@ public class JavaLaberinto {
             printJugadores();
             jugadores = leerInt();
             if (jugadores == 2 || jugadores == 3 || jugadores == 4) {
-                asignarListaFichas(jugadores);
+                asignarListaTarjetas(jugadores);
                 salir = true;
             } else {
                 printError();
@@ -60,7 +60,7 @@ public class JavaLaberinto {
         }
     }
 
-    public static void asignarListaFichas(int jugadores) {
+    public static void asignarListaTarjetas(int jugadores) {
 
         int contador = 24;
         for (int contador2 = 1; contador2 <= jugadores; contador2++) {

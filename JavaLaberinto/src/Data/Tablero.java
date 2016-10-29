@@ -7,7 +7,7 @@ public class Tablero {
     //ATRIBUTOS	
 
     private static Ficha[][] tablero = new Ficha[7][7];
-    ArrayList<Ficha> listaFichas = new ArrayList<>();
+    static ArrayList<Ficha> listaFichas = new ArrayList<>();
     ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
     static ArrayList<Tarjeta> listaTarjetas = new ArrayList<>();
 
@@ -116,8 +116,8 @@ public class Tablero {
                     matriz[i][j] = tipo[i][j];
                 }
             }
-            if (tipo == Ficha.fichaL && k>4) {
-                matriz[1][1] = tesoroFichasSobrante(k-4);
+            if (tipo == Ficha.fichaL && k > 4) {
+                matriz[1][1] = tesoroFichasSobrante(k - 4);
             }
             Ficha ficha = new Ficha();
             ficha.setFicha(matriz);
@@ -182,6 +182,15 @@ public class Tablero {
                 return Tarjeta.Insecto.getSimbolo();
             default:
                 return ' ';
+        }
+    }
+
+    public void modificarTesoros() {
+        for (int t = 0; t < 50; t++) {
+            char tesoro = this.listaFichas.get(t).getFicha()[1][1];
+            if (tesoro != '1' && tesoro != '2' && tesoro != '3' && tesoro != '4') {
+                this.listaFichas.get(t).setCaracter(tesoro);
+            }
         }
     }
 }

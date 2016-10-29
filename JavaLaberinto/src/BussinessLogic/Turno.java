@@ -131,10 +131,7 @@ public class Turno {
                 String a = leerString();
                 mover = a.charAt(0);
             } else {
-                // la siguiente linea le asigna el caracter a la posicion inicial del jugador,
-                //primero lo puse con el numero de cada jugador, pero si se veia raro, entonces
-                //lo deje comentado por si quiere verlo, nada mas quita el espacio y descomenta lo otro.
-                tablero.getTablero()[Y][X].setTesoro(jugador.getNumero());
+                tablero.getTablero()[Y][X].setCaracter(jugador.getBase());
                 salir = true;
             }
 
@@ -173,10 +170,10 @@ public class Turno {
             if ((pasoT < 7 && pasoT >= 0) && muro
                     && Ficha.muro != tablero.getTablero()[Y + pasoY][X + pasoX].getFicha()[1 - pasoY][1 - pasoX]) {
 
-                tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getTesoro();
+                tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getCaracter();
                 X = X + pasoX;
                 Y = Y + pasoY;
-                tablero.getTablero()[Y][X].setTesoro(tablero.getTablero()[Y][X].getFicha()[1][1]);
+                tablero.getTablero()[Y][X].setCaracter(tablero.getTablero()[Y][X].getFicha()[1][1]);
 
             } else {
                 printMovInvalido();

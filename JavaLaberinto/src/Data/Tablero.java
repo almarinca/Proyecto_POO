@@ -189,7 +189,7 @@ public class Tablero {
         for (int t = 0; t < 50; t++) {
             char tesoro = this.listaFichas.get(t).getFicha()[1][1];
             if (tesoro != '1' && tesoro != '2' && tesoro != '3' && tesoro != '4') {
-                this.listaFichas.get(t).setTesoro(tesoro);
+                this.listaFichas.get(t).setCaracter(tesoro);
             }
         }
     }

@@ -59,7 +59,12 @@ public class Turno {
                     for (contador = 0; contador <= 6; contador++) {
                         fichasSobrantes.add(tablero.getTablero()[contador][(casilla * 2) - 1]);
                     }
-                    fichasSobrantes = fichaFuera(fichasSobrantes);
+                    for (int i = 0; i < 8; i++) {
+                        char a = fichasSobrantes.get(i).getFicha()[1][1];
+                        if (a == '1' || a == '2' || a == '3' || a == '4') {
+                            moverJugadorConFicha(a, casilla);
+                        }
+                    }
                     for (contador = 0; contador <= 6; contador++) {
                         tablero.getTablero()[contador][(casilla * 2) - 1] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -72,7 +77,12 @@ public class Turno {
                     for (contador = 0; contador <= 6; contador++) {
                         fichasSobrantes.add(tablero.getTablero()[casilla - 3][contador]);
                     }
-                    fichasSobrantes = fichaFuera(fichasSobrantes);
+                    for (int i = 0; i < 8; i++) {
+                        char a = fichasSobrantes.get(i).getFicha()[1][1];
+                        if (a == '1' || a == '2' || a == '3' || a == '4') {
+                            moverJugadorConFicha(a, casilla);
+                        }
+                    }
                     for (contador = 0; contador <= 6; contador++) {
                         tablero.getTablero()[casilla - 3][contador] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -85,7 +95,12 @@ public class Turno {
                     for (contador = 6; contador >= 0; contador--) {
                         fichasSobrantes.add(tablero.getTablero()[casilla - 4][contador]);
                     }
-                    fichasSobrantes = fichaFuera(fichasSobrantes);
+                    for (int i = 0; i < 8; i++) {
+                        char a = fichasSobrantes.get(i).getFicha()[1][1];
+                        if (a == '1' || a == '2' || a == '3' || a == '4') {
+                            moverJugadorConFicha(a, casilla);
+                        }
+                    }
                     for (contador = 6; contador >= 0; contador--) {
                         tablero.getTablero()[casilla - 4][contador] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -98,7 +113,12 @@ public class Turno {
                     for (contador = 6; contador >= 0; contador--) {
                         fichasSobrantes.add(tablero.getTablero()[contador][((casilla - 9) * 2) - 1]);
                     }
-                    fichasSobrantes = fichaFuera(fichasSobrantes);
+                    for (int i = 0; i < 8; i++) {
+                        char a = fichasSobrantes.get(i).getFicha()[1][1];
+                        if (a == '1' || a == '2' || a == '3' || a == '4') {
+                            moverJugadorConFicha(a, casilla);
+                        }
+                    }
                     for (contador = 6; contador >= 0; contador--) {
                         tablero.getTablero()[contador][((casilla - 9) * 2) - 1] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -167,7 +187,7 @@ public class Turno {
 
             if ((pasoT < 7 && pasoT >= 0) && muro
                     && Ficha.muro != tablero.getTablero()[Y + pasoY][X + pasoX].getFicha()[1 - pasoY][1 - pasoX]) {
-                
+
                 tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getTesoro();
                 X = X + pasoX;
                 Y = Y + pasoY;
@@ -183,24 +203,140 @@ public class Turno {
         }
     }
 
-    public static ArrayList<Ficha> fichaFuera(ArrayList<Ficha> fichasSobrantes) {
-        switch (fichasSobrantes.get(7).getFicha()[1][1]) {
-            case '1':
-                fichasSobrantes.get(0).getFicha()[1][1] = '1';
-                break;
-            case '2':
-                fichasSobrantes.get(0).getFicha()[1][1] = '2';
-                break;
-            case '3':
-                fichasSobrantes.get(0).getFicha()[1][1] = '3';
-                break;
-            case '4':
-                fichasSobrantes.get(0).getFicha()[1][1] = '4';
-                break;
-            default:
-                break;
+    public static void moverJugadorConFicha(char a, int casilla) {
+        if (casilla >= 1 && casilla <= 3) {
+            switch (a) {
+                case '1':
+                    try {
+                        Jugador.jugador1.setPosYEnTablero(Jugador.jugador1.getPosYEnTablero() + 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador1.setPosYEnTablero(0);
+                    }
+                    break;
+                case '2':
+                    try {
+                        Jugador.jugador2.setPosYEnTablero(Jugador.jugador2.getPosYEnTablero() + 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador2.setPosYEnTablero(0);
+                    }
+                    break;
+                case '3':
+                    try {
+                        Jugador.jugador3.setPosYEnTablero(Jugador.jugador3.getPosYEnTablero() + 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador3.setPosYEnTablero(0);
+                    }
+                    break;
+                case '4':
+                    try {
+                        Jugador.jugador4.setPosYEnTablero(Jugador.jugador4.getPosYEnTablero() + 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador4.setPosYEnTablero(0);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else if (casilla >= 4 && casilla <= 6) {
+            switch (a) {
+                case '1':
+                    try {
+                        Jugador.jugador1.setPosXEnTablero(Jugador.jugador1.getPosXEnTablero() + 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador1.setPosXEnTablero(0);
+                    }
+                    break;
+                case '2':
+                    try {
+                        Jugador.jugador2.setPosXEnTablero(Jugador.jugador2.getPosXEnTablero() + 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador2.setPosXEnTablero(0);
+                    }
+                    break;
+                case '3':
+                    try {
+                        Jugador.jugador3.setPosXEnTablero(Jugador.jugador3.getPosXEnTablero() + 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador3.setPosXEnTablero(0);
+                    }
+                    break;
+                case '4':
+                    try {
+                        Jugador.jugador4.setPosXEnTablero(Jugador.jugador4.getPosXEnTablero() + 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador4.setPosXEnTablero(0);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else if (casilla >= 7 && casilla <= 9) {
+            switch (a) {
+                case '1':
+                    try {
+                        Jugador.jugador1.setPosXEnTablero(Jugador.jugador1.getPosXEnTablero() - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador1.setPosXEnTablero(6);
+                    }
+                    break;
+                case '2':
+                    try {
+                        Jugador.jugador2.setPosXEnTablero(Jugador.jugador2.getPosXEnTablero() - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador2.setPosXEnTablero(6);
+                    }
+                    break;
+                case '3':
+                    try {
+                        Jugador.jugador3.setPosXEnTablero(Jugador.jugador3.getPosXEnTablero() - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador3.setPosXEnTablero(6);
+                    }
+                    break;
+                case '4':
+                    try {
+                        Jugador.jugador4.setPosXEnTablero(Jugador.jugador4.getPosXEnTablero() - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador4.setPosXEnTablero(6);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        } else if (casilla >= 10 && casilla <= 12) {
+            switch (a) {
+                case '1':
+                    try {
+                        Jugador.jugador1.setPosYEnTablero(Jugador.jugador1.getPosYEnTablero() - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador1.setPosYEnTablero(6);
+                    }
+                    break;
+                case '2':
+                    try {
+                        Jugador.jugador2.setPosYEnTablero(Jugador.jugador2.getPosYEnTablero() - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador2.setPosYEnTablero(6);
+                    }
+                    break;
+                case '3':
+                    try {
+                        Jugador.jugador3.setPosYEnTablero(Jugador.jugador3.getPosYEnTablero() - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador3.setPosYEnTablero(6);
+                    }
+                    break;
+                case '4':
+                    try {
+                        Jugador.jugador4.setPosYEnTablero(Jugador.jugador4.getPosYEnTablero() - 1);
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        Jugador.jugador4.setPosYEnTablero(6);
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
-        return fichasSobrantes;
     }
 
 }

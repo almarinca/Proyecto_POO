@@ -51,7 +51,8 @@ public class Turno {
             salir = true;
             int casilla = leerInt();
             ArrayList<Ficha> fichasSobrantes = tablero.getFichasSobrantes();
-            int contador;
+            int contador, Y, X;
+            boolean a;
             switch (casilla) {
                 case 1:
                 case 2:
@@ -59,12 +60,7 @@ public class Turno {
                     for (contador = 0; contador <= 6; contador++) {
                         fichasSobrantes.add(tablero.getTablero()[contador][(casilla * 2) - 1]);
                     }
-                    for (int i = 0; i < 8; i++) {
-                        char a = fichasSobrantes.get(i).getFicha()[1][1];
-                        if (a == '1' || a == '2' || a == '3' || a == '4') {
-                            moverJugadorConFicha(a, casilla);
-                        }
-                    }
+                    moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
                     for (contador = 0; contador <= 6; contador++) {
                         tablero.getTablero()[contador][(casilla * 2) - 1] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -77,12 +73,7 @@ public class Turno {
                     for (contador = 0; contador <= 6; contador++) {
                         fichasSobrantes.add(tablero.getTablero()[casilla - 3][contador]);
                     }
-                    for (int i = 0; i < 8; i++) {
-                        char a = fichasSobrantes.get(i).getFicha()[1][1];
-                        if (a == '1' || a == '2' || a == '3' || a == '4') {
-                            moverJugadorConFicha(a, casilla);
-                        }
-                    }
+                    moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
                     for (contador = 0; contador <= 6; contador++) {
                         tablero.getTablero()[casilla - 3][contador] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -95,12 +86,7 @@ public class Turno {
                     for (contador = 6; contador >= 0; contador--) {
                         fichasSobrantes.add(tablero.getTablero()[casilla - 4][contador]);
                     }
-                    for (int i = 0; i < 8; i++) {
-                        char a = fichasSobrantes.get(i).getFicha()[1][1];
-                        if (a == '1' || a == '2' || a == '3' || a == '4') {
-                            moverJugadorConFicha(a, casilla);
-                        }
-                    }
+                    moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
                     for (contador = 6; contador >= 0; contador--) {
                         tablero.getTablero()[casilla - 4][contador] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -113,12 +99,7 @@ public class Turno {
                     for (contador = 6; contador >= 0; contador--) {
                         fichasSobrantes.add(tablero.getTablero()[contador][((casilla - 9) * 2) - 1]);
                     }
-                    for (int i = 0; i < 8; i++) {
-                        char a = fichasSobrantes.get(i).getFicha()[1][1];
-                        if (a == '1' || a == '2' || a == '3' || a == '4') {
-                            moverJugadorConFicha(a, casilla);
-                        }
-                    }
+                    moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
                     for (contador = 6; contador >= 0; contador--) {
                         tablero.getTablero()[contador][((casilla - 9) * 2) - 1] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -138,12 +119,12 @@ public class Turno {
 
         boolean salir = false;
         while (!salir) {
-            
+
             int X = jugador.getX();
             int Y = jugador.getY();
             int pasoX = 0;
             int pasoY = 0;
-            
+
             if (mover != 'q') {
                 dibujarTablero(tablero);
                 printMoverFicha();
@@ -153,7 +134,7 @@ public class Turno {
                 // la siguiente linea le asigna el caracter a la posicion inicial del jugador,
                 //primero lo puse con el numero de cada jugador, pero si se veia raro, entonces
                 //lo deje comentado por si quiere verlo, nada mas quita el espacio y descomenta lo otro.
-                tablero.getTablero()[Y][X].setTesoro(' '/*jugador.getNumero()*/); 
+                tablero.getTablero()[Y][X].setTesoro(jugador.getNumero());
                 salir = true;
             }
 
@@ -207,138 +188,82 @@ public class Turno {
         }
     }
 
-    public static void moverJugadorConFicha(char a, int casilla) {
-        if (casilla >= 1 && casilla <= 3) {
-            switch (a) {
-                case '1':
-                    try {
-                        Jugador.jugador1.setY(Jugador.jugador1.getY() + 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador1.setY(0);
-                    }
-                    break;
-                case '2':
-                    try {
-                        Jugador.jugador2.setY(Jugador.jugador2.getY() + 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador2.setY(0);
-                    }
-                    break;
-                case '3':
-                    try {
-                        Jugador.jugador3.setY(Jugador.jugador3.getY() + 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador3.setY(0);
-                    }
-                    break;
-                case '4':
-                    try {
-                        Jugador.jugador4.setY(Jugador.jugador4.getY() + 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador4.setY(0);
-                    }
-                    break;
-                default:
-                    break;
+    public static void moverJugadorConFicha(Jugador jugador, int casilla, Tablero tablero) {
+        int X = jugador.getX();
+        int Y = jugador.getY();
+        System.out.println(X);
+        System.out.println(Y);
+        switch (casilla) {
+            case 1:
+            case 2:
+            case 3:
+                if (Y != 6) {
+                    jugador.setY(Y + 1);
+                } else {
+                    jugador.setY(0);
+                }
+
+            case 4:
+            case 6:
+            case 8:
+                if (X != 6) {
+                    jugador.setX(X + 1);
+                } else {
+                    jugador.setX(0);
+                }
+            case 5:
+            case 7:
+            case 9:
+                if (X != 0) {
+                    jugador.setX(X - 1);
+                } else {
+                    jugador.setX(6);
+                }
+            case 10:
+            case 11:
+            case 12:
+                if (Y != 0) {
+                    jugador.setY(Y - 1);
+                } else {
+                    jugador.setY(6);
+                }
+            default:
+                break;
+        }
+        X = jugador.getX();
+        Y = jugador.getY();
+        System.out.println(X);
+        System.out.println(Y);
+        tablero.modificarTesoros();
+    }
+
+    public static void moverJugadorConFicha2(ArrayList<Ficha> fichasSobrantes, Tablero tablero, int casilla) {
+        for (int i = 0; i < 8; i++) {
+            int Y, X;
+            boolean a;
+            Y = Jugador.jugador1.getY();
+            X = Jugador.jugador1.getX();
+            a = fichasSobrantes.get(i) == tablero.getTablero()[Y][X];
+            if (a) {
+                moverJugadorConFicha(Jugador.jugador1, casilla, tablero);
             }
-        } else if (casilla >= 4 && casilla <= 6) {
-            switch (a) {
-                case '1':
-                    try {
-                        Jugador.jugador1.setX(Jugador.jugador1.getX() + 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador1.setX(0);
-                    }
-                    break;
-                case '2':
-                    try {
-                        Jugador.jugador2.setX(Jugador.jugador2.getX() + 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador2.setX(0);
-                    }
-                    break;
-                case '3':
-                    try {
-                        Jugador.jugador3.setX(Jugador.jugador3.getX() + 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador3.setX(0);
-                    }
-                    break;
-                case '4':
-                    try {
-                        Jugador.jugador4.setX(Jugador.jugador4.getX() + 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador4.setX(0);
-                    }
-                    break;
-                default:
-                    break;
+            Y = Jugador.jugador2.getY();
+            X = Jugador.jugador2.getX();
+            a = fichasSobrantes.get(i) == tablero.getTablero()[Y][X];
+            if (a) {
+                moverJugadorConFicha(Jugador.jugador2, casilla, tablero);
             }
-        } else if (casilla >= 7 && casilla <= 9) {
-            switch (a) {
-                case '1':
-                    try {
-                        Jugador.jugador1.setX(Jugador.jugador1.getX() - 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador1.setX(6);
-                    }
-                    break;
-                case '2':
-                    try {
-                        Jugador.jugador2.setX(Jugador.jugador2.getX() - 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador2.setX(6);
-                    }
-                    break;
-                case '3':
-                    try {
-                        Jugador.jugador3.setX(Jugador.jugador3.getX() - 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador3.setX(6);
-                    }
-                    break;
-                case '4':
-                    try {
-                        Jugador.jugador4.setX(Jugador.jugador4.getX() - 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador4.setX(6);
-                    }
-                    break;
-                default:
-                    break;
+            Y = Jugador.jugador3.getY();
+            X = Jugador.jugador3.getX();
+            a = fichasSobrantes.get(i) == tablero.getTablero()[Y][X];
+            if (a) {
+                moverJugadorConFicha(Jugador.jugador3, casilla, tablero);
             }
-        } else if (casilla >= 10 && casilla <= 12) {
-            switch (a) {
-                case '1':
-                    try {
-                        Jugador.jugador1.setY(Jugador.jugador1.getY() - 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador1.setY(6);
-                    }
-                    break;
-                case '2':
-                    try {
-                        Jugador.jugador2.setY(Jugador.jugador2.getY() - 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador2.setY(6);
-                    }
-                    break;
-                case '3':
-                    try {
-                        Jugador.jugador3.setY(Jugador.jugador3.getY() - 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador3.setY(6);
-                    }
-                    break;
-                case '4':
-                    try {
-                        Jugador.jugador4.setY(Jugador.jugador4.getY() - 1);
-                    } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador4.setY(6);
-                    }
-                    break;
-                default:
-                    break;
+            Y = Jugador.jugador4.getY();
+            X = Jugador.jugador4.getX();
+            a = fichasSobrantes.get(i) == tablero.getTablero()[Y][X];
+            if (a) {
+                moverJugadorConFicha(Jugador.jugador4, casilla, tablero);
             }
         }
     }

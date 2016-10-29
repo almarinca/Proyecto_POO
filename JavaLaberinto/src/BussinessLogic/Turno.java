@@ -202,7 +202,7 @@ public class Turno {
                 } else {
                     jugador.setY(0);
                 }
-
+                break;
             case 4:
             case 6:
             case 8:
@@ -211,6 +211,7 @@ public class Turno {
                 } else {
                     jugador.setX(0);
                 }
+                break;
             case 5:
             case 7:
             case 9:
@@ -219,6 +220,7 @@ public class Turno {
                 } else {
                     jugador.setX(6);
                 }
+                break;
             case 10:
             case 11:
             case 12:
@@ -227,6 +229,7 @@ public class Turno {
                 } else {
                     jugador.setY(6);
                 }
+                break;
             default:
                 break;
         }
@@ -243,25 +246,25 @@ public class Turno {
             boolean a;
             Y = Jugador.jugador1.getY();
             X = Jugador.jugador1.getX();
-            a = fichasSobrantes.get(i) == tablero.getTablero()[Y][X];
+            a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
             if (a) {
                 moverJugadorConFicha(Jugador.jugador1, casilla, tablero);
             }
             Y = Jugador.jugador2.getY();
             X = Jugador.jugador2.getX();
-            a = fichasSobrantes.get(i) == tablero.getTablero()[Y][X];
+            a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
             if (a) {
                 moverJugadorConFicha(Jugador.jugador2, casilla, tablero);
             }
             Y = Jugador.jugador3.getY();
             X = Jugador.jugador3.getX();
-            a = fichasSobrantes.get(i) == tablero.getTablero()[Y][X];
+            a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
             if (a) {
                 moverJugadorConFicha(Jugador.jugador3, casilla, tablero);
             }
             Y = Jugador.jugador4.getY();
             X = Jugador.jugador4.getX();
-            a = fichasSobrantes.get(i) == tablero.getTablero()[Y][X];
+            a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
             if (a) {
                 moverJugadorConFicha(Jugador.jugador4, casilla, tablero);
             }

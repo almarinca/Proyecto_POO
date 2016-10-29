@@ -36,21 +36,18 @@ public class JavaLaberinto {
         while (!salir) {
 
             printTurnoJugador(contador);
+            Turno.moverFichas(tablero);
             switch (contador) {
                 case 1:
-                    Turno.moverFichas(tablero);
                     Turno.moverJugador(Jugador.jugador1, 'a', tablero);
                     break;
                 case 2:
-                    Turno.moverFichas(tablero);
                     Turno.moverJugador(Jugador.jugador2, 'a', tablero);
                     break;
                 case 3:
-                    Turno.moverFichas(tablero);
                     Turno.moverJugador(Jugador.jugador3, 'a', tablero);
                     break;
                 case 4:
-                    Turno.moverFichas(tablero);
                     Turno.moverJugador(Jugador.jugador4, 'a', tablero);
                     break;
                 default:

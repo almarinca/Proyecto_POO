@@ -11,11 +11,13 @@ import java.util.ArrayList;
 
 public class JavaLaberinto {
 
+    static boolean salir = false;
+    
     public static void main(String[] args) {
-
+        
         Tablero tablero = new Tablero();
         int contador = 1;
-        boolean salir = false;
+        salir = false;
         int jugadores = 0;
         Turno.moverJugador(Jugador.jugador1, 'q', tablero);
         Turno.moverJugador(Jugador.jugador2, 'q', tablero);
@@ -76,15 +78,19 @@ public class JavaLaberinto {
             switch (contador2) {
                 case 1:
                     Jugador.jugador1.setListaTarjetas(listaTarjetas);
+                    Jugador.jugador1.getListaTarjetas().add(Tarjeta.Esquina1);
                     break;
                 case 2:
                     Jugador.jugador2.setListaTarjetas(listaTarjetas);
+                    Jugador.jugador2.getListaTarjetas().add(Tarjeta.Esquina2);
                     break;
                 case 3:
                     Jugador.jugador3.setListaTarjetas(listaTarjetas);
+                    Jugador.jugador3.getListaTarjetas().add(Tarjeta.Esquina3);
                     break;
                 case 4:
                     Jugador.jugador4.setListaTarjetas(listaTarjetas);
+                    Jugador.jugador4.getListaTarjetas().add(Tarjeta.Esquina4);
                     break;
                 default:
                     break;

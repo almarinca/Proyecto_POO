@@ -12,8 +12,6 @@ public enum Jugador {
     private final char numero;
     private int X;
     private int Y;
-    private int posXEnFicha;
-    private int posYEnFicha;
     private ArrayList<Tarjeta> listaTarjetas;
 
     private Jugador(char numero, int X, int Y, ArrayList<Tarjeta> listaTarjetas) {

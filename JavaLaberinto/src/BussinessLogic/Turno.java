@@ -59,6 +59,7 @@ public class Turno {
                     for (contador = 0; contador <= 6; contador++) {
                         fichasSobrantes.add(tablero.getTablero()[contador][(casilla * 2) - 1]);
                     }
+                    fichasSobrantes = fichaFuera(fichasSobrantes);
                     for (contador = 0; contador <= 6; contador++) {
                         tablero.getTablero()[contador][(casilla * 2) - 1] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -71,6 +72,7 @@ public class Turno {
                     for (contador = 0; contador <= 6; contador++) {
                         fichasSobrantes.add(tablero.getTablero()[casilla - 3][contador]);
                     }
+                    fichasSobrantes = fichaFuera(fichasSobrantes);
                     for (contador = 0; contador <= 6; contador++) {
                         tablero.getTablero()[casilla - 3][contador] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -83,6 +85,7 @@ public class Turno {
                     for (contador = 6; contador >= 0; contador--) {
                         fichasSobrantes.add(tablero.getTablero()[casilla - 4][contador]);
                     }
+                    fichasSobrantes = fichaFuera(fichasSobrantes);
                     for (contador = 6; contador >= 0; contador--) {
                         tablero.getTablero()[casilla - 4][contador] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -95,6 +98,7 @@ public class Turno {
                     for (contador = 6; contador >= 0; contador--) {
                         fichasSobrantes.add(tablero.getTablero()[contador][((casilla - 9) * 2) - 1]);
                     }
+                    fichasSobrantes = fichaFuera(fichasSobrantes);
                     for (contador = 6; contador >= 0; contador--) {
                         tablero.getTablero()[contador][((casilla - 9) * 2) - 1] = fichasSobrantes.get(0);
                         fichasSobrantes.remove(0);
@@ -124,8 +128,8 @@ public class Turno {
                 salir = true;
             }
 
-            int X = jugador.getPosXEnTablero();
-            int Y = jugador.getPosYEnTablero();
+            int X = jugador.getX();
+            int Y = jugador.getY();
             int pasoX = 0;
             int pasoY = 0;
 
@@ -173,10 +177,30 @@ public class Turno {
                 printMovInvalido();
             }
 
-            jugador.setPosXEnTablero(X);
-            jugador.setPosYEnTablero(Y);
+            jugador.setX(X);
+            jugador.setY(Y);
             tablero.getTablero()[Y][X].getFicha()[1][1] = jugador.getNumero();
         }
+    }
+
+    public static ArrayList<Ficha> fichaFuera(ArrayList<Ficha> fichasSobrantes) {
+        switch (fichasSobrantes.get(7).getFicha()[1][1]) {
+            case '1':
+                fichasSobrantes.get(0).getFicha()[1][1] = '1';
+                break;
+            case '2':
+                fichasSobrantes.get(0).getFicha()[1][1] = '2';
+                break;
+            case '3':
+                fichasSobrantes.get(0).getFicha()[1][1] = '3';
+                break;
+            case '4':
+                fichasSobrantes.get(0).getFicha()[1][1] = '4';
+                break;
+            default:
+                break;
+        }
+        return fichasSobrantes;
     }
 
 }

@@ -128,8 +128,8 @@ public class Turno {
                 salir = true;
             }
 
-            int X = jugador.getPosXEnTablero();
-            int Y = jugador.getPosYEnTablero();
+            int X = jugador.getX();
+            int Y = jugador.getY();
             int pasoX = 0;
             int pasoY = 0;
 
@@ -177,8 +177,8 @@ public class Turno {
                 printMovInvalido();
             }
 
-            jugador.setPosXEnTablero(X);
-            jugador.setPosYEnTablero(Y);
+            jugador.setX(X);
+            jugador.setY(Y);
             tablero.getTablero()[Y][X].getFicha()[1][1] = jugador.getNumero();
         }
     }

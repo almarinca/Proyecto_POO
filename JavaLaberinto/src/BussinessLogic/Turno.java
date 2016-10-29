@@ -138,20 +138,24 @@ public class Turno {
 
         boolean salir = false;
         while (!salir) {
-
+            
+            int X = jugador.getX();
+            int Y = jugador.getY();
+            int pasoX = 0;
+            int pasoY = 0;
+            
             if (mover != 'q') {
                 dibujarTablero(tablero);
                 printMoverFicha();
                 String a = leerString();
                 mover = a.charAt(0);
             } else {
+                // la siguiente linea le asigna el caracter a la posicion inicial del jugador,
+                //primero lo puse con el numero de cada jugador, pero si se veia raro, entonces
+                //lo deje comentado por si quiere verlo, nada mas quita el espacio y descomenta lo otro.
+                tablero.getTablero()[Y][X].setTesoro(' '/*jugador.getNumero()*/); 
                 salir = true;
             }
-
-            int X = jugador.getPosXEnTablero();
-            int Y = jugador.getPosYEnTablero();
-            int pasoX = 0;
-            int pasoY = 0;
 
             switch (mover) {
                 case 'w':
@@ -197,8 +201,8 @@ public class Turno {
                 printMovInvalido();
             }
 
-            jugador.setPosXEnTablero(X);
-            jugador.setPosYEnTablero(Y);
+            jugador.setX(X);
+            jugador.setY(Y);
             tablero.getTablero()[Y][X].getFicha()[1][1] = jugador.getNumero();
         }
     }
@@ -208,30 +212,30 @@ public class Turno {
             switch (a) {
                 case '1':
                     try {
-                        Jugador.jugador1.setPosYEnTablero(Jugador.jugador1.getPosYEnTablero() + 1);
+                        Jugador.jugador1.setY(Jugador.jugador1.getY() + 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador1.setPosYEnTablero(0);
+                        Jugador.jugador1.setY(0);
                     }
                     break;
                 case '2':
                     try {
-                        Jugador.jugador2.setPosYEnTablero(Jugador.jugador2.getPosYEnTablero() + 1);
+                        Jugador.jugador2.setY(Jugador.jugador2.getY() + 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador2.setPosYEnTablero(0);
+                        Jugador.jugador2.setY(0);
                     }
                     break;
                 case '3':
                     try {
-                        Jugador.jugador3.setPosYEnTablero(Jugador.jugador3.getPosYEnTablero() + 1);
+                        Jugador.jugador3.setY(Jugador.jugador3.getY() + 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador3.setPosYEnTablero(0);
+                        Jugador.jugador3.setY(0);
                     }
                     break;
                 case '4':
                     try {
-                        Jugador.jugador4.setPosYEnTablero(Jugador.jugador4.getPosYEnTablero() + 1);
+                        Jugador.jugador4.setY(Jugador.jugador4.getY() + 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador4.setPosYEnTablero(0);
+                        Jugador.jugador4.setY(0);
                     }
                     break;
                 default:
@@ -241,30 +245,30 @@ public class Turno {
             switch (a) {
                 case '1':
                     try {
-                        Jugador.jugador1.setPosXEnTablero(Jugador.jugador1.getPosXEnTablero() + 1);
+                        Jugador.jugador1.setX(Jugador.jugador1.getX() + 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador1.setPosXEnTablero(0);
+                        Jugador.jugador1.setX(0);
                     }
                     break;
                 case '2':
                     try {
-                        Jugador.jugador2.setPosXEnTablero(Jugador.jugador2.getPosXEnTablero() + 1);
+                        Jugador.jugador2.setX(Jugador.jugador2.getX() + 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador2.setPosXEnTablero(0);
+                        Jugador.jugador2.setX(0);
                     }
                     break;
                 case '3':
                     try {
-                        Jugador.jugador3.setPosXEnTablero(Jugador.jugador3.getPosXEnTablero() + 1);
+                        Jugador.jugador3.setX(Jugador.jugador3.getX() + 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador3.setPosXEnTablero(0);
+                        Jugador.jugador3.setX(0);
                     }
                     break;
                 case '4':
                     try {
-                        Jugador.jugador4.setPosXEnTablero(Jugador.jugador4.getPosXEnTablero() + 1);
+                        Jugador.jugador4.setX(Jugador.jugador4.getX() + 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador4.setPosXEnTablero(0);
+                        Jugador.jugador4.setX(0);
                     }
                     break;
                 default:
@@ -274,30 +278,30 @@ public class Turno {
             switch (a) {
                 case '1':
                     try {
-                        Jugador.jugador1.setPosXEnTablero(Jugador.jugador1.getPosXEnTablero() - 1);
+                        Jugador.jugador1.setX(Jugador.jugador1.getX() - 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador1.setPosXEnTablero(6);
+                        Jugador.jugador1.setX(6);
                     }
                     break;
                 case '2':
                     try {
-                        Jugador.jugador2.setPosXEnTablero(Jugador.jugador2.getPosXEnTablero() - 1);
+                        Jugador.jugador2.setX(Jugador.jugador2.getX() - 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador2.setPosXEnTablero(6);
+                        Jugador.jugador2.setX(6);
                     }
                     break;
                 case '3':
                     try {
-                        Jugador.jugador3.setPosXEnTablero(Jugador.jugador3.getPosXEnTablero() - 1);
+                        Jugador.jugador3.setX(Jugador.jugador3.getX() - 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador3.setPosXEnTablero(6);
+                        Jugador.jugador3.setX(6);
                     }
                     break;
                 case '4':
                     try {
-                        Jugador.jugador4.setPosXEnTablero(Jugador.jugador4.getPosXEnTablero() - 1);
+                        Jugador.jugador4.setX(Jugador.jugador4.getX() - 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador4.setPosXEnTablero(6);
+                        Jugador.jugador4.setX(6);
                     }
                     break;
                 default:
@@ -307,30 +311,30 @@ public class Turno {
             switch (a) {
                 case '1':
                     try {
-                        Jugador.jugador1.setPosYEnTablero(Jugador.jugador1.getPosYEnTablero() - 1);
+                        Jugador.jugador1.setY(Jugador.jugador1.getY() - 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador1.setPosYEnTablero(6);
+                        Jugador.jugador1.setY(6);
                     }
                     break;
                 case '2':
                     try {
-                        Jugador.jugador2.setPosYEnTablero(Jugador.jugador2.getPosYEnTablero() - 1);
+                        Jugador.jugador2.setY(Jugador.jugador2.getY() - 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador2.setPosYEnTablero(6);
+                        Jugador.jugador2.setY(6);
                     }
                     break;
                 case '3':
                     try {
-                        Jugador.jugador3.setPosYEnTablero(Jugador.jugador3.getPosYEnTablero() - 1);
+                        Jugador.jugador3.setY(Jugador.jugador3.getY() - 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador3.setPosYEnTablero(6);
+                        Jugador.jugador3.setY(6);
                     }
                     break;
                 case '4':
                     try {
-                        Jugador.jugador4.setPosYEnTablero(Jugador.jugador4.getPosYEnTablero() - 1);
+                        Jugador.jugador4.setY(Jugador.jugador4.getY() - 1);
                     } catch (ArrayIndexOutOfBoundsException e) {
-                        Jugador.jugador4.setPosYEnTablero(6);
+                        Jugador.jugador4.setY(6);
                     }
                     break;
                 default:

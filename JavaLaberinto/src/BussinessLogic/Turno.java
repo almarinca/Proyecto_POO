@@ -126,8 +126,6 @@ public class Turno {
 
             int X = jugador.getPosXEnTablero();
             int Y = jugador.getPosYEnTablero();
-            int x = jugador.getPosXEnFicha();
-            int y = jugador.getPosYEnFicha();
             int pasoX = 0;
             int pasoY = 0;
 
@@ -156,33 +154,28 @@ public class Turno {
             }
             boolean muro;
             try {
-                muro = Ficha.muro != tablero.getTablero()[Y][X].getFicha()[y + pasoY][x + pasoX];
+                muro = Ficha.muro != tablero.getTablero()[Y][X].getFicha()[pasoY + 1][pasoX + 1];
             } catch (ArrayIndexOutOfBoundsException e) {
                 muro = true;
             }
-            int pasoF = (pasoX != 0) ? (x + pasoX) : (y + pasoY);
-            int pasoT = (pasoX != 0) ? (X + pasoX) : (Y + pasoY);
-            if ((pasoF < 3 && pasoF >= 0) && muro) {
-                tablero.getTablero()[Y][X].getFicha()[y][x] = ' ';
-                x = x + pasoX;
-                y = y + pasoY;
-            } else if ((pasoT < 7 && pasoT >= 0) && muro
-                    && Ficha.muro != tablero.getTablero()[Y + pasoY][X + pasoX].getFicha()[y - pasoY * 2][x - pasoX * 2]) {
 
-                tablero.getTablero()[Y][X].getFicha()[y][x] = ' ';
+            int pasoT = (pasoX != 0) ? (X + pasoX) : (Y + pasoY);
+
+            if ((pasoT < 7 && pasoT >= 0) && muro
+                    && Ficha.muro != tablero.getTablero()[Y + pasoY][X + pasoX].getFicha()[1 - pasoY][1 - pasoX]) {
+                
+                tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getTesoro();
                 X = X + pasoX;
                 Y = Y + pasoY;
-                x = (x - pasoX * 2);
-                y = (y - pasoY * 2);
+                tablero.getTablero()[Y][X].setTesoro(tablero.getTablero()[Y][X].getFicha()[1][1]);
+
             } else {
                 printMovInvalido();
             }
 
             jugador.setPosXEnTablero(X);
             jugador.setPosYEnTablero(Y);
-            jugador.setPosXEnFicha(x);
-            jugador.setPosYEnFicha(y);
-            tablero.getTablero()[Y][X].getFicha()[y][x] = jugador.getNumero();
+            tablero.getTablero()[Y][X].getFicha()[1][1] = jugador.getNumero();
         }
     }
 

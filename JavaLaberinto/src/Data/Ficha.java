@@ -7,6 +7,7 @@ package Data;
 
 public class Ficha {
 
+    private char tesoro;
     private char[][] ficha;
     public static final char muro = '#';
     public static final char[][] fichaT = {{muro, muro, muro},
@@ -21,6 +22,14 @@ public class Ficha {
     {' ', ' ', ' '},
     {muro, muro, muro}};
 
+    public char getTesoro() {
+        return tesoro;
+    }
+
+    public void setTesoro(char tesoro) {
+        this.tesoro = tesoro;
+    }
+    
     public char[][] getFicha() {
         return ficha;
     }

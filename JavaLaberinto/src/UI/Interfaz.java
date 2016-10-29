@@ -164,4 +164,15 @@ public class Interfaz {
                 + "Es el turno del jugador " + contador + "\n"
                 + "Tienes que llegar al tesoro " + tesoro + "\n/////////////////////////////");
     }
+    
+    public static void printTesoroEncontrado(Jugador jugador){
+    System.out.println("\n\n\n\n/////////////////////////////\n"
+            + "Felicitaciones jugador "+ jugador.getNumero() + " has encontrado el tesoro"
+            + " " + jugador.getListaTarjetas().get(0).getSimbolo() + "\n/////////////////////////////");
+    }
+    
+    public static void printGanador(Jugador jugador){
+        System.out.println("\n\n\n\n/////////////////////////////\n"
+                + "Felicitaciones jugador "+ jugador.getNumero() + " eres el ganador\n/////////////////////////////\n");
+    }
 }

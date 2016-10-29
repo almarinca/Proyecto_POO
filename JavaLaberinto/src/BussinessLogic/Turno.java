@@ -152,6 +152,16 @@ public class Turno {
                     salir = true;
                     pasoX = 0;
                     pasoY = 0;
+                    if (jugador.getListaTarjetas().get(0).getSimbolo() == tablero.getTablero()[Y][X].getCaracter()) {
+                        printTesoroEncontrado(jugador);
+                        try {
+                            jugador.getListaTarjetas().remove(0);
+                        }
+                        catch(Exception e){
+                            printGanador(jugador);
+                            JavaLaberinto.salir = true;
+                        }
+                    }
                     break;
                 default: // las fichas quedan en su posicion inicial
                     pasoX = 0;
@@ -188,8 +198,6 @@ public class Turno {
     public static void moverJugadorConFicha(Jugador jugador, int casilla, Tablero tablero) {
         int X = jugador.getX();
         int Y = jugador.getY();
-        System.out.println(X);
-        System.out.println(Y);
         switch (casilla) {
             case 1:
             case 2:
@@ -230,10 +238,6 @@ public class Turno {
             default:
                 break;
         }
-        X = jugador.getX();
-        Y = jugador.getY();
-        System.out.println(X);
-        System.out.println(Y);
         tablero.modificarTesoros();
     }
 

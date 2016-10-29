@@ -143,7 +143,25 @@ public class Interfaz {
     }
 
     public static void printTurnoJugador(int contador) {
-        System.out.println("\n\n\n\n/////////////////////////\n"
-                + "Es el turno del jugador " + contador + "\n/////////////////////////");
+        char tesoro = 0;
+        switch (contador) {
+            case 1:
+                tesoro = Jugador.jugador1.getListaTarjetas().get(0).getSimbolo();
+                break;
+            case 2:
+                tesoro = Jugador.jugador2.getListaTarjetas().get(0).getSimbolo();
+                break;
+            case 3:
+                tesoro = Jugador.jugador3.getListaTarjetas().get(0).getSimbolo();
+                break;
+            case 4:
+                tesoro = Jugador.jugador4.getListaTarjetas().get(0).getSimbolo();
+                break;
+            default:
+                break;
+        }
+        System.out.println("\n\n\n\n/////////////////////////////\n"
+                + "Es el turno del jugador " + contador + "\n"
+                + "Tienes que llegar al tesoro " + tesoro + "\n/////////////////////////////");
     }
 }

@@ -7,7 +7,6 @@ package BussinessLogic;
 
 import Data.*;
 import static UI.Interfaz.*;
-import java.util.Scanner;
 
 public class JavaLaberinto {
 
@@ -33,7 +32,7 @@ public class JavaLaberinto {
         }
         salir = false;
         while (!salir) {
-            
+
             printTurnoJugador(contador);
             Turno.moverFichas(tablero);
             switch (contador) {

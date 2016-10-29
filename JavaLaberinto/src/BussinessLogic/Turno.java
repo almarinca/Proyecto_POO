@@ -119,7 +119,7 @@ public class Turno {
                 dibujarTablero(tablero);
                 printMoverFicha();
                 String a = leerString();
-                mover = a.charAt(0);                
+                mover = a.charAt(0);
             } else {
                 salir = true;
             }

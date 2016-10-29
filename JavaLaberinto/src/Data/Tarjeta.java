@@ -27,10 +27,10 @@ public enum Tarjeta {
     Libro(23, 'x', "Libro"),
     BolsaDeMonedas(24, 'y', "Bolsa De Monedas"),
     Aux(25, ' ', "Auxiliar"),
-    Esquina1(26,'1',"Esquina jugador 1"),
-    Esquina2(27,'2',"Esquina jugador 2"),
-    Esquina3(28,'3',"Esquina jugador 3"),
-    Esquina4(29,'4',"Esquina jugador 4");
+    Esquina1(26, '1', "Esquina jugador 1"),
+    Esquina2(27, '2', "Esquina jugador 2"),
+    Esquina3(28, '3', "Esquina jugador 3"),
+    Esquina4(29, '4', "Esquina jugador 4");
 
     private int numero;
     private char simbolo;

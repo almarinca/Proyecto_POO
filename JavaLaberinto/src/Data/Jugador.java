@@ -1,12 +1,12 @@
 package Data;
 
 public enum Jugador {
-    
-    jugador1('1',0,0,1,1),
-    jugador2('2',0,6,1,1),
-    jugador3('3',6,0,1,1),
-    jugador4('4',6,6,1,1);
-    
+
+    jugador1('1', 0, 0, 1, 1),
+    jugador2('2', 0, 6, 1, 1),
+    jugador3('3', 6, 0, 1, 1),
+    jugador4('4', 6, 6, 1, 1);
+
     private final char numero;
     private int posXEnTablero;
     private int posYEnTablero;
@@ -57,11 +57,5 @@ public enum Jugador {
     public char getNumero() {
         return numero;
     }
-    
-    
-    
-    
-    
-    
-    
+
 }

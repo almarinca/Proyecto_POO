@@ -175,4 +175,18 @@ public class Interfaz {
         System.out.println("\n\n\n\n/////////////////////////////\n"
                 + "Felicitaciones jugador "+ jugador.getNumero() + " eres el ganador\n/////////////////////////////\n");
     }
+    
+    public static void printInstruccionesOpcion(){
+        System.out.println("¿Desea leer las instrucciones del juego ?\n1) Sí\2) No");
+    }
+    
+    public static void printInstrucciones(){
+        System.out.println("Cada jugador tiene asignado un número de tesoros los cuales tiene que alcanzar. "
+                + "El turno de cada jugador consta de dos partes, en la primera el jugador tiene que introducir la ficha "
+                + "sobrante en el tablero en los espacios permitidos haciendo así que algunos muros se muevan"
+                + "(si un jugador es sacado del tablero en uno de estos movimientos aparecerá en la ficha recién ingresada), "
+                + "en la segunda parte el jugador se mueve a lo largo del tablero intentando alcanzar el tesoro que le fue asignado, "
+                + "puede moverse cuanto quiera, si al finalizar el turno el jugador está sobre el tesoro asignado éste se "
+                + "descartará de su lista, el primero en encontrar todos sus tesoros y volver a la esquina donde inicio gana.");
+    }
 }

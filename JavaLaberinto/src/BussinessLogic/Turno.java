@@ -167,7 +167,10 @@ public class Turno {
                 tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getCaracter();
                 X = X + pasoX;
                 Y = Y + pasoY;
-                tablero.getTablero()[Y][X].setCaracter(tablero.getTablero()[Y][X].getFicha()[1][1]);
+                char centro = tablero.getTablero()[Y][X].getFicha()[1][1];
+                if (centro!='1'&&centro!='2'&&centro!='3'&&centro!='4') {
+                tablero.getTablero()[Y][X].setCaracter(centro);
+                }
 
             } else {
                 printMovInvalido();
@@ -216,10 +219,14 @@ public class Turno {
             jugador.setY(Y + 1 * cambioY);
             jugador.setX(X + 1 * cambioX);
         } else {
+            
             tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getCaracter();
             jugador.setY(y);
             jugador.setX(x);
+            char centro = tablero.getFichasSobrantes().get(0).getFicha()[1][1];
+            if (centro!='1'&&centro!='2'&&centro!='3'&&centro!='4') {
             tablero.getFichasSobrantes().get(0).setCaracter(tablero.getFichasSobrantes().get(0).getFicha()[1][1]);
+            }
             tablero.getFichasSobrantes().get(0).getFicha()[1][1] = jugador.getNumero();
         }
     }

@@ -89,7 +89,7 @@ public class Turno {
             for (int i = 0; i <= 6; i++) {
                 fichasSobrantes.add(tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)]);
             }
-            moverJugadorConFicha2(fichasSobrantes, tablero, casilla);
+            evaluarJugadorEnFichas(fichasSobrantes, tablero, casilla);
             for (int i = 0; i <= 6; i++) {
                 tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
                 fichasSobrantes.remove(0);
@@ -186,38 +186,22 @@ public class Turno {
             case 1:
             case 2:
             case 3:
-                if (Y != 6) {
-                    jugador.setY(Y + 1);
-                } else {
-                    jugador.setY(0);
-                }
+                actualizarPosJugador(Y, 6, 1, 0, X, 0, casilla, jugador, tablero);
                 break;
             case 4:
             case 6:
             case 8:
-                if (X != 6) {
-                    jugador.setX(X + 1);
-                } else {
-                    jugador.setX(0);
-                }
+                actualizarPosJugador(X, 6, 0, 1, 0, Y, casilla, jugador, tablero);
                 break;
             case 5:
             case 7:
             case 9:
-                if (X != 0) {
-                    jugador.setX(X - 1);
-                } else {
-                    jugador.setX(6);
-                }
+                actualizarPosJugador(X, 0, 0, -1, 6, Y, casilla, jugador, tablero);
                 break;
             case 10:
             case 11:
             case 12:
-                if (Y != 0) {
-                    jugador.setY(Y - 1);
-                } else {
-                    jugador.setY(6);
-                }
+                actualizarPosJugador(Y, 0, -1, 0, X, 6, casilla, jugador, tablero);
                 break;
             default:
                 break;
@@ -225,7 +209,22 @@ public class Turno {
         tablero.modificarTesoros();
     }
 
-    public static void moverJugadorConFicha2(ArrayList<Ficha> fichasSobrantes, Tablero tablero, int casilla) {
+    public static void actualizarPosJugador(int filaOColumna, int extremo, int cambioY, int cambioX, int x, int y, int casilla, Jugador jugador, Tablero tablero) {
+        int X = jugador.getX();
+        int Y = jugador.getY();
+        if (filaOColumna != extremo) {
+            jugador.setY(Y + 1 * cambioY);
+            jugador.setX(X + 1 * cambioX);
+        } else {
+            tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getCaracter();
+            jugador.setY(y);
+            jugador.setX(x);
+            tablero.getTablero()[y][x].setCaracter(tablero.getTablero()[y][x].getFicha()[1][1]);
+            tablero.getFichasSobrantes().get(0).getFicha()[1][1] = jugador.getNumero();
+        }
+    }
+
+    public static void evaluarJugadorEnFichas(ArrayList<Ficha> fichasSobrantes, Tablero tablero, int casilla) {
 
         int Y, X;
         boolean a;

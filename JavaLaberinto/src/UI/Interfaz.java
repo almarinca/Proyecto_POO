@@ -164,4 +164,29 @@ public class Interfaz {
                 + "Es el turno del jugador " + contador + "\n"
                 + "Tienes que llegar al tesoro " + tesoro + "\n/////////////////////////////");
     }
+    
+    public static void printTesoroEncontrado(Jugador jugador){
+    System.out.println("\n\n\n\n/////////////////////////////\n"
+            + "Felicitaciones jugador "+ jugador.getNumero() + " has encontrado el tesoro"
+            + " " + jugador.getListaTarjetas().get(0).getSimbolo() + "\n/////////////////////////////");
+    }
+    
+    public static void printGanador(Jugador jugador){
+        System.out.println("\n\n\n\n/////////////////////////////\n"
+                + "Felicitaciones jugador "+ jugador.getNumero() + " eres el ganador\n/////////////////////////////\n");
+    }
+    
+    public static void printInstruccionesOpcion(){
+        System.out.println("¿Desea leer las instrucciones del juego ?\n1) Sí\n2) No");
+    }
+    
+    public static void printInstrucciones(){
+        System.out.println("Cada jugador tiene asignado un número de tesoros los cuales tiene que alcanzar. \n"
+                + "El turno de cada jugador consta de dos partes, en la primera el jugador tiene que introducir la ficha \n"
+                + "sobrante en el tablero en los espacios permitidos haciendo así que algunos muros se muevan\n"
+                + "(si un jugador es sacado del tablero en uno de estos movimientos aparecerá en la ficha recién ingresada), \n"
+                + "en la segunda parte el jugador se mueve a lo largo del tablero intentando alcanzar el tesoro que le fue asignado, \n"
+                + "puede moverse cuanto quiera, si al finalizar el turno el jugador está sobre el tesoro asignado éste se \n"
+                + "descartará de su lista, el primero en encontrar todos sus tesoros y volver a la esquina donde inicio gana.\n");
+    }
 }

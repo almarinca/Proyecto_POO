@@ -139,9 +139,8 @@ public class Turno {
                     pasoY = 0;
                     if (jugador.getListaTarjetas().get(0).getSimbolo() == tablero.getTablero()[Y][X].getCaracter()) {
                         printTesoroEncontrado(jugador);
-                        try {
-                            jugador.getListaTarjetas().remove(0);
-                        } catch (Exception e) {
+                        jugador.getListaTarjetas().remove(0);
+                        if (jugador.getListaTarjetas().isEmpty()) {
                             printGanador(jugador);
                             JavaLaberinto.salir = true;
                         }

@@ -137,7 +137,7 @@ public class Tablero {
         fichasSobrantes.remove(borrar);
     }
 
-    public Ficha[][] getTablero() {
+    public static Ficha[][] getTablero() {
         return tablero;
     }
 

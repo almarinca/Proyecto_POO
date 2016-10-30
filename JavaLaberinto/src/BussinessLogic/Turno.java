@@ -168,8 +168,8 @@ public class Turno {
                 X = X + pasoX;
                 Y = Y + pasoY;
                 char centro = tablero.getTablero()[Y][X].getFicha()[1][1];
-                if (centro!='1'&&centro!='2'&&centro!='3'&&centro!='4') {
-                tablero.getTablero()[Y][X].setCaracter(centro);
+                if (centro != '1' && centro != '2' && centro != '3' && centro != '4') {
+                    tablero.getTablero()[Y][X].setCaracter(centro);
                 }
 
             } else {
@@ -178,8 +178,17 @@ public class Turno {
 
             jugador.setX(X);
             jugador.setY(Y);
-            tablero.getTablero()[Y][X].getFicha()[1][1] = jugador.getNumero();
+            redibujarJugadores();
         }
+    }
+
+    public static void redibujarJugadores() {
+
+        Tablero.getTablero()[Jugador.jugador1.getY()][Jugador.jugador1.getX()].getFicha()[1][1] = Jugador.jugador1.getNumero();
+        Tablero.getTablero()[Jugador.jugador2.getY()][Jugador.jugador2.getX()].getFicha()[1][1] = Jugador.jugador2.getNumero();
+        Tablero.getTablero()[Jugador.jugador3.getY()][Jugador.jugador3.getX()].getFicha()[1][1] = Jugador.jugador3.getNumero();
+        Tablero.getTablero()[Jugador.jugador4.getY()][Jugador.jugador4.getX()].getFicha()[1][1] = Jugador.jugador4.getNumero();
+
     }
 
     public static void moverJugadorConFicha(Jugador jugador, int casilla, Tablero tablero) {
@@ -219,13 +228,13 @@ public class Turno {
             jugador.setY(Y + 1 * cambioY);
             jugador.setX(X + 1 * cambioX);
         } else {
-            
+
             tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getCaracter();
             jugador.setY(y);
             jugador.setX(x);
             char centro = tablero.getFichasSobrantes().get(0).getFicha()[1][1];
-            if (centro!='1'&&centro!='2'&&centro!='3'&&centro!='4') {
-            tablero.getFichasSobrantes().get(0).setCaracter(tablero.getFichasSobrantes().get(0).getFicha()[1][1]);
+            if (centro != '1' && centro != '2' && centro != '3' && centro != '4') {
+                tablero.getFichasSobrantes().get(0).setCaracter(tablero.getFichasSobrantes().get(0).getFicha()[1][1]);
             }
             tablero.getFichasSobrantes().get(0).getFicha()[1][1] = jugador.getNumero();
         }

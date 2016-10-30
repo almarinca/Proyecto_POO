@@ -219,7 +219,7 @@ public class Turno {
             tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getCaracter();
             jugador.setY(y);
             jugador.setX(x);
-            tablero.getTablero()[y][x].setCaracter(tablero.getTablero()[y][x].getFicha()[1][1]);
+            tablero.getFichasSobrantes().get(0).setCaracter(tablero.getFichasSobrantes().get(0).getFicha()[1][1]);
             tablero.getFichasSobrantes().get(0).getFicha()[1][1] = jugador.getNumero();
         }
     }

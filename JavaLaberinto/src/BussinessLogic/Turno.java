@@ -184,10 +184,10 @@ public class Turno {
 
     public static void redibujarJugadores() {
 
-        Tablero.getTablero()[Jugador.jugador1.getY()][Jugador.jugador1.getX()].getFicha()[1][1] = Jugador.jugador1.getNumero();
-        Tablero.getTablero()[Jugador.jugador2.getY()][Jugador.jugador2.getX()].getFicha()[1][1] = Jugador.jugador2.getNumero();
-        Tablero.getTablero()[Jugador.jugador3.getY()][Jugador.jugador3.getX()].getFicha()[1][1] = Jugador.jugador3.getNumero();
         Tablero.getTablero()[Jugador.jugador4.getY()][Jugador.jugador4.getX()].getFicha()[1][1] = Jugador.jugador4.getNumero();
+        Tablero.getTablero()[Jugador.jugador3.getY()][Jugador.jugador3.getX()].getFicha()[1][1] = Jugador.jugador3.getNumero();
+        Tablero.getTablero()[Jugador.jugador2.getY()][Jugador.jugador2.getX()].getFicha()[1][1] = Jugador.jugador2.getNumero();
+        Tablero.getTablero()[Jugador.jugador1.getY()][Jugador.jugador1.getX()].getFicha()[1][1] = Jugador.jugador1.getNumero();
 
     }
 

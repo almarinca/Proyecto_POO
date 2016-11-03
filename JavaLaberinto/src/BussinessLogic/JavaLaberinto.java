@@ -24,15 +24,16 @@ public class JavaLaberinto {
         Turno.moverJugador(Jugador.jugador3, 'q', tablero);
         Turno.moverJugador(Jugador.jugador4, 'q', tablero);
         printBienvenida();
-        int instrucciones = 0;
-        while(instrucciones!=989999){
+        int instrucciones;
+        boolean inicioInstrucciones = true;
+        while(inicioInstrucciones){
             printInstruccionesOpcion();
             instrucciones = leerInt();
             if(instrucciones == 1){
-                printInstrucciones();
-                instrucciones = 989999;
-            }else if(instrucciones == 2){
-                instrucciones = 989999;
+                printInstrucciones();                
+                break;
+            }else if(instrucciones == 2){                
+                break;
             }
         }
         

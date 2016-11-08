@@ -239,34 +239,14 @@ public class Turno {
         }
     }
 
-    public static void evaluarJugadorEnFichas(ArrayList<Ficha> fichasSobrantes, Tablero tablero, int casilla) {
+    public static void evaluarJugadorEnFichas(ArrayList<Ficha> fichasSobrantes, int casilla) {
 
-        int Y, X;
-        boolean a;
-        Y = Jugador.jugador1.getY();
-        X = Jugador.jugador1.getX();
-        a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
-        if (a) {
-            moverJugadorConFicha(Jugador.jugador1, casilla, tablero);
-        }
-        Y = Jugador.jugador2.getY();
-        X = Jugador.jugador2.getX();
-        a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
-        if (a) {
-            moverJugadorConFicha(Jugador.jugador2, casilla, tablero);
-        }
-        Y = Jugador.jugador3.getY();
-        X = Jugador.jugador3.getX();
-        a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
-        if (a) {
-            moverJugadorConFicha(Jugador.jugador3, casilla, tablero);
-        }
-        Y = Jugador.jugador4.getY();
-        X = Jugador.jugador4.getX();
-        a = fichasSobrantes.contains(tablero.getTablero()[Y][X]);
-        if (a) {
-            moverJugadorConFicha(Jugador.jugador4, casilla, tablero);
-        }
+        for (Jugador jugador : Jugador.values()) {          
+            
+            if (fichasSobrantes.contains(Tablero.getTablero()[jugador.getY()][jugador.getX()])) {
+                moverJugadorConFicha(jugador, casilla);
+            }
+        }        
     }
 
 }

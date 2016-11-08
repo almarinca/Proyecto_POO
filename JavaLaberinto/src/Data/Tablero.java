@@ -7,9 +7,9 @@ public class Tablero {
     //ATRIBUTOS	
 
     private static Ficha[][] tablero = new Ficha[7][7];
-    static ArrayList<Ficha> listaFichas = new ArrayList<>();
-    ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
-    static ArrayList<Tarjeta> listaTarjetas = new ArrayList<>();
+    private static ArrayList<Ficha> listaFichas = new ArrayList<>();
+    private ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
+    private static ArrayList<Tarjeta> listaTarjetas = new ArrayList<>();
 
     public Tablero() {
 

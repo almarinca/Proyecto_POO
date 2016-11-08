@@ -239,12 +239,12 @@ public class Turno {
         }
     }
 
-    public static void evaluarJugadorEnFichas(ArrayList<Ficha> fichasSobrantes, int casilla) {
+    public static void evaluarJugadorEnFichas(ArrayList<Ficha> fichasSobrantes, Tablero tablero, int casilla) {
 
         for (Jugador jugador : Jugador.values()) {          
             
             if (fichasSobrantes.contains(Tablero.getTablero()[jugador.getY()][jugador.getX()])) {
-                moverJugadorConFicha(jugador, casilla);
+                moverJugadorConFicha(jugador, casilla, tablero);
             }
         }        
     }

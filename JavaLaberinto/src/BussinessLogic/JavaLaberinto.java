@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BussinessLogic;
 
-import static BussinessLogic.Turno.correrFila;
-import static BussinessLogic.Turno.rotarFicha;
+import static BussinessLogic.Turno.*;
 import Data.*;
 import static UI.Interfaz.*;
 import java.util.ArrayList;
@@ -14,36 +8,36 @@ import java.util.ArrayList;
 public class JavaLaberinto {
 
     static boolean salir = false;
-    
+
     public static void main(String[] args) {
-        
+
         Tablero tablero = new Tablero();
         int contador = 1;
         salir = false;
         int jugadores = 0;
-        Turno.moverJugador(Jugador.jugador1, 'q', tablero);
-        Turno.moverJugador(Jugador.jugador2, 'q', tablero);
-        Turno.moverJugador(Jugador.jugador3, 'q', tablero);
-        Turno.moverJugador(Jugador.jugador4, 'q', tablero);
+        desplazarJugador(Jugador.jugador1, '0');
+        desplazarJugador(Jugador.jugador2, '0');
+        desplazarJugador(Jugador.jugador3, '0');
+        desplazarJugador(Jugador.jugador4, '0');
         printBienvenida();
         int instrucciones;
         boolean inicioInstrucciones = true;
-        while(inicioInstrucciones){
+        while (inicioInstrucciones) {
             printInstruccionesOpcion();
             instrucciones = leerInt();
-            if(instrucciones == 1){
-                printInstrucciones();                
+            if (instrucciones == 1) {
+                printInstrucciones();
                 break;
-            }else if(instrucciones == 2){                
+            } else if (instrucciones == 2) {
                 break;
             }
         }
-        
+
         while (!salir) {
             printJugadores();
             jugadores = leerInt();
             if (jugadores == 2 || jugadores == 3 || jugadores == 4) {
-                asignarListaTarjetas(jugadores);
+                Inicio.asignarListaTarjetas(jugadores);
                 salir = true;
             } else {
                 printError();
@@ -56,16 +50,20 @@ public class JavaLaberinto {
             moverFichas(tablero);
             switch (contador) {
                 case 1:
-                    Turno.moverJugador(Jugador.jugador1, 'a', tablero);
+                    movimientoJugador(Jugador.jugador1, 'a', tablero);
+                    evaluarGanador(Jugador.jugador1);
                     break;
                 case 2:
-                    Turno.moverJugador(Jugador.jugador2, 'a', tablero);
+                    movimientoJugador(Jugador.jugador2, 'a', tablero);
+                    evaluarGanador(Jugador.jugador2);
                     break;
                 case 3:
-                    Turno.moverJugador(Jugador.jugador3, 'a', tablero);
+                    movimientoJugador(Jugador.jugador3, 'a', tablero);
+                    evaluarGanador(Jugador.jugador3);
                     break;
                 case 4:
-                    Turno.moverJugador(Jugador.jugador4, 'a', tablero);
+                    movimientoJugador(Jugador.jugador4, 'a', tablero);
+                    evaluarGanador(Jugador.jugador4);
                     break;
                 default:
                     break;
@@ -76,44 +74,36 @@ public class JavaLaberinto {
             contador++;
         }
     }
+    
+    public static void movimientoJugador(Jugador jugador, char mover, Tablero tablero) {
 
-    public static void asignarListaTarjetas(int jugadores) {
+        boolean salir = false;
+        while (!salir) {
+            dibujarTablero(tablero);
+            printMoverFicha();
+            String a = leerString();
+            mover = a.charAt(0);
+            salir = (mover == 'f') ? true : false;
+            boolean valido = desplazarJugador(jugador, mover);
+            if(!valido){
+                printMovInvalido();
+            }
 
-        int contador = 24;
-        for (int contador2 = 1; contador2 <= jugadores; contador2++) {
-            ArrayList<Tarjeta> listaTarjetas = new ArrayList<>();
-            for (int i = 0; i < (24 / jugadores); i++) {
-                if (!Tablero.getListaTarjetas().isEmpty()) {
-                    int tarjeta = (int) (Math.random() * contador);
-                    listaTarjetas.add(Tablero.getListaTarjetas().get(tarjeta));
-                    Tablero.getListaTarjetas().remove(tarjeta);
-                    contador--;
-                }
-            }
-            switch (contador2) {
-                case 1:
-                    Jugador.jugador1.setListaTarjetas(listaTarjetas);
-                    Jugador.jugador1.getListaTarjetas().add(Tarjeta.Esquina1);
-                    break;
-                case 2:
-                    Jugador.jugador2.setListaTarjetas(listaTarjetas);
-                    Jugador.jugador2.getListaTarjetas().add(Tarjeta.Esquina2);
-                    break;
-                case 3:
-                    Jugador.jugador3.setListaTarjetas(listaTarjetas);
-                    Jugador.jugador3.getListaTarjetas().add(Tarjeta.Esquina3);
-                    break;
-                case 4:
-                    Jugador.jugador4.setListaTarjetas(listaTarjetas);
-                    Jugador.jugador4.getListaTarjetas().add(Tarjeta.Esquina4);
-                    break;
-                default:
-                    break;
-            }
         }
     }
     
-        public static void moverFichas(Tablero tablero) {
+    public static void evaluarGanador(Jugador jugador){
+        if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
+                        printTesoroEncontrado(jugador);
+                        jugador.getListaTarjetas().remove(0);
+                        if (jugador.getListaTarjetas().isEmpty()) {
+                            printGanador(jugador);
+                            JavaLaberinto.salir = true;
+                        }
+                    }
+    }
+
+    public static void moverFichas(Tablero tablero) {
         int girar = 0;
         while (girar != 3) {
             dibujarTablero(tablero);

@@ -1,5 +1,6 @@
 package Data;
 
+import BussinessLogic.Inicio;
 import java.util.ArrayList;
 import static BussinessLogic.Turno.rotarFicha;
 import java.awt.Image;
@@ -73,56 +74,30 @@ public class Tablero {
                 contador--;
             }
         }
-        listaTarjetas.add(Tarjeta.Arana);
-        listaTarjetas.add(Tarjeta.Mariposa);
-        listaTarjetas.add(Tarjeta.Genio);
-        listaTarjetas.add(Tarjeta.Dragon);
-        listaTarjetas.add(Tarjeta.Lagartija);
-        listaTarjetas.add(Tarjeta.Cerdo);
-        listaTarjetas.add(Tarjeta.Buho);
-        listaTarjetas.add(Tarjeta.Raton);
-        listaTarjetas.add(Tarjeta.Bruja);
-        listaTarjetas.add(Tarjeta.Murcielago);
-        listaTarjetas.add(Tarjeta.Fantasma);
-        listaTarjetas.add(Tarjeta.Insecto);
-        listaTarjetas.add(Tarjeta.Veladora);
-        listaTarjetas.add(Tarjeta.Sombrero);
-        listaTarjetas.add(Tarjeta.Anillo);
-        listaTarjetas.add(Tarjeta.CofreDeTesoros);
-        listaTarjetas.add(Tarjeta.Esmeralda);
-        listaTarjetas.add(Tarjeta.Espada);
-        listaTarjetas.add(Tarjeta.Mapa);
-        listaTarjetas.add(Tarjeta.Corona);
-        listaTarjetas.add(Tarjeta.Llaves);
-        listaTarjetas.add(Tarjeta.Craneo);
-        listaTarjetas.add(Tarjeta.Libro);
-        listaTarjetas.add(Tarjeta.BolsaDeMonedas);
-    }
-    //METODOS
 
-    public static ArrayList<Tarjeta> getListaTarjetas() {
-        return listaTarjetas;
+                
+        for (int i = 0; i < 24; i++) {
+            listaTarjetas.add(Tarjeta.values()[i]);
+        }
+       
     }
-
-    public static void setListaTarjetas(ArrayList<Tarjeta> listaTarjetas) {
-        Tablero.listaTarjetas = listaTarjetas;
-    }
+    
 
     public void crearFichaFija(char[][] tipo, int cantidad) {
 
         for (int k = 0; k < cantidad; k++) {
 
-            char[][] matriz = new char[3][3];  // esta matriz la añadi por que cada ficha debe tener su matriz,
+            char[][] matrizFicha = new char[3][3];  // esta matriz la añadi por que cada ficha debe tener su matriz,
             for (int i = 0; i < 3; i++) {      // sino al modificarla se modificarian todas las fichas del mismo tipo,
                 for (int j = 0; j < 3; j++) {  // ya que lo que se modifica es la matriz
-                    matriz[i][j] = tipo[i][j];
+                    matrizFicha[i][j] = tipo[i][j];
                 }
             }
             Ficha ficha = new Ficha();
             if (tipo == Ficha.fichaL && k > 4) {
-                matriz[1][1] = tesoroFichasSobrante(k - 4, ficha);
+                matrizFicha[1][1] = Inicio.asignarTesoroFichasSobrantes(k - 4, ficha);                
             }
-            ficha.setFicha(matriz);
+            ficha.setFicha(matrizFicha);
             listaFichas.add(ficha);
         }
 
@@ -138,11 +113,24 @@ public class Tablero {
         listaFichas.get(ficha).setImagen(imagen);
         tablero[fila][columna] = listaFichas.get(ficha);
         listaFichas.get(ficha).getFicha()[1][1] = tarjeta.getSimbolo();
+        listaFichas.get(ficha).setCaracter(listaFichas.get(ficha).getFicha()[1][1]);
         fichasSobrantes.remove(borrar);
     }
 
     public static Ficha[][] getTablero() {
         return tablero;
+    }
+    
+    public void setTablero(Ficha[][] tablero) {
+        this.tablero = tablero;
+    }
+    
+    public static ArrayList<Tarjeta> getListaTarjetas() {
+        return listaTarjetas;
+    }
+
+    public static void setListaTarjetas(ArrayList<Tarjeta> listaTarjetas) {
+        Tablero.listaTarjetas = listaTarjetas;
     }
 
     public ArrayList<Ficha> getFichasSobrantes() {
@@ -151,80 +139,5 @@ public class Tablero {
 
     public void setFichasSobrantes(ArrayList<Ficha> fichasSobrantes) {
         this.fichasSobrantes = fichasSobrantes;
-    }
-
-    public void setTablero(Ficha[][] tablero) {
-        this.tablero = tablero;
-    }
-
-    public char tesoroFichasSobrante(int i, Ficha ficha) {
-        
-        ImageIcon imagen = null;
-        
-        switch (i) {
-            case 1:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroAraña.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Arana.getSimbolo();
-            case 2:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroMariposa.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Mariposa.getSimbolo();
-            case 3:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroGenio.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Genio.getSimbolo();
-            case 4:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroDragon.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Dragon.getSimbolo();
-            case 5:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroLagartija.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Lagartija.getSimbolo();
-            case 6:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroCerdo.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Cerdo.getSimbolo();
-            case 7:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroBuho.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Buho.getSimbolo();
-            case 8:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroRaton.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Raton.getSimbolo();
-            case 9:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroBruja.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Bruja.getSimbolo();
-            case 10:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroMurcielago.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Murcielago.getSimbolo();
-            case 11:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroFantasma.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Fantasma.getSimbolo();
-            case 12:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroInsecto.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-                ficha.setImagen(imagen);
-                return Tarjeta.Insecto.getSimbolo();
-            default:
-                return ' ';
-        }
-    }
-
+    }       
 }

@@ -1,7 +1,6 @@
 package BussinessLogic;
 
 import Data.*;
-import static UI.Interfaz.*;
 import java.util.ArrayList;
 
 public class Turno {
@@ -37,85 +36,59 @@ public class Turno {
         tablero.setFichasSobrantes(fichasSobrantes);
     }
 
-    public static void moverJugador(Jugador jugador, char mover, Tablero tablero) {
+    
 
-        boolean salir = false;
-        while (!salir) {
+    public static boolean desplazarJugador(Jugador jugador, char mover) {
+        boolean movimientoValido = true;
+        int X = jugador.getX();
+        int Y = jugador.getY();
+        int pasoX = 0;
+        int pasoY = 0;
+        switch (mover) {
+            case 'w':
+                pasoY = -1;
+                break;
+            case 'a':
+                pasoX = -1;
+                break;
+            case 's':
+                pasoY = 1;
+                break;
+            case 'd':
+                pasoX = 1;
+                break;
+            default: // las fichas quedan en su posicion inicial
+                pasoX = 0;
+                pasoY = 0;
+                break;
+        }
+        boolean muro;
+        try {
+            muro = Ficha.muro != Tablero.getTablero()[Y][X].getFicha()[pasoY + 1][pasoX + 1];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            muro = true;
+        }
 
-            int X = jugador.getX();
-            int Y = jugador.getY();
-            int pasoX = 0;
-            int pasoY = 0;
+        int pasoT = (pasoX != 0) ? (X + pasoX) : (Y + pasoY);
 
-            if (mover != 'q') {
-                dibujarTablero(tablero);
-                printMoverFicha();
-                String a = leerString();
-                mover = a.charAt(0);
-            } else {
-                tablero.getTablero()[Y][X].setCaracter(jugador.getBase());
-                salir = true;
+        if ((pasoT < 7 && pasoT >= 0) && muro
+                && Ficha.muro != Tablero.getTablero()[Y + pasoY][X + pasoX].getFicha()[1 - pasoY][1 - pasoX]) {
+
+            Tablero.getTablero()[Y][X].getFicha()[1][1] = Tablero.getTablero()[Y][X].getCaracter();
+            X = X + pasoX;
+            Y = Y + pasoY;
+            char centro = Tablero.getTablero()[Y][X].getFicha()[1][1];
+            if (centro != '1' && centro != '2' && centro != '3' && centro != '4') {
+                Tablero.getTablero()[Y][X].setCaracter(centro);
             }
-
-            switch (mover) {
-                case 'w':
-                    pasoY = -1;
-                    break;
-                case 'a':
-                    pasoX = -1;
-                    break;
-                case 's':
-                    pasoY = 1;
-                    break;
-                case 'd':
-                    pasoX = 1;
-                    break;
-                case 'f':
-                    salir = true;
-                    pasoX = 0;
-                    pasoY = 0;
-                    if (jugador.getListaTarjetas().get(0).getSimbolo() == tablero.getTablero()[Y][X].getCaracter()) {
-                        printTesoroEncontrado(jugador);
-                        jugador.getListaTarjetas().remove(0);
-                        if (jugador.getListaTarjetas().isEmpty()) {
-                            printGanador(jugador);
-                            JavaLaberinto.salir = true;
-                        }
-                    }
-                    break;
-                default: // las fichas quedan en su posicion inicial
-                    pasoX = 0;
-                    pasoY = 0;
-                    break;
-            }
-            boolean muro;
-            try {
-                muro = Ficha.muro != tablero.getTablero()[Y][X].getFicha()[pasoY + 1][pasoX + 1];
-            } catch (ArrayIndexOutOfBoundsException e) {
-                muro = true;
-            }
-
-            int pasoT = (pasoX != 0) ? (X + pasoX) : (Y + pasoY);
-
-            if ((pasoT < 7 && pasoT >= 0) && muro
-                    && Ficha.muro != tablero.getTablero()[Y + pasoY][X + pasoX].getFicha()[1 - pasoY][1 - pasoX]) {
-
-                tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getCaracter();
-                X = X + pasoX;
-                Y = Y + pasoY;
-                char centro = tablero.getTablero()[Y][X].getFicha()[1][1];
-                if (centro != '1' && centro != '2' && centro != '3' && centro != '4') {
-                    tablero.getTablero()[Y][X].setCaracter(centro);
-                }
-
-            } else {
-                printMovInvalido();
-            }
-
             jugador.setX(X);
             jugador.setY(Y);
             redibujarJugadores();
+
+        } else {
+            movimientoValido = false;
         }
+        return movimientoValido;
     }
 
     public static void redibujarJugadores() {
@@ -180,6 +153,3 @@ public class Turno {
         }
     }
 }
-
-
-    

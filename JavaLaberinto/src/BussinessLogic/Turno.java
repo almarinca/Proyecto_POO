@@ -21,7 +21,7 @@ public class Turno {
         f.setFicha(matrizrot);
     }
 
-    public static Tablero moverFichas(Tablero tablero) {
+    public static void moverFichas(Tablero tablero) {
         int girar = 0;
         while (girar != 3) {
             dibujarTablero(tablero);
@@ -50,54 +50,51 @@ public class Turno {
             printIngreseFicha();
             salir = true;
             int casilla = leerInt();
-            ArrayList<Ficha> fichasSobrantes = tablero.getFichasSobrantes();
-            int x = 0;
-            int y = 0;
-            int mx = 0;
-            int my = 0;
+
             switch (casilla) {
                 case 1:
                 case 2:
                 case 3:
-                    x = (casilla * 2) - 1;
-                    my = 1;
+                    correrFila(tablero, casilla, (casilla * 2) - 1, 0, 0, 1);
                     break;
                 case 4:
                 case 6:
                 case 8:
-                    y = casilla - 3;
-                    mx = 1;
+                    correrFila(tablero, casilla, 0, casilla - 3, 1, 0);
                     break;
                 case 5:
                 case 7:
                 case 9:
-                    x = -6;
-                    y = casilla - 4;
-                    mx = 1;
+                    correrFila(tablero, casilla, -6, casilla - 4, 1, 0);
                     break;
                 case 10:
                 case 11:
                 case 12:
-                    x = (casilla - 9) * 2 - 1;
-                    y = -6;
-                    my = 1;
+                    correrFila(tablero, casilla, (casilla - 9) * 2 - 1, -6, 0, 1);
                     break;
                 default:
                     salir = false;
                     break;
             }
-            for (int i = 0; i <= 6; i++) {
-                fichasSobrantes.add(tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)]);
-            }
-            evaluarJugadorEnFichas(fichasSobrantes, tablero, casilla);
-            for (int i = 0; i <= 6; i++) {
-                tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
-                fichasSobrantes.remove(0);
-            }
-            tablero.setFichasSobrantes(fichasSobrantes);
+
         }
 
-        return tablero;
+    }
+
+    public static void correrFila(Tablero tablero, int casilla, int x, int y, int mx, int my) {
+
+        ArrayList<Ficha> fichasSobrantes = tablero.getFichasSobrantes();
+        for (int i = 0; i <= 6; i++) {
+            fichasSobrantes.add(tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)]);
+        }
+
+        evaluarJugadorEnFichas(fichasSobrantes, tablero, casilla);
+
+        for (int i = 0; i <= 6; i++) {
+            tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
+            fichasSobrantes.remove(0);
+        }
+        tablero.setFichasSobrantes(fichasSobrantes);
     }
 
     public static void moverJugador(Jugador jugador, char mover, Tablero tablero) {
@@ -241,12 +238,12 @@ public class Turno {
 
     public static void evaluarJugadorEnFichas(ArrayList<Ficha> fichasSobrantes, Tablero tablero, int casilla) {
 
-        for (Jugador jugador : Jugador.values()) {          
-            
+        for (Jugador jugador : Jugador.values()) {
+
             if (fichasSobrantes.contains(Tablero.getTablero()[jugador.getY()][jugador.getX()])) {
                 moverJugadorConFicha(jugador, casilla, tablero);
             }
-        }        
+        }
     }
 
 }

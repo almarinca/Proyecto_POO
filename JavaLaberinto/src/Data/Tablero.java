@@ -73,30 +73,12 @@ public class Tablero {
                 contador--;
             }
         }
-        listaTarjetas.add(Tarjeta.Arana);
-        listaTarjetas.add(Tarjeta.Mariposa);
-        listaTarjetas.add(Tarjeta.Genio);
-        listaTarjetas.add(Tarjeta.Dragon);
-        listaTarjetas.add(Tarjeta.Lagartija);
-        listaTarjetas.add(Tarjeta.Cerdo);
-        listaTarjetas.add(Tarjeta.Buho);
-        listaTarjetas.add(Tarjeta.Raton);
-        listaTarjetas.add(Tarjeta.Bruja);
-        listaTarjetas.add(Tarjeta.Murcielago);
-        listaTarjetas.add(Tarjeta.Fantasma);
-        listaTarjetas.add(Tarjeta.Insecto);
-        listaTarjetas.add(Tarjeta.Veladora);
-        listaTarjetas.add(Tarjeta.Sombrero);
-        listaTarjetas.add(Tarjeta.Anillo);
-        listaTarjetas.add(Tarjeta.CofreDeTesoros);
-        listaTarjetas.add(Tarjeta.Esmeralda);
-        listaTarjetas.add(Tarjeta.Espada);
-        listaTarjetas.add(Tarjeta.Mapa);
-        listaTarjetas.add(Tarjeta.Corona);
-        listaTarjetas.add(Tarjeta.Llaves);
-        listaTarjetas.add(Tarjeta.Craneo);
-        listaTarjetas.add(Tarjeta.Libro);
-        listaTarjetas.add(Tarjeta.BolsaDeMonedas);
+
+        
+        for (int i = 0; i < 24; i++) {
+            listaTarjetas.add(Tarjeta.values()[i]);
+        }
+       
     }
     //METODOS
 
@@ -158,9 +140,9 @@ public class Tablero {
     }
 
     public char tesoroFichasSobrante(int i, Ficha ficha) {
-        
+
         ImageIcon imagen = null;
-        
+
         switch (i) {
             case 1:
                 imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroAraña.png");

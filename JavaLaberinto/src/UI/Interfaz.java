@@ -106,8 +106,7 @@ public class Interfaz {
                 + "Un laberinto de pasadizos que uno puede mover a su antojo para encontrar la mayor cantidad posible de tesoros y secretos. \n"
                 + "El ganador será el que mueva más hábilmente los pasadizos. \n"
                 + "¿Quién logrará desbaratar las trampas de este célebre laberinto para ser el primero en obtener todos sus tesoros? \n"
-                + "\n"
-                + "[Explicación mas completa del juego](https://www.youtube.com/watch?v=rV9ZULvLudg \"Explicacion del juego\")\n\n");
+                + "\n");
     }
 
     public static void printMensajeFichaLibre() {

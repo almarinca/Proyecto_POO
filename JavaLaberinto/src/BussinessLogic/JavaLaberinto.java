@@ -14,9 +14,9 @@ import java.util.ArrayList;
 public class JavaLaberinto {
 
     static boolean salir = false;
-    
+
     public static void main(String[] args) {
-        
+
         Tablero tablero = new Tablero();
         int contador = 1;
         salir = false;
@@ -28,17 +28,17 @@ public class JavaLaberinto {
         printBienvenida();
         int instrucciones;
         boolean inicioInstrucciones = true;
-        while(inicioInstrucciones){
+        while (inicioInstrucciones) {
             printInstruccionesOpcion();
             instrucciones = leerInt();
-            if(instrucciones == 1){
-                printInstrucciones();                
+            if (instrucciones == 1) {
+                printInstrucciones();
                 break;
-            }else if(instrucciones == 2){                
+            } else if (instrucciones == 2) {
                 break;
             }
         }
-        
+
         while (!salir) {
             printJugadores();
             jugadores = leerInt();
@@ -77,9 +77,7 @@ public class JavaLaberinto {
         }
     }
 
-    
-    
-        public static void moverFichas(Tablero tablero) {
+    public static void moverFichas(Tablero tablero) {
         int girar = 0;
         while (girar != 3) {
             dibujarTablero(tablero);

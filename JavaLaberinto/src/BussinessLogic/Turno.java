@@ -21,74 +21,14 @@ public class Turno {
         f.setFicha(matrizrot);
     }
 
-    public static void moverFichas(Tablero tablero) {
-        int girar = 0;
-        while (girar != 3) {
-            dibujarTablero(tablero);
-            printMensajeFichaLibre();
-            printFicha(tablero.getFichasSobrantes().get(0));
-            printDeseaGirar();
-            girar = leerInt();
-            switch (girar) {
-                case 1:
-                    rotarFicha(tablero.getFichasSobrantes().get(0));
-                    rotarFicha(tablero.getFichasSobrantes().get(0));
-                    rotarFicha(tablero.getFichasSobrantes().get(0));
-                    break;
-                case 2:
-                    rotarFicha(tablero.getFichasSobrantes().get(0));
-                    break;
-                case 3:
-                    break;
-                default:
-                    printError();
-                    break;
-            }
-        }
-        boolean salir = false;
-        while (!salir) {
-            printIngreseFicha();
-            salir = true;
-            int casilla = leerInt();
-
-            switch (casilla) {
-                case 1:
-                case 2:
-                case 3:
-                    correrFila(tablero, casilla, (casilla * 2) - 1, 0, 0, 1);
-                    break;
-                case 4:
-                case 6:
-                case 8:
-                    correrFila(tablero, casilla, 0, casilla - 3, 1, 0);
-                    break;
-                case 5:
-                case 7:
-                case 9:
-                    correrFila(tablero, casilla, -6, casilla - 4, 1, 0);
-                    break;
-                case 10:
-                case 11:
-                case 12:
-                    correrFila(tablero, casilla, (casilla - 9) * 2 - 1, -6, 0, 1);
-                    break;
-                default:
-                    salir = false;
-                    break;
-            }
-
-        }
-
-    }
-
-    public static void correrFila(Tablero tablero, int casilla, int x, int y, int mx, int my) {
+    public static void correrFila(Tablero tablero, int opcion, int x, int y, int mx, int my) {
 
         ArrayList<Ficha> fichasSobrantes = tablero.getFichasSobrantes();
         for (int i = 0; i <= 6; i++) {
             fichasSobrantes.add(tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)]);
         }
 
-        evaluarJugadorEnFichas(fichasSobrantes, tablero, casilla);
+        moverJugadorConFicha(opcion, tablero, fichasSobrantes);
 
         for (int i = 0; i <= 6; i++) {
             tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
@@ -187,34 +127,38 @@ public class Turno {
 
     }
 
-    public static void moverJugadorConFicha(Jugador jugador, int casilla, Tablero tablero) {
-        int X = jugador.getX();
-        int Y = jugador.getY();
-        switch (casilla) {
-            case 1:
-            case 2:
-            case 3:
-                actualizarPosJugador(Y, 6, 1, 0, X, 0, casilla, jugador, tablero);
-                break;
-            case 4:
-            case 6:
-            case 8:
-                actualizarPosJugador(X, 6, 0, 1, 0, Y, casilla, jugador, tablero);
-                break;
-            case 5:
-            case 7:
-            case 9:
-                actualizarPosJugador(X, 0, 0, -1, 6, Y, casilla, jugador, tablero);
-                break;
-            case 10:
-            case 11:
-            case 12:
-                actualizarPosJugador(Y, 0, -1, 0, X, 6, casilla, jugador, tablero);
-                break;
-            default:
-                break;
+    public static void moverJugadorConFicha(int opcion, Tablero tablero, ArrayList<Ficha> fichasSobrantes) {
+
+        for (Jugador jugador : Jugador.values()) {
+            if (fichasSobrantes.contains(Tablero.getTablero()[jugador.getY()][jugador.getX()])) {
+                int X = jugador.getX();
+                int Y = jugador.getY();
+                switch (opcion) {
+                    case 1:
+                    case 2:
+                    case 3:
+                        actualizarPosJugador(Y, 6, 1, 0, X, 0, opcion, jugador, tablero);
+                        break;
+                    case 4:
+                    case 6:
+                    case 8:
+                        actualizarPosJugador(X, 6, 0, 1, 0, Y, opcion, jugador, tablero);
+                        break;
+                    case 5:
+                    case 7:
+                    case 9:
+                        actualizarPosJugador(X, 0, 0, -1, 6, Y, opcion, jugador, tablero);
+                        break;
+                    case 10:
+                    case 11:
+                    case 12:
+                        actualizarPosJugador(Y, 0, -1, 0, X, 6, opcion, jugador, tablero);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
-        tablero.modificarTesoros();
     }
 
     public static void actualizarPosJugador(int filaOColumna, int extremo, int cambioY, int cambioX, int x, int y, int casilla, Jugador jugador, Tablero tablero) {
@@ -235,15 +179,7 @@ public class Turno {
             tablero.getFichasSobrantes().get(0).getFicha()[1][1] = jugador.getNumero();
         }
     }
-
-    public static void evaluarJugadorEnFichas(ArrayList<Ficha> fichasSobrantes, Tablero tablero, int casilla) {
-
-        for (Jugador jugador : Jugador.values()) {
-
-            if (fichasSobrantes.contains(Tablero.getTablero()[jugador.getY()][jugador.getX()])) {
-                moverJugadorConFicha(jugador, casilla, tablero);
-            }
-        }
-    }
-
 }
+
+
+    

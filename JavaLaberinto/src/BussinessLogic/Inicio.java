@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BussinessLogic;
 
 import Data.*;
@@ -10,10 +5,6 @@ import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author alejomarin
- */
 public class Inicio {
     
     public static char asignarTesoroFichasSobrantes(int i, Ficha ficha) {

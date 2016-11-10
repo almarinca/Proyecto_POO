@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package BussinessLogic;
 
-import static BussinessLogic.Turno.correrFila;
-import static BussinessLogic.Turno.rotarFicha;
+import static BussinessLogic.Turno.*;
 import Data.*;
 import static UI.Interfaz.*;
 import java.util.ArrayList;
@@ -21,10 +15,10 @@ public class JavaLaberinto {
         int contador = 1;
         salir = false;
         int jugadores = 0;
-        Turno.moverJugador(Jugador.jugador1, 'q', tablero);
-        Turno.moverJugador(Jugador.jugador2, 'q', tablero);
-        Turno.moverJugador(Jugador.jugador3, 'q', tablero);
-        Turno.moverJugador(Jugador.jugador4, 'q', tablero);
+        desplazarJugador(Jugador.jugador1, '0');
+        desplazarJugador(Jugador.jugador2, '0');
+        desplazarJugador(Jugador.jugador3, '0');
+        desplazarJugador(Jugador.jugador4, '0');
         printBienvenida();
         int instrucciones;
         boolean inicioInstrucciones = true;
@@ -56,16 +50,20 @@ public class JavaLaberinto {
             moverFichas(tablero);
             switch (contador) {
                 case 1:
-                    Turno.moverJugador(Jugador.jugador1, 'a', tablero);
+                    movimientoJugador(Jugador.jugador1, 'a', tablero);
+                    evaluarGanador(Jugador.jugador1);
                     break;
                 case 2:
-                    Turno.moverJugador(Jugador.jugador2, 'a', tablero);
+                    movimientoJugador(Jugador.jugador2, 'a', tablero);
+                    evaluarGanador(Jugador.jugador2);
                     break;
                 case 3:
-                    Turno.moverJugador(Jugador.jugador3, 'a', tablero);
+                    movimientoJugador(Jugador.jugador3, 'a', tablero);
+                    evaluarGanador(Jugador.jugador3);
                     break;
                 case 4:
-                    Turno.moverJugador(Jugador.jugador4, 'a', tablero);
+                    movimientoJugador(Jugador.jugador4, 'a', tablero);
+                    evaluarGanador(Jugador.jugador4);
                     break;
                 default:
                     break;
@@ -75,6 +73,34 @@ public class JavaLaberinto {
             }
             contador++;
         }
+    }
+    
+    public static void movimientoJugador(Jugador jugador, char mover, Tablero tablero) {
+
+        boolean salir = false;
+        while (!salir) {
+            dibujarTablero(tablero);
+            printMoverFicha();
+            String a = leerString();
+            mover = a.charAt(0);
+            salir = (mover == 'f') ? true : false;
+            boolean valido = desplazarJugador(jugador, mover);
+            if(!valido){
+                printMovInvalido();
+            }
+
+        }
+    }
+    
+    public static void evaluarGanador(Jugador jugador){
+        if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
+                        printTesoroEncontrado(jugador);
+                        jugador.getListaTarjetas().remove(0);
+                        if (jugador.getListaTarjetas().isEmpty()) {
+                            printGanador(jugador);
+                            JavaLaberinto.salir = true;
+                        }
+                    }
     }
 
     public static void moverFichas(Tablero tablero) {

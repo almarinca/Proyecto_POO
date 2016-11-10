@@ -1,9 +1,20 @@
 package Data;
 
+import javax.swing.ImageIcon;
+
 public class Ficha {
 
     private char caracter; // me parecio mas adecuado nombrarlo caracter que tesoro por que no solo puede ser un tesoro
     private char[][] ficha;
+    private ImageIcon imagen;
+
+    public ImageIcon getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(ImageIcon imagen) {
+        this.imagen = imagen;
+    }
     public static final char muro = '#';
     public static final char[][] fichaT = {{muro, muro, muro},
     {' ', ' ', ' '},

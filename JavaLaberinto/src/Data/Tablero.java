@@ -74,7 +74,7 @@ public class Tablero {
             }
         }
 
-        
+                
         for (int i = 0; i < 24; i++) {
             listaTarjetas.add(Tarjeta.values()[i]);
         }

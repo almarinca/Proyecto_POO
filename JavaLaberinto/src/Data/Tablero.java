@@ -48,19 +48,6 @@ public class Tablero {
 
             fichasSobrantes.get(posFicha).setGiro(rotar);
 
-            ImageIcon imagen = null;
-            if (fichasSobrantes.get(posFicha).getFicha() == Ficha.fichaL) {
-                imagen = new ImageIcon("src/Tesoros/FichaEsquina.png");
-            } else if (fichasSobrantes.get(posFicha).getFicha() == Ficha.fichaR) {
-                imagen = new ImageIcon("src/Tesoros/FichaRecta.png");
-            } else if (fichasSobrantes.get(posFicha).getFicha() == Ficha.fichaT) {
-                imagen = new ImageIcon("src/Tesoros/FichaT.png");
-            } else {
-                imagen = new ImageIcon("src/FichasEstaticas/Espadas.png");
-            }
-            imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-            fichasSobrantes.get(posFicha).setImagen(imagen);
-
             while (rotar != 0) {
                 rotarFicha(fichasSobrantes.get(posFicha));
                 rotar--;
@@ -91,19 +78,6 @@ public class Tablero {
             }
         }
 
-        ImageIcon imagen = null;
-        if (fichasSobrantes.get(0).getFicha() == Ficha.fichaL) {
-            imagen = new ImageIcon("src/Tesoros/FichaEsquina.png");
-        } else if (fichasSobrantes.get(0).getFicha() == Ficha.fichaR) {
-            imagen = new ImageIcon("src/Tesoros/FichaRecta.png");
-        } else if (fichasSobrantes.get(0).getFicha() == Ficha.fichaT) {
-            imagen = new ImageIcon("src/Tesoros/FichaT.png");
-        } else {
-            imagen = new ImageIcon("src/FichasEstaticas/Espadas.png");
-        }
-        imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
-        fichasSobrantes.get(0).setImagen(imagen);
-
         for (int i = 0; i < 24; i++) {
             listaTarjetas.add(Tarjeta.values()[i]);
         }
@@ -121,10 +95,23 @@ public class Tablero {
                 }
             }
             Ficha ficha = new Ficha();
+            ImageIcon imagen = null;
+            if (tipo == Ficha.fichaL) {
+                imagen = new ImageIcon("src/Tesoros/FichaEsquina.png");
+            } else if (tipo == Ficha.fichaR) {
+                imagen = new ImageIcon("src/Tesoros/FichaRecta.png");
+            } else if (tipo == Ficha.fichaT) {
+                imagen = new ImageIcon("src/Tesoros/FichaT.png");
+            } else {
+                System.out.println("no sirvio");
+            }
+            imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+            ficha.setImagen(imagen);
             if (tipo == Ficha.fichaL && k > 4) {
                 matrizFicha[1][1] = Inicio.asignarTesoroFichasSobrantes(k - 4, ficha);
             }
             ficha.setFicha(matrizFicha);
+            
             listaFichas.add(ficha);
         }
 

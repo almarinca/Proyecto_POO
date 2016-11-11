@@ -11,6 +11,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -33,21 +35,42 @@ public class GUILaberinto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImages(null);
+        setPreferredSize(new java.awt.Dimension(1200, 900));
+
+        jButton1.setText("Dibujar Tablero");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1129, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(1045, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(34, 34, 34))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 738, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(844, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(31, 31, 31))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.construirTablero();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -79,18 +102,16 @@ public class GUILaberinto extends javax.swing.JFrame {
                 GUILaberinto laberinto = new GUILaberinto();
                 laberinto.setVisible(true);
                 laberinto.construirTablero();
+                Graphics2D g2d = (Graphics2D) laberinto.getGraphics();
             }
         });
     }
 
     public void construirTablero() {
-        dibujarFicha(this.getGraphics(), Tablero.getTablero()[0][0].getImagen(), (0*100)+100, (0*100)+100, Tablero.getTablero()[0][0].getGiro());
-        dibujarFicha(this.getGraphics(), Tablero.getTablero()[0][2].getImagen(), (0*100)+100, (2*100)+100, Tablero.getTablero()[0][2].getGiro());
-        dibujarFicha(this.getGraphics(), Tablero.getTablero()[0][4].getImagen(), (0*100)+100, (4*100)+100, Tablero.getTablero()[0][4].getGiro());
-        dibujarFicha(this.getGraphics(), Tablero.getTablero()[0][6].getImagen(), (0*100)+100, (6*100)+100, Tablero.getTablero()[0][6].getGiro());
-        for(int i=0;i<7;i++){
-            for(int j=0;j<7;j++){
-                dibujarFicha(this.getGraphics(), Tablero.getTablero()[i][j].getImagen(), (i*100)+100, (j*100)+100, Tablero.getTablero()[i][j].getGiro());
+
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                dibujarFicha(this.getGraphics(), Tablero.getTablero()[i][j].getImagen(), (i * 102) + 100, (j * 102) + 100, Tablero.getTablero()[i][j].getGiro());
             }
         }
     }
@@ -99,10 +120,12 @@ public class GUILaberinto extends javax.swing.JFrame {
         Graphics2D g2d = (Graphics2D) g;
         AffineTransform tx = new AffineTransform();
         tx.translate(posy, posx);
-        tx.rotate(Math.toRadians(girar*90), 50, 50);
+        tx.rotate(Math.toRadians(girar * 90), 50, 50);
         g2d.drawImage(image.getImage(), tx, this);
+        
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,7 +38,7 @@ public class Inicio {
                 ficha.setImagen(imagen);
                 return Tarjeta.Lagartija.getSimbolo();
             case 6:
-                imagen = new ImageIcon("src/Tesoros/FichasSueltas/FichaEsquinaTesoroCerdo.png");
+                imagen = new ImageIcon("src/Tesoros/FichasSueltas/FichaEsquinaTesoroCerdito.png");
                 imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
                 ficha.setImagen(imagen);
                 return Tarjeta.Cerdo.getSimbolo();

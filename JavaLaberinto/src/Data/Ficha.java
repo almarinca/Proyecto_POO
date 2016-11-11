@@ -7,6 +7,15 @@ public class Ficha {
     private char caracter; // me parecio mas adecuado nombrarlo caracter que tesoro por que no solo puede ser un tesoro
     private char[][] ficha;
     private ImageIcon imagen;
+    private int giro;
+
+    public int getGiro() {
+        return giro;
+    }
+
+    public void setGiro(int giro) {
+        this.giro = giro;
+    }
 
     public ImageIcon getImagen() {
         return imagen;

@@ -2,6 +2,7 @@ package BussinessLogic;
 
 import static BussinessLogic.Turno.*;
 import Data.*;
+import GUI.GUILaberinto;
 import static UI.Interfaz.*;
 import java.util.ArrayList;
 
@@ -19,6 +20,7 @@ public class JavaLaberinto {
         desplazarJugador(Jugador.jugador2, '0');
         desplazarJugador(Jugador.jugador3, '0');
         desplazarJugador(Jugador.jugador4, '0');
+        GUILaberinto.main(args);
         printBienvenida();
         int instrucciones;
         boolean inicioInstrucciones = true;
@@ -44,6 +46,7 @@ public class JavaLaberinto {
             }
         }
         salir = false;
+
         while (!salir) {
 
             printTurnoJugador(contador);
@@ -74,7 +77,7 @@ public class JavaLaberinto {
             contador++;
         }
     }
-    
+
     public static void movimientoJugador(Jugador jugador, char mover, Tablero tablero) {
 
         boolean salir = false;
@@ -85,22 +88,22 @@ public class JavaLaberinto {
             mover = a.charAt(0);
             salir = (mover == 'f') ? true : false;
             boolean valido = desplazarJugador(jugador, mover);
-            if(!valido){
+            if (!valido) {
                 printMovInvalido();
             }
 
         }
     }
-    
-    public static void evaluarGanador(Jugador jugador){
+
+    public static void evaluarGanador(Jugador jugador) {
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
-                        printTesoroEncontrado(jugador);
-                        jugador.getListaTarjetas().remove(0);
-                        if (jugador.getListaTarjetas().isEmpty()) {
-                            printGanador(jugador);
-                            JavaLaberinto.salir = true;
-                        }
-                    }
+            printTesoroEncontrado(jugador);
+            jugador.getListaTarjetas().remove(0);
+            if (jugador.getListaTarjetas().isEmpty()) {
+                printGanador(jugador);
+                JavaLaberinto.salir = true;
+            }
+        }
     }
 
     public static void moverFichas(Tablero tablero) {

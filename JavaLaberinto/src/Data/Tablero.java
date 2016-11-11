@@ -23,28 +23,44 @@ public class Tablero {
         fichasSobrantes = (ArrayList<Ficha>) listaFichas.clone();
 
         //FICHAS DONDE ESTAN UBICADOS LOS TESOROS
-        asignarFichaFija(0, 0, 0, 30, Tarjeta.Esquina1, new ImageIcon("/Tesoros/FichasDeInicio/FichaJugadorVerde.png"));
-        asignarFichaFija(1, 0, 6, 31, Tarjeta.Esquina3, new ImageIcon("/Tesoros/FichasDeInicio/FichaJugadorRojo.png"));
-        asignarFichaFija(2, 6, 6, 32, Tarjeta.Esquina4, new ImageIcon("/Tesoros/FichasDeInicio/FichaJugadorAmarillo.png"));
-        asignarFichaFija(3, 6, 0, 33, Tarjeta.Esquina2, new ImageIcon("/Tesoros/FichasDeInicio/FichaJugadorAzul.png"));
-        asignarFichaFija(0, 0, 2, 13, Tarjeta.Anillo, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroAnillo.png"));
-        asignarFichaFija(0, 0, 4, 14, Tarjeta.Mapa, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroMapa.png"));
-        asignarFichaFija(0, 2, 4, 15, Tarjeta.Corona, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroCorona.png"));
-        asignarFichaFija(1, 2, 6, 16, Tarjeta.Libro, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroLibro.png"));
-        asignarFichaFija(1, 4, 6, 17, Tarjeta.BolsaDeMonedas, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroBolsaDeMonedas.png"));
-        asignarFichaFija(1, 4, 4, 18, Tarjeta.Llaves, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroLlave.png"));
-        asignarFichaFija(2, 6, 2, 19, Tarjeta.Espada, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroEspada.png"));
-        asignarFichaFija(2, 6, 4, 20, Tarjeta.Craneo, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroCraneo.png"));
-        asignarFichaFija(2, 4, 2, 21, Tarjeta.Esmeralda, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroEsmeralda.png"));
-        asignarFichaFija(3, 2, 0, 22, Tarjeta.Veladora, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroVeladora.png"));
-        asignarFichaFija(3, 4, 0, 23, Tarjeta.Sombrero, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroSombrero.png"));
-        asignarFichaFija(3, 2, 2, 24, Tarjeta.CofreDeTesoros, new ImageIcon("/Tesoros/FichasEstaticas/FichaTTesoroCofre.png"));
+        asignarFichaFija(0, 0, 0, 30, Tarjeta.Esquina1, new ImageIcon("src/Tesoros/FichasDeInicio/FichaJugadorVerde.png"));
+        asignarFichaFija(1, 0, 6, 31, Tarjeta.Esquina3, new ImageIcon("src/Tesoros/FichasDeInicio/FichaJugadorRojo.png"));
+        asignarFichaFija(2, 6, 6, 32, Tarjeta.Esquina4, new ImageIcon("src/Tesoros/FichasDeInicio/FichaJugadorAmarillo.png"));
+        asignarFichaFija(3, 6, 0, 33, Tarjeta.Esquina2, new ImageIcon("src/Tesoros/FichasDeInicio/FichaJugadorAzul.png"));
+        asignarFichaFija(0, 0, 2, 13, Tarjeta.Anillo, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroAnillo.png"));
+        asignarFichaFija(0, 0, 4, 14, Tarjeta.Mapa, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroMapa.png"));
+        asignarFichaFija(0, 2, 4, 15, Tarjeta.Corona, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroCorona.png"));
+        asignarFichaFija(1, 2, 6, 16, Tarjeta.Libro, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroLibro.png"));
+        asignarFichaFija(1, 4, 6, 17, Tarjeta.BolsaDeMonedas, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroBolsaDeMonedas.png"));
+        asignarFichaFija(1, 4, 4, 18, Tarjeta.Llaves, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroLlave.png"));
+        asignarFichaFija(2, 6, 2, 19, Tarjeta.Espada, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroEspada.png"));
+        asignarFichaFija(2, 6, 4, 20, Tarjeta.Craneo, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroCraneo.png"));
+        asignarFichaFija(2, 4, 2, 21, Tarjeta.Esmeralda, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroEsmeralda.png"));
+        asignarFichaFija(3, 2, 0, 22, Tarjeta.Veladora, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroVeladora.png"));
+        asignarFichaFija(3, 4, 0, 23, Tarjeta.Sombrero, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroSombrero.png"));
+        asignarFichaFija(3, 2, 2, 24, Tarjeta.CofreDeTesoros, new ImageIcon("src/Tesoros/FichasEstaticas/FichaTTesoroCofre.png"));
 
         int contador = fichasSobrantes.size();
 
         while (contador != 0) {
             int posFicha = (int) (Math.random() * contador);
             int rotar = (int) (Math.random() * 3);
+
+            fichasSobrantes.get(posFicha).setGiro(rotar);
+
+            ImageIcon imagen = null;
+            if (fichasSobrantes.get(posFicha).getFicha() == Ficha.fichaL) {
+                imagen = new ImageIcon("src/Tesoros/FichaEsquina.png");
+            } else if (fichasSobrantes.get(posFicha).getFicha() == Ficha.fichaR) {
+                imagen = new ImageIcon("src/Tesoros/FichaRecta.png");
+            } else if (fichasSobrantes.get(posFicha).getFicha() == Ficha.fichaT) {
+                imagen = new ImageIcon("src/Tesoros/FichaT.png");
+            } else {
+                imagen = new ImageIcon("src/FichasEstaticas/Espadas.png");
+            }
+            imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+            fichasSobrantes.get(posFicha).setImagen(imagen);
+
             while (rotar != 0) {
                 rotarFicha(fichasSobrantes.get(posFicha));
                 rotar--;
@@ -53,7 +69,7 @@ public class Tablero {
             fichasSobrantes.remove(posFicha);
             contador--;
         }
-        contador = 33;
+        contador = 32;
 
         for (int i = 0; i <= 3; i++) {
             tablero[i * 2][1] = fichasSobrantes.get(contador);
@@ -75,13 +91,24 @@ public class Tablero {
             }
         }
 
-                
+        ImageIcon imagen = null;
+        if (fichasSobrantes.get(0).getFicha() == Ficha.fichaL) {
+            imagen = new ImageIcon("src/Tesoros/FichaEsquina.png");
+        } else if (fichasSobrantes.get(0).getFicha() == Ficha.fichaR) {
+            imagen = new ImageIcon("src/Tesoros/FichaRecta.png");
+        } else if (fichasSobrantes.get(0).getFicha() == Ficha.fichaT) {
+            imagen = new ImageIcon("src/Tesoros/FichaT.png");
+        } else {
+            imagen = new ImageIcon("src/FichasEstaticas/Espadas.png");
+        }
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        fichasSobrantes.get(0).setImagen(imagen);
+
         for (int i = 0; i < 24; i++) {
             listaTarjetas.add(Tarjeta.values()[i]);
         }
-       
+
     }
-    
 
     public void crearFichaFija(char[][] tipo, int cantidad) {
 
@@ -95,7 +122,7 @@ public class Tablero {
             }
             Ficha ficha = new Ficha();
             if (tipo == Ficha.fichaL && k > 4) {
-                matrizFicha[1][1] = Inicio.asignarTesoroFichasSobrantes(k - 4, ficha);                
+                matrizFicha[1][1] = Inicio.asignarTesoroFichasSobrantes(k - 4, ficha);
             }
             ficha.setFicha(matrizFicha);
             listaFichas.add(ficha);
@@ -104,6 +131,7 @@ public class Tablero {
     }
 
     public void asignarFichaFija(int rotaciones, int fila, int columna, int ficha, Tarjeta tarjeta, ImageIcon imagen) {
+        listaFichas.get(ficha).setGiro(0);
         while (rotaciones != 0) {
             rotarFicha(listaFichas.get(ficha));
             rotaciones--;
@@ -120,11 +148,11 @@ public class Tablero {
     public static Ficha[][] getTablero() {
         return tablero;
     }
-    
+
     public void setTablero(Ficha[][] tablero) {
-        this.tablero = tablero;
+        Tablero.tablero = tablero;
     }
-    
+
     public static ArrayList<Tarjeta> getListaTarjetas() {
         return listaTarjetas;
     }
@@ -139,5 +167,5 @@ public class Tablero {
 
     public void setFichasSobrantes(ArrayList<Ficha> fichasSobrantes) {
         this.fichasSobrantes = fichasSobrantes;
-    }       
+    }
 }

@@ -111,17 +111,17 @@ public class JavaLaberinto {
         while (girar != 3) {
             dibujarTablero(tablero);
             printMensajeFichaLibre();
-            printFicha(tablero.getFichasSobrantes().get(0));
+            printFicha(Tablero.getFichasSobrantes().get(0));
             printDeseaGirar();
             girar = leerInt();
             switch (girar) {
                 case 1:
-                    rotarFicha(tablero.getFichasSobrantes().get(0));
-                    rotarFicha(tablero.getFichasSobrantes().get(0));
-                    rotarFicha(tablero.getFichasSobrantes().get(0));
+                    rotarFicha(Tablero.getFichasSobrantes().get(0));
+                    rotarFicha(Tablero.getFichasSobrantes().get(0));
+                    rotarFicha(Tablero.getFichasSobrantes().get(0));
                     break;
                 case 2:
-                    rotarFicha(tablero.getFichasSobrantes().get(0));
+                    rotarFicha(Tablero.getFichasSobrantes().get(0));
                     break;
                 case 3:
                     break;
@@ -140,22 +140,22 @@ public class JavaLaberinto {
                 case 1:
                 case 2:
                 case 3:
-                    correrFila(tablero, casilla, (casilla * 2) - 1, 0, 0, 1);
+                    correrFila(casilla, (casilla * 2) - 1, 0, 0, 1);
                     break;
                 case 4:
                 case 6:
                 case 8:
-                    correrFila(tablero, casilla, 0, casilla - 3, 1, 0);
+                    correrFila(casilla, 0, casilla - 3, 1, 0);
                     break;
                 case 5:
                 case 7:
                 case 9:
-                    correrFila(tablero, casilla, -6, casilla - 4, 1, 0);
+                    correrFila(casilla, -6, casilla - 4, 1, 0);
                     break;
                 case 10:
                 case 11:
                 case 12:
-                    correrFila(tablero, casilla, (casilla - 9) * 2 - 1, -6, 0, 1);
+                    correrFila(casilla, (casilla - 9) * 2 - 1, -6, 0, 1);
                     break;
                 default:
                     salir = false;

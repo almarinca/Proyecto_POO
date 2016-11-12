@@ -11,7 +11,7 @@ public class Tablero {
 
     private static Ficha[][] tablero = new Ficha[7][7];
     private static ArrayList<Ficha> listaFichas = new ArrayList<>();
-    private ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
+    private static ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
     private static ArrayList<Tarjeta> listaTarjetas = new ArrayList<>();
 
     public Tablero() {
@@ -105,7 +105,7 @@ public class Tablero {
             } else {
                 System.out.println("no sirvio");
             }
-            imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+            imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
             ficha.setImagen(imagen);
             if (tipo == Ficha.fichaL && k > 4) {
                 matrizFicha[1][1] = Inicio.asignarTesoroFichasSobrantes(k - 4, ficha);
@@ -124,7 +124,7 @@ public class Tablero {
             rotaciones--;
         }
         int borrar = (ficha >= 30) ? 30 : 13;
-        imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
         listaFichas.get(ficha).setImagen(imagen);
         tablero[fila][columna] = listaFichas.get(ficha);
         listaFichas.get(ficha).getFicha()[1][1] = tarjeta.getSimbolo();
@@ -148,11 +148,11 @@ public class Tablero {
         Tablero.listaTarjetas = listaTarjetas;
     }
 
-    public ArrayList<Ficha> getFichasSobrantes() {
+    public static ArrayList<Ficha> getFichasSobrantes() {
         return fichasSobrantes;
     }
 
-    public void setFichasSobrantes(ArrayList<Ficha> fichasSobrantes) {
-        this.fichasSobrantes = fichasSobrantes;
+    public static void setFichasSobrantes(ArrayList<Ficha> fichasSobrantes) {
+        Tablero.fichasSobrantes = fichasSobrantes;
     }
 }

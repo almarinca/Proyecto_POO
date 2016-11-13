@@ -20,20 +20,20 @@ public class Turno {
         f.setFicha(matrizrot);
     }
 
-    public static void correrFila(int opcion, int x, int y, int mx, int my) {
+    public static void correrFila(Tablero tablero, int opcion, int x, int y, int mx, int my) {
 
-        ArrayList<Ficha> fichasSobrantes = Tablero.getFichasSobrantes();
+        ArrayList<Ficha> fichasSobrantes = tablero.getFichasSobrantes();
         for (int i = 0; i <= 6; i++) {
-            fichasSobrantes.add(Tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)]);
+            fichasSobrantes.add(tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)]);
         }
 
-        moverJugadorConFicha(opcion, fichasSobrantes);
+        moverJugadorConFicha(opcion, tablero, fichasSobrantes);
 
         for (int i = 0; i <= 6; i++) {
-            Tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
+            tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
             fichasSobrantes.remove(0);
         }
-        Tablero.setFichasSobrantes(fichasSobrantes);
+        tablero.setFichasSobrantes(fichasSobrantes);
     }
 
     
@@ -100,7 +100,7 @@ public class Turno {
 
     }
 
-    public static void moverJugadorConFicha(int opcion, ArrayList<Ficha> fichasSobrantes) {
+    public static void moverJugadorConFicha(int opcion, Tablero tablero, ArrayList<Ficha> fichasSobrantes) {
 
         for (Jugador jugador : Jugador.values()) {
             if (fichasSobrantes.contains(Tablero.getTablero()[jugador.getY()][jugador.getX()])) {
@@ -110,22 +110,22 @@ public class Turno {
                     case 1:
                     case 2:
                     case 3:
-                        actualizarPosJugador(Y, 6, 1, 0, X, 0, opcion, jugador);
+                        actualizarPosJugador(Y, 6, 1, 0, X, 0, opcion, jugador, tablero);
                         break;
                     case 4:
                     case 6:
                     case 8:
-                        actualizarPosJugador(X, 6, 0, 1, 0, Y, opcion, jugador);
+                        actualizarPosJugador(X, 6, 0, 1, 0, Y, opcion, jugador, tablero);
                         break;
                     case 5:
                     case 7:
                     case 9:
-                        actualizarPosJugador(X, 0, 0, -1, 6, Y, opcion, jugador);
+                        actualizarPosJugador(X, 0, 0, -1, 6, Y, opcion, jugador, tablero);
                         break;
                     case 10:
                     case 11:
                     case 12:
-                        actualizarPosJugador(Y, 0, -1, 0, X, 6, opcion, jugador);
+                        actualizarPosJugador(Y, 0, -1, 0, X, 6, opcion, jugador, tablero);
                         break;
                     default:
                         break;
@@ -134,7 +134,7 @@ public class Turno {
         }
     }
 
-    public static void actualizarPosJugador(int filaOColumna, int extremo, int cambioY, int cambioX, int x, int y, int casilla, Jugador jugador) {
+    public static void actualizarPosJugador(int filaOColumna, int extremo, int cambioY, int cambioX, int x, int y, int casilla, Jugador jugador, Tablero tablero) {
         int X = jugador.getX();
         int Y = jugador.getY();
         if (filaOColumna != extremo) {
@@ -142,14 +142,14 @@ public class Turno {
             jugador.setX(X + 1 * cambioX);
         } else {
 
-            Tablero.getTablero()[Y][X].getFicha()[1][1] = Tablero.getTablero()[Y][X].getCaracter();
+            tablero.getTablero()[Y][X].getFicha()[1][1] = tablero.getTablero()[Y][X].getCaracter();
             jugador.setY(y);
             jugador.setX(x);
-            char centro = Tablero.getFichasSobrantes().get(0).getFicha()[1][1];
+            char centro = tablero.getFichasSobrantes().get(0).getFicha()[1][1];
             if (centro != '1' && centro != '2' && centro != '3' && centro != '4') {
-                Tablero.getFichasSobrantes().get(0).setCaracter(Tablero.getFichasSobrantes().get(0).getFicha()[1][1]);
+                tablero.getFichasSobrantes().get(0).setCaracter(tablero.getFichasSobrantes().get(0).getFicha()[1][1]);
             }
-            Tablero.getFichasSobrantes().get(0).getFicha()[1][1] = jugador.getNumero();
+            tablero.getFichasSobrantes().get(0).getFicha()[1][1] = jugador.getNumero();
         }
     }
 }

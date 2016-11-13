@@ -1,31 +1,26 @@
 package Data;
 
-import java.awt.Image;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 
 public enum Jugador {
 
-    jugador1('1', '@', 0, 0, null, new ImageIcon("Tesoros/Jugadores/JugadorVerde.png")),
-    jugador2('2', '$', 0, 6, null, new ImageIcon("Tesoros/Jugadores/JugadorRoja.png")),
-    jugador3('3', '&', 6, 0, null, new ImageIcon("Tesoros/Jugadores/JugadorAmarillo.png")),
-    jugador4('4', '€', 6, 6, null, new ImageIcon("Tesoros/Jugadores/JugadorAzul.png"));
+    jugador1('1', '@', 0, 0, null),
+    jugador2('2', '$', 0, 6, null),
+    jugador3('3', '&', 6, 0, null),
+    jugador4('4', '€', 6, 6, null);
 
     private final char numero;
     private final char base;
     private int X;
     private int Y;
     private ArrayList<Tarjeta> listaTarjetas;
-    private ImageIcon imagen;
 
-    private Jugador(char numero, char base, int X, int Y, ArrayList<Tarjeta> listaTarjetas, ImageIcon imagen) {
+    private Jugador(char numero, char base, int X, int Y, ArrayList<Tarjeta> listaTarjetas) {
         this.numero = numero;
         this.base = base;
         this.X = X;
         this.Y = Y;
         this.listaTarjetas = listaTarjetas;
-        imagen = new ImageIcon(imagen.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH));
-        this.imagen = imagen;
     }
 
     public int getX() {
@@ -60,12 +55,6 @@ public enum Jugador {
         return base;
     }
     
-    public ImageIcon getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(ImageIcon imagen) {
-        this.imagen = imagen;
-    }   
+    
 
 }

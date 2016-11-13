@@ -6,16 +6,13 @@
 package GUI;
 
 import BussinessLogic.Inicio;
-import static BussinessLogic.Inicio.y;
 import BussinessLogic.Turno;
 import static BussinessLogic.Turno.correrFila;
 import Data.Jugador;
 import Data.Tablero;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -35,7 +32,7 @@ public class GUILaberinto extends javax.swing.JFrame {
 
     private static final ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
     static int y = Inicio.y;
-    static int x = (Inicio.x-13*y)/3;
+    static int x = (Inicio.x - 13 * y) / 3;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -333,6 +330,8 @@ public class GUILaberinto extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel2.getAccessibleContext().setAccessibleParent(jPanel2);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -456,12 +455,12 @@ public class GUILaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        Turno.desplazarJugador(Jugador.jugador1, 'a');
+        Turno.desplazarJugador(Jugador.jugador1, 'd');
         construirTablero();
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        Turno.desplazarJugador(Jugador.jugador1, 'd');
+        Turno.desplazarJugador(Jugador.jugador1, 'a');
         construirTablero();
     }//GEN-LAST:event_jButton19ActionPerformed
 
@@ -577,9 +576,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         jButton17.setEnabled(false);
         jButton18.setEnabled(false);
         jButton19.setEnabled(false);
-        for (int i = 0; i < 14; i++) {
-            listaBotones.get(i).getAccessibleContext().setAccessibleParent(jPanel1);
-        }
         jButton4.setLocation((1 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
         jButton5.setLocation((3 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
         jButton6.setLocation((5 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
@@ -633,14 +629,45 @@ public class GUILaberinto extends javax.swing.JFrame {
             listaBotones.get(i).setText("");
             listaBotones.get(i).setContentAreaFilled(false);
         }
+        for (int i = 14; i < 18; i++) {
+            imagen = new ImageIcon("Tesoros/BotonFlecha.png");
+            imagen = new ImageIcon(imagen.getImage().getScaledInstance(y / 2, y / 2, Image.SCALE_SMOOTH));
+            imagen = rotarImagen(imagen, i - 14, y / 4, y / 4);
+            listaBotones.get(i).setIcon(imagen);
+            listaBotones.get(i).setSize(y / 2, y / 2);
+            listaBotones.get(i).setText("");
+            listaBotones.get(i).setContentAreaFilled(false);
+        }
+        imagen = new ImageIcon("Tesoros/FlechaMoverIzquierda.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));
+        for (int i = 0; i < 2; i++) {
+            if (i == 0) {
+                imagen = new ImageIcon("Tesoros/FlechaMoverIzquierda.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));
+            } else {
+                imagen = new ImageIcon("Tesoros/FlechaMoverDerecha.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));
+            }
+            listaBotones.get(i).setIcon(imagen);
+            listaBotones.get(i).setSize(y, y / 2);
+            listaBotones.get(i).setText("");
+            listaBotones.get(i).setContentAreaFilled(false);
+        }
+        imagen = new ImageIcon("Tesoros/BotonPasarTurno.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y / 3, Image.SCALE_SMOOTH));
+        jButton1.setIcon(imagen);
+        jButton1.setSize(2 * y, 2 * y / 3);
+        jButton1.setText("");
+        jButton1.setContentAreaFilled(false);
         jLabel1.setLocation(y, 5 * y / 3);
-        jButton1.setLocation(2 * y - 61, 8 * y);
-        jButton2.setLocation(2 * y - 130, y);
-        jButton3.setLocation(2 * y + 25, y);
-        jButton16.setLocation(2 * y - 25, 4 * y);
-        jButton18.setLocation(2 * y - 25, 5 * y);
-        jButton17.setLocation(2 * y - 100, 9 * y / 2);
-        jButton19.setLocation(2 * y + 35, 9 * y / 2);
+        jLabel1.setSize(2 * y, 2 * y);
+        jButton1.setLocation(y, 8 * y);
+        jButton2.setLocation(2 * y - 3 * y / 2, y);
+        jButton3.setLocation(2 * y + y / 2, y);
+        jButton16.setLocation(2 * y - y / 4, 4 * y);
+        jButton18.setLocation(2 * y - y / 4, 5 * y);
+        jButton17.setLocation(2 * y + y / 4, 9 * y / 2);
+        jButton19.setLocation(2 * y - 3 * y / 4, 9 * y / 2);
         this.setLayout(null);
         jLabel1.setLayout(null);
         jPanel1.setLayout(null);

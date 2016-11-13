@@ -3,7 +3,9 @@ package Data;
 import BussinessLogic.Inicio;
 import java.util.ArrayList;
 import static BussinessLogic.Turno.rotarFicha;
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 
 public class Tablero {
@@ -13,6 +15,7 @@ public class Tablero {
     private static ArrayList<Ficha> listaFichas = new ArrayList<>();
     private static ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
     private static ArrayList<Tarjeta> listaTarjetas = new ArrayList<>();
+    int y = Inicio.y;
 
     public Tablero() {
 
@@ -84,6 +87,14 @@ public class Tablero {
 
     }
 
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
     public void crearFichaFija(char[][] tipo, int cantidad) {
 
         for (int k = 0; k < cantidad; k++) {
@@ -103,7 +114,7 @@ public class Tablero {
             } else if (tipo == Ficha.fichaT) {
                 imagen = new ImageIcon("Tesoros/FichaT.png");
             } 
-            imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+            imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y, Image.SCALE_SMOOTH));
             ficha.setImagen(imagen);
             if (tipo == Ficha.fichaL && k > 4) {
                 matrizFicha[1][1] = Inicio.asignarTesoroFichasSobrantes(k - 4, ficha);
@@ -122,7 +133,7 @@ public class Tablero {
             rotaciones--;
         }
         int borrar = (ficha >= 30) ? 30 : 13;
-        imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y, Image.SCALE_SMOOTH));
         listaFichas.get(ficha).setImagen(imagen);
         tablero[fila][columna] = listaFichas.get(ficha);
         listaFichas.get(ficha).getFicha()[1][1] = tarjeta.getSimbolo();

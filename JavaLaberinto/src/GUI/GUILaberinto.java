@@ -7,6 +7,7 @@ package GUI;
 
 import BussinessLogic.Turno;
 import static BussinessLogic.Turno.correrFila;
+import Data.Jugador;
 import Data.Tablero;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -25,13 +26,12 @@ public class GUILaberinto extends javax.swing.JFrame {
         initComponents();
     }
 
-    private static ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
+    private static final ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -47,16 +47,11 @@ public class GUILaberinto extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
-
-        jButton1.setText("Dibujar Tablero");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("Girar Izquierda");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -71,6 +66,9 @@ public class GUILaberinto extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        jLabel1.setBackground(new java.awt.Color(28, 24, 24));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jButton10.setText("jButton10");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +154,24 @@ public class GUILaberinto extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 722, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 723, Short.MAX_VALUE)
+        );
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,69 +181,61 @@ public class GUILaberinto extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton8)
-                        .addGap(41, 41, 41)
+                        .addGap(127, 127, 127)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(34, 34, 34))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addComponent(jButton4)
-                                .addGap(133, 133, 133)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton11)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton12))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton5)
-                                        .addGap(133, 133, 133)
-                                        .addComponent(jButton6)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(jButton10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(40, 40, 40)
-                                .addComponent(jButton3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)))
-                        .addGap(43, 43, 43))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jButton4)
+                            .addComponent(jButton10))
+                        .addGap(125, 125, 125)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5)
+                            .addComponent(jButton11))
+                        .addGap(125, 125, 125)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton12)
+                            .addComponent(jButton6))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton7)
                             .addComponent(jButton9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 740, Short.MAX_VALUE)
+                        .addGap(11, 11, 11)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton15)
-                            .addComponent(jButton13)
-                            .addComponent(jButton14))
-                        .addGap(572, 572, 572))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jButton2)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jButton3))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(29, 29, 29)))
+                                .addGap(43, 43, 43))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton15)
+                                    .addComponent(jButton13)
+                                    .addComponent(jButton14))
+                                .addGap(572, 572, 572))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(534, 534, 534))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(254, 254, 254)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(425, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5)
-                            .addComponent(jButton6))
-                        .addGap(781, 781, 781))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(200, 200, 200)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton7)
@@ -240,27 +248,32 @@ public class GUILaberinto extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton9)
                             .addComponent(jButton15))
-                        .addGap(192, 192, 192)))
+                        .addGap(150, 150, 150))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton4)
+                            .addComponent(jButton5)
+                            .addComponent(jButton6))
+                        .addGap(9, 9, 9)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton10)
                     .addComponent(jButton11)
                     .addComponent(jButton12))
-                .addGap(16, 16, 16)
+                .addGap(46, 46, 46)
                 .addComponent(jButton1)
-                .addGap(58, 58, 58))
+                .addGap(70, 70, 70))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.construirTablero();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         double i = Tablero.getFichasSobrantes().get(0).getGiro();
         for (int j = 0; j < 20; j++) {
-            dibujarFichaLibre();
+            dibujarFichaLibre(200, 200);
             i = i - 0.05;
             Tablero.getFichasSobrantes().get(0).setGiro(i);
         }
@@ -269,13 +282,13 @@ public class GUILaberinto extends javax.swing.JFrame {
         }
         Tablero.getFichasSobrantes().get(0).setGiro(i);
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
-        dibujarFichaLibre();
+        dibujarFichaLibre(200, 200);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         double i = Tablero.getFichasSobrantes().get(0).getGiro();
         for (int j = 0; j < 20; j++) {
-            dibujarFichaLibre();
+            dibujarFichaLibre(200, 200);
             i = i + 0.05;
             Tablero.getFichasSobrantes().get(0).setGiro(i);
         }
@@ -286,7 +299,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
-        dibujarFichaLibre();
+        dibujarFichaLibre(200, 200);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
@@ -294,15 +307,15 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        correrFila(9, -6, 5, 1, 0);
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        correrFila(9, -6, 5, 1, 0);
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -310,7 +323,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -318,16 +331,15 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        this.setVisible(true);
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        correrFila(1, 1, 0, 0, 1);
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();        
+        correrFila(1, 1, 0, 0, 1);
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -335,7 +347,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -343,7 +355,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -351,15 +363,15 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-       correrFila(6, 0, 3, 1, 0);
+        correrFila(6, 0, 3, 1, 0);
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -367,7 +379,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -375,7 +387,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -383,8 +395,12 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (int i = 0; i < 14; i++) {
             listaBotones.get(i).setEnabled(false);
         }
-        construirTablero();
+        construirTablero(200, 200);
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.construirTablero(200, 200);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -415,36 +431,45 @@ public class GUILaberinto extends javax.swing.JFrame {
             public void run() {
                 GUILaberinto laberinto = new GUILaberinto();
                 laberinto.setVisible(true);
-                laberinto.construirTablero();
-                Graphics2D g2d = (Graphics2D) laberinto.getGraphics();
                 laberinto.crearListaBotones();
             }
         });
     }
 
-    public void construirTablero() {
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        this.construirTablero(200, 200);
+    }
+
+    public void construirTablero(int tamx, int tamy) {
 
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
-                dibujarFicha(this.getGraphics(), Tablero.getTablero()[i][j].getImagen(), (i * 102) + 100, (j * 102) + 100, Tablero.getTablero()[i][j].getGiro(), 50, 50);
+                dibujarFicha(jPanel1.getGraphics(), Tablero.getTablero()[i][j].getImagen(), (i * 102), (j * 102), Tablero.getTablero()[i][j].getGiro(), 50, 50);
             }
         }
-        dibujarFichaLibre();
+        dibujarFichaLibre(tamx, tamy);
+        for (Jugador jugador : Jugador.values()) {
+            int j = jugador.getX();
+            int i = jugador.getY();
+            dibujarFicha(jPanel1.getGraphics(), jugador.getImagen(), (i * 102) + 25, (j * 102) + 25, Tablero.getTablero()[i][j].getGiro(), 25, 25);
+        }
     }
 
     public void dibujarFicha(Graphics g, ImageIcon image, int posx, int posy, double girar, int centrox, int centroy) {
         Graphics2D g2d = (Graphics2D) g;
         AffineTransform tx = new AffineTransform();
         tx.translate(posy, posx);
-        tx.rotate(Math.toRadians(girar * 90), centrox, centroy);
+        tx.rotate(Math.toRadians(girar * 90), centrox, centroy);;
         g2d.drawImage(image.getImage(), tx, this);
     }
 
-    public void dibujarFichaLibre() {
+    public void dibujarFichaLibre(int tamx, int tamy) {
         ImageIcon ima = Tablero.getFichasSobrantes().get(0).getImagen();
-        ima = new ImageIcon(ima.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH));
-        double a = (double) Tablero.getFichasSobrantes().get(0).getGiro();
-        dibujarFicha(jLabel1.getGraphics(), ima, 0, 0, a, 100, 100);
+        ima = new ImageIcon(ima.getImage().getScaledInstance(tamx, tamy, Image.SCALE_SMOOTH));
+        double a = Tablero.getFichasSobrantes().get(0).getGiro();
+        dibujarFicha(jLabel1.getGraphics(), ima, 0, 0, a, tamx / 2, tamy / 2);
     }
 
     private void crearListaBotones() {
@@ -481,5 +506,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
+
 }

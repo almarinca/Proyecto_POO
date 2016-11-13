@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public enum Jugador {
-
-    jugador1('1', '@', 0, 0, null, new ImageIcon("Tesoros/Jugadores/JugadorVerde.png")),
+    jugador4('4', '€', 6, 6, null, new ImageIcon("Tesoros/Jugadores/JugadorAzul.png")),
+    jugador3('3', '&', 6, 0, null, new ImageIcon("Tesoros/Jugadores/JugadorAmarillo.png")), 
     jugador2('2', '$', 0, 6, null, new ImageIcon("Tesoros/Jugadores/JugadorRoja.png")),
-    jugador3('3', '&', 6, 0, null, new ImageIcon("Tesoros/Jugadores/JugadorAmarillo.png")),
-    jugador4('4', '€', 6, 6, null, new ImageIcon("Tesoros/Jugadores/JugadorAzul.png"));
+    jugador1('1', '@', 0, 0, null, new ImageIcon("Tesoros/Jugadores/JugadorVerde.png"));
 
     private final char numero;
     private final char base;
@@ -59,13 +58,13 @@ public enum Jugador {
     public char getBase() {
         return base;
     }
-    
+
     public ImageIcon getImagen() {
         return imagen;
     }
 
     public void setImagen(ImageIcon imagen) {
         this.imagen = imagen;
-    }   
+    }
 
 }

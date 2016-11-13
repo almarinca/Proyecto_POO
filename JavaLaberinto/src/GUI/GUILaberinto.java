@@ -35,6 +35,7 @@ public class GUILaberinto extends javax.swing.JFrame {
 
     private static final ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
     static int y = Inicio.y;
+    static int x = (Inicio.x-13*y)/3;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -592,9 +593,9 @@ public class GUILaberinto extends javax.swing.JFrame {
         jButton11.setLocation((3 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
         jButton12.setLocation((5 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
         jPanel1.setSize(9 * y + 12, 9 * y + 12);
-        jPanel1.setLocation(6, 6);
+        jPanel1.setLocation(x, 6);
         jPanel2.setSize(4 * y, 9 * y + 12);
-        jPanel2.setLocation(jPanel1.getLocation().x + 9 * y + y / 2, jPanel1.getLocation().y);
+        jPanel2.setLocation(jPanel1.getLocation().x + 9 * y + x, jPanel1.getLocation().y);
         ImageIcon imagen = null;
         for (int i = 2; i < 5; i++) {
             imagen = new ImageIcon("Tesoros/tri1.png");

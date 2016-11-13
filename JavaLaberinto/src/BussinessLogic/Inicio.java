@@ -13,66 +13,69 @@ public class Inicio {
 
         switch (i) {
             case 1:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroAraña.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroAraña.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Arana.getSimbolo();
             case 2:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroMariposa.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroMariposa.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Mariposa.getSimbolo();
             case 3:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroGenio.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroGenio.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Genio.getSimbolo();
             case 4:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroDragon.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroDragon.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Dragon.getSimbolo();
             case 5:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroLagartija.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroLagartija.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Lagartija.getSimbolo();
             case 6:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroCerdo.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroCerdito.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Cerdo.getSimbolo();
             case 7:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroBuho.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroBuho.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Buho.getSimbolo();
             case 8:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroRaton.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroRaton.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Raton.getSimbolo();
             case 9:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroBruja.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroBruja.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Bruja.getSimbolo();
             case 10:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroMurcielago.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroMurcielago.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Murcielago.getSimbolo();
             case 11:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroFantasma.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroFantasma.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Fantasma.getSimbolo();
             case 12:
-                imagen = new ImageIcon("/Tesoros/FichasSueltas/FichaEsquinaTesoroInsecto.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT));
+                imagen = new ImageIcon("Tesoros/FichasSueltas/FichaEsquinaTesoroInsecto.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
                 ficha.setImagen(imagen);
                 return Tarjeta.Insecto.getSimbolo();
             default:
+                imagen = new ImageIcon("Tesoros/FichaEsquina.png");
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH));
+                ficha.setImagen(imagen);
                 return ' ';
         }
     }

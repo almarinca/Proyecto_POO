@@ -2,8 +2,8 @@ package BussinessLogic;
 
 import static BussinessLogic.Turno.*;
 import Data.*;
-import GUI.GUILaberinto;
 import static UI.Interfaz.*;
+import java.util.ArrayList;
 
 public class JavaLaberinto {
 
@@ -19,7 +19,6 @@ public class JavaLaberinto {
         desplazarJugador(Jugador.jugador2, '0');
         desplazarJugador(Jugador.jugador3, '0');
         desplazarJugador(Jugador.jugador4, '0');
-        GUILaberinto.main(args);
         printBienvenida();
         int instrucciones;
         boolean inicioInstrucciones = true;
@@ -45,7 +44,6 @@ public class JavaLaberinto {
             }
         }
         salir = false;
-
         while (!salir) {
 
             printTurnoJugador(contador);
@@ -76,7 +74,7 @@ public class JavaLaberinto {
             contador++;
         }
     }
-
+    
     public static void movimientoJugador(Jugador jugador, char mover, Tablero tablero) {
 
         boolean salir = false;
@@ -87,21 +85,22 @@ public class JavaLaberinto {
             mover = a.charAt(0);
             salir = (mover == 'f') ? true : false;
             boolean valido = desplazarJugador(jugador, mover);
-            if (!valido) {
+            if(!valido){
                 printMovInvalido();
             }
+
         }
     }
-
-    public static void evaluarGanador(Jugador jugador) {
+    
+    public static void evaluarGanador(Jugador jugador){
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
-            printTesoroEncontrado(jugador);
-            jugador.getListaTarjetas().remove(0);
-            if (jugador.getListaTarjetas().isEmpty()) {
-                printGanador(jugador);
-                JavaLaberinto.salir = true;
-            }
-        }
+                        printTesoroEncontrado(jugador);
+                        jugador.getListaTarjetas().remove(0);
+                        if (jugador.getListaTarjetas().isEmpty()) {
+                            printGanador(jugador);
+                            JavaLaberinto.salir = true;
+                        }
+                    }
     }
 
     public static void moverFichas(Tablero tablero) {
@@ -109,17 +108,17 @@ public class JavaLaberinto {
         while (girar != 3) {
             dibujarTablero(tablero);
             printMensajeFichaLibre();
-            printFicha(Tablero.getFichasSobrantes().get(0));
+            printFicha(tablero.getFichasSobrantes().get(0));
             printDeseaGirar();
             girar = leerInt();
             switch (girar) {
                 case 1:
-                    rotarFicha(Tablero.getFichasSobrantes().get(0));
-                    rotarFicha(Tablero.getFichasSobrantes().get(0));
-                    rotarFicha(Tablero.getFichasSobrantes().get(0));
+                    rotarFicha(tablero.getFichasSobrantes().get(0));
+                    rotarFicha(tablero.getFichasSobrantes().get(0));
+                    rotarFicha(tablero.getFichasSobrantes().get(0));
                     break;
                 case 2:
-                    rotarFicha(Tablero.getFichasSobrantes().get(0));
+                    rotarFicha(tablero.getFichasSobrantes().get(0));
                     break;
                 case 3:
                     break;
@@ -138,22 +137,22 @@ public class JavaLaberinto {
                 case 1:
                 case 2:
                 case 3:
-                    correrFila(casilla, (casilla * 2) - 1, 0, 0, 1);
+                    correrFila(tablero, casilla, (casilla * 2) - 1, 0, 0, 1);
                     break;
                 case 4:
                 case 6:
                 case 8:
-                    correrFila(casilla, 0, casilla - 3, 1, 0);
+                    correrFila(tablero, casilla, 0, casilla - 3, 1, 0);
                     break;
                 case 5:
                 case 7:
                 case 9:
-                    correrFila(casilla, -6, casilla - 4, 1, 0);
+                    correrFila(tablero, casilla, -6, casilla - 4, 1, 0);
                     break;
                 case 10:
                 case 11:
                 case 12:
-                    correrFila(casilla, (casilla - 9) * 2 - 1, -6, 0, 1);
+                    correrFila(tablero, casilla, (casilla - 9) * 2 - 1, -6, 0, 1);
                     break;
                 default:
                     salir = false;

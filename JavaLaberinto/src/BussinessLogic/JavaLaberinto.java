@@ -4,7 +4,6 @@ import static BussinessLogic.Turno.*;
 import Data.*;
 import GUI.GUILaberinto;
 import static UI.Interfaz.*;
-import java.util.ArrayList;
 
 public class JavaLaberinto {
 
@@ -91,7 +90,6 @@ public class JavaLaberinto {
             if (!valido) {
                 printMovInvalido();
             }
-
         }
     }
 

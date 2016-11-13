@@ -496,7 +496,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         for (Jugador jugador : Jugador.values()) {
             int j = jugador.getX();
             int i = jugador.getY();
-            dibujarFicha(this.getGraphics(), jugador.getImagen(), (i * (y + 2)) + y/4 + y, (j * (y + 2)) + y/4 + y, Tablero.getTablero()[i][j].getGiro(), y / 2, y / 2);
+            dibujarFicha(this.getGraphics(), jugador.getImagen(), (i * (y + 2)) + (2 * y / 7) + y, (j * (y + 2)) + (2 * y / 7) + y, 0, 0, 0);
         }
     }
 
@@ -548,6 +548,20 @@ public class GUILaberinto extends javax.swing.JFrame {
         jButton17.setEnabled(false);
         jButton18.setEnabled(false);
         jButton19.setEnabled(false);
+        jButton4.setLocation((2 * y) + y / 8, y / 3);
+        jButton5.setLocation((4 * y) + y / 6, y / 3);
+        jButton6.setLocation((6 * y) + y / 5, y / 3);
+        jButton7.setLocation(y / 7, (2 * y) + y / 9);
+        jButton8.setLocation(y / 7, (4 * y) + y / 8);
+        jButton9.setLocation(y / 7, (6 * y) + y / 7);
+        jButton13.setLocation((2 * y) + y / 8, 8 * y - y / 7);
+        jButton14.setLocation((4 * y) + y / 6, 8 * y - y / 7);
+        jButton15.setLocation((6 * y) + y / 5, 8 * y - y / 7);
+        jButton10.setLocation(8 * y + y / 7, (2 * y) + y / 9);
+        jButton11.setLocation(8 * y + y / 7, (4 * y) + y / 8);
+        jButton12.setLocation(8 * y + y / 7, (6 * y) + y / 7);
+        this.setLayout(null);
+        repaint();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

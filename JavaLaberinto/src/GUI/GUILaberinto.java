@@ -338,7 +338,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         double i = Tablero.getFichasSobrantes().get(0).getGiro();
         for (int j = 0; j < 20; j++) {
-            dibujarFichaLibre(200, 200);
+            dibujarFichaLibre();
             i = i - 0.05;
             Tablero.getFichasSobrantes().get(0).setGiro(i);
         }
@@ -349,13 +349,13 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
-        dibujarFichaLibre(200, 200);
+        dibujarFichaLibre();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         double i = Tablero.getFichasSobrantes().get(0).getGiro();
         for (int j = 0; j < 20; j++) {
-            dibujarFichaLibre(200, 200);
+            dibujarFichaLibre();
             i = i + 0.05;
             Tablero.getFichasSobrantes().get(0).setGiro(i);
         }
@@ -364,104 +364,104 @@ public class GUILaberinto extends javax.swing.JFrame {
         }
         Tablero.getFichasSobrantes().get(0).setGiro(i);
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
-        dibujarFichaLibre(200, 200);
+        dibujarFichaLibre();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         correrFila(7, -6, 3, 1, 0);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
         cambiarBotones();
         correrFila(9, -6, 5, 1, 0);
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         correrFila(10, 1, -6, 0, 1);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         correrFila(11, 3, -6, 0, 1);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         cambiarBotones();
         correrFila(1, 1, 0, 0, 1);
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         correrFila(2, 3, 0, 0, 1);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         correrFila(3, 5, 0, 0, 1);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         correrFila(4, 0, 1, 1, 0);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         correrFila(6, 0, 3, 1, 0);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         correrFila(8, 0, 5, 1, 0);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         correrFila(5, -6, 1, 1, 0);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         correrFila(12, 5, -6, 0, 1);
         cambiarBotones();
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Se debe poner el codigo para que vaya el siguiente jugador
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         Turno.desplazarJugador(Jugador.jugador1, 'w');
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         Turno.desplazarJugador(Jugador.jugador1, 's');
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         Turno.desplazarJugador(Jugador.jugador1, 'a');
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         Turno.desplazarJugador(Jugador.jugador1, 'd');
-        construirTablero(200, 200);
+        construirTablero();
     }//GEN-LAST:event_jButton19ActionPerformed
 
     public static void main(String args[]) {
@@ -501,17 +501,17 @@ public class GUILaberinto extends javax.swing.JFrame {
     @Override
     public void paint(Graphics g) {
         super.paint(g);
-        this.construirTablero(200, 200);
+        this.construirTablero();
     }
 
-    public void construirTablero(int tamx, int tamy) {
+    public void construirTablero() {
 
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
                 dibujarFicha(jPanel1.getGraphics(), Tablero.getTablero()[i][j].getImagen(), (i * (y + 2)) + y, (j * (y + 2)) + y, Tablero.getTablero()[i][j].getGiro(), y / 2, y / 2);
             }
         }
-        dibujarFichaLibre(tamx, tamy);
+        dibujarFichaLibre();
         for (Jugador jugador : Jugador.values()) {
             int j = jugador.getX();
             int i = jugador.getY();
@@ -536,11 +536,11 @@ public class GUILaberinto extends javax.swing.JFrame {
         return imagenRotada;
     }
 
-    public void dibujarFichaLibre(int tamx, int tamy) {
+    public void dibujarFichaLibre() {
         ImageIcon ima = Tablero.getFichasSobrantes().get(0).getImagen();
-        ima = new ImageIcon(ima.getImage().getScaledInstance(tamx, tamy, Image.SCALE_SMOOTH));
+        ima = new ImageIcon(ima.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         double a = Tablero.getFichasSobrantes().get(0).getGiro();
-        dibujarFicha(jLabel1.getGraphics(), ima, 0, 0, a, tamx / 2, tamy / 2);
+        dibujarFicha(jLabel1.getGraphics(), ima, 0, 0, a, y, y);
     }
 
     public void cambiarBotones() {
@@ -591,8 +591,9 @@ public class GUILaberinto extends javax.swing.JFrame {
         jButton10.setLocation((1 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
         jButton11.setLocation((3 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
         jButton12.setLocation((5 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jPanel1.setSize(9 * y, 9 * y);
-        jPanel2.setSize(4 * y, 9 * y);
+        jPanel1.setSize(9 * y + 12, 9 * y + 12);
+        jPanel1.setLocation(6, 6);
+        jPanel2.setSize(4 * y, 9 * y + 12);
         jPanel2.setLocation(jPanel1.getLocation().x + 9 * y + y / 2, jPanel1.getLocation().y);
         ImageIcon imagen = null;
         for (int i = 2; i < 5; i++) {
@@ -631,7 +632,7 @@ public class GUILaberinto extends javax.swing.JFrame {
             listaBotones.get(i).setText("");
             listaBotones.get(i).setContentAreaFilled(false);
         }
-        jLabel1.setLocation(2 * y - 100, 2 * y);
+        jLabel1.setLocation(y, 5 * y / 3);
         jButton1.setLocation(2 * y - 61, 8 * y);
         jButton2.setLocation(2 * y - 130, y);
         jButton3.setLocation(2 * y + 25, y);
@@ -640,6 +641,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         jButton17.setLocation(2 * y - 100, 9 * y / 2);
         jButton19.setLocation(2 * y + 35, 9 * y / 2);
         this.setLayout(null);
+        jLabel1.setLayout(null);
         jPanel1.setLayout(null);
         jPanel2.setLayout(null);
         repaint();

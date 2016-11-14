@@ -6,16 +6,13 @@
 package GUI;
 
 import BussinessLogic.Inicio;
-import BussinessLogic.JavaLaberinto;
 import BussinessLogic.Turno;
 import static BussinessLogic.Turno.correrFila;
 import Data.Jugador;
 import Data.Tablero;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -36,9 +33,8 @@ public class GUILaberinto extends javax.swing.JFrame {
     private static final ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
     static int y = Inicio.y;
     static int x = (Inicio.x - 13 * y) / 3;
-    static int turno;
+    static int turno = 1;
     static int numeroJugadores;
-    static GUILaberinto laberinto = new GUILaberinto();  
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -457,7 +453,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       
+
         double i = Tablero.getFichasSobrantes().get(0).getGiro();
         for (int j = 0; j < 20; j++) {
             dibujarFichaLibre();
@@ -546,31 +542,30 @@ public class GUILaberinto extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         turno++;
-        if(turno == numeroJugadores + 1){
+        if (turno == numeroJugadores + 1) {
             turno = 1;
-        }   
+        }
         cambiarBotones();
-        construirTablero(); 
+        construirTablero();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
         Jugador jugador;
-        jugador = asignarTurno(turno);       
-        Turno.desplazarJugador(jugador, 'w');        
+        jugador = asignarTurno(turno);
+        Turno.desplazarJugador(jugador, 'w');
         construirTablero();
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        
+
         Jugador jugador;
         jugador = asignarTurno(turno);
-        Turno.desplazarJugador(jugador, 's');        
-        
+        Turno.desplazarJugador(jugador, 's');
         construirTablero();
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        
+
         Jugador jugador;
         jugador = asignarTurno(turno);
         Turno.desplazarJugador(jugador, 'd');
@@ -578,7 +573,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        
+
         Jugador jugador;
         jugador = asignarTurno(turno);
         Turno.desplazarJugador(jugador, 'a');
@@ -587,38 +582,25 @@ public class GUILaberinto extends javax.swing.JFrame {
 
     private void btnElegirCuatroJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirCuatroJugadoresActionPerformed
         numeroJugadores = 4;
-        turno = 1;
-        //JavaLaberinto.asignarListaTarjetas(numeroJugadores);
-        GUILaberinto laberinto = new GUILaberinto();
-        laberinto.setVisible(true);
+        Inicio.asignarListaTarjetas(numeroJugadores);
+        this.setVisible(true);
         JFramaMenuInicio.setVisible(false);
-        laberinto.crearListaBotones();
         construirTablero();
     }//GEN-LAST:event_btnElegirCuatroJugadoresActionPerformed
 
     private void btnElegirDosJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirDosJugadoresActionPerformed
         numeroJugadores = 2;
-        turno = 1;
-
-        JavaLaberinto.asignarListaTarjetas(numeroJugadores);
-        GUILaberinto laberinto = new GUILaberinto();
-        laberinto.setVisible(true);
+        Inicio.asignarListaTarjetas(numeroJugadores);
+        this.setVisible(true);
         JFramaMenuInicio.setVisible(false);
-        laberinto.crearListaBotones();
-        
-
         construirTablero();
     }//GEN-LAST:event_btnElegirDosJugadoresActionPerformed
 
     private void btnElegirTresJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirTresJugadoresActionPerformed
         numeroJugadores = 3;
-        turno = 1;
-        //JavaLaberinto.asignarListaTarjetas(numeroJugadores);
-       
-        laberinto.crearListaBotones();
-        laberinto.setVisible(true);
+        Inicio.asignarListaTarjetas(numeroJugadores);
+        this.setVisible(true);
         JFramaMenuInicio.setVisible(false);
-
         construirTablero();
     }//GEN-LAST:event_btnElegirTresJugadoresActionPerformed
 
@@ -649,13 +631,12 @@ public class GUILaberinto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                /*GUILaberinto laberinto = new GUILaberinto();
-                laberinto.setVisible(true);
-                laberinto.crearListaBotones();*/
+                GUILaberinto laberinto = new GUILaberinto();
+                laberinto.setVisible(false);
                 laberinto.crearListaBotones();
-                laberinto.JFramaMenuInicio.setVisible(true);   
+                laberinto.JFramaMenuInicio.setVisible(true);
                 laberinto.JFramaMenuInicio.setSize(Inicio.x, Inicio.y * 10);
-                laberinto.JFramaMenuInicio.setTitle("Menu de inicio"); 
+                laberinto.JFramaMenuInicio.setTitle("Menu de inicio");
             }
         });
     }
@@ -714,8 +695,9 @@ public class GUILaberinto extends javax.swing.JFrame {
             }
         }
     }
-    public Jugador asignarTurno(int turno){
-        switch(turno){
+
+    public Jugador asignarTurno(int turno) {
+        switch (turno) {
             case 1:
                 return Jugador.jugador1;
             case 2:
@@ -728,7 +710,6 @@ public class GUILaberinto extends javax.swing.JFrame {
                 return null;
         }
     }
-    
 
     private void crearListaBotones() {
         listaBotones.add(jButton2);
@@ -820,8 +801,6 @@ public class GUILaberinto extends javax.swing.JFrame {
             listaBotones.get(i).setText("");
             listaBotones.get(i).setContentAreaFilled(false);
         }
-        imagen = new ImageIcon("Tesoros/FlechaMoverIzquierda.png");
-        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));
         for (int i = 0; i < 2; i++) {
             if (i == 0) {
                 imagen = new ImageIcon("Tesoros/FlechaMoverIzquierda.png");
@@ -838,32 +817,31 @@ public class GUILaberinto extends javax.swing.JFrame {
         imagen = new ImageIcon("Tesoros/BotonPasarTurno.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y / 3, Image.SCALE_SMOOTH));
         listaBotones.get(18).setIcon(imagen);
-        listaBotones.get(18).setSize(y*2, y*2);
+        listaBotones.get(18).setSize(y * 2, y * 2);
         listaBotones.get(18).setText("");
         listaBotones.get(18).setContentAreaFilled(false);
-        ImageIcon imagenB ;
-        imagenB = new ImageIcon("Tesoros/Botones/2.png");
-        imagenB = new ImageIcon(imagenB.getImage().getScaledInstance(y*2, y*2, Image.SCALE_SMOOTH));
-        listaBotones.get(19).setIcon(imagenB);
-        listaBotones.get(19).setSize(y*2, y*2);
+        
+        imagen = new ImageIcon("Tesoros/Botones/2.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y * 2, y * 2, Image.SCALE_SMOOTH));
+        listaBotones.get(19).setIcon(imagen);
+        listaBotones.get(19).setSize(y * 2, y * 2);
         listaBotones.get(19).setText("");
         listaBotones.get(19).setContentAreaFilled(false);
-        
-       imagenB = new ImageIcon("Tesoros/Botones/3.png");
-        imagenB = new ImageIcon(imagenB.getImage().getScaledInstance(y*2, y*2, Image.SCALE_SMOOTH));
-        listaBotones.get(20).setIcon(imagenB);
-        listaBotones.get(20).setSize(y*2, y*2);
+
+        imagen = new ImageIcon("Tesoros/Botones/3.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y * 2, y * 2, Image.SCALE_SMOOTH));
+        listaBotones.get(20).setIcon(imagen);
+        listaBotones.get(20).setSize(y * 2, y * 2);
         listaBotones.get(20).setText("");
         listaBotones.get(20).setContentAreaFilled(false);
-        
-        imagenB = new ImageIcon("Tesoros/Botones/4.png");
-        imagenB = new ImageIcon(imagenB.getImage().getScaledInstance(y*2, y*2, Image.SCALE_SMOOTH));
-        listaBotones.get(21).setIcon(imagenB);
-        listaBotones.get(21).setSize(y*2, y*2);
+
+        imagen = new ImageIcon("Tesoros/Botones/4.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y * 2, y * 2, Image.SCALE_SMOOTH));
+        listaBotones.get(21).setIcon(imagen);
+        listaBotones.get(21).setSize(y * 2, y * 2);
         listaBotones.get(21).setText("");
         listaBotones.get(21).setContentAreaFilled(false);
-        
-        
+
         jButton1.setIcon(imagen);
         jButton1.setSize(2 * y, 2 * y / 3);
         jButton1.setText("");
@@ -881,24 +859,8 @@ public class GUILaberinto extends javax.swing.JFrame {
         jLabel1.setLayout(null);
         jPanel1.setLayout(null);
         jPanel2.setLayout(null);
-      
+
         repaint();
-    }
-    public Jugador verifiedTurno(Jugador jugador){
-        
-        if(null != jugador)switch (jugador) {
-            case jugador1:
-                return Jugador.jugador1;
-            case jugador2:
-                return Jugador.jugador2;
-            case jugador3:
-                return Jugador.jugador3;
-            case jugador4:
-                return Jugador.jugador4;
-            default:
-                return null;
-        }
-        return null;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

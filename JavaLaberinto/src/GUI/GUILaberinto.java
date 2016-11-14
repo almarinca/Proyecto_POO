@@ -6,13 +6,16 @@
 package GUI;
 
 import BussinessLogic.Inicio;
+import BussinessLogic.JavaLaberinto;
 import BussinessLogic.Turno;
 import static BussinessLogic.Turno.correrFila;
 import Data.Jugador;
 import Data.Tablero;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -33,11 +36,19 @@ public class GUILaberinto extends javax.swing.JFrame {
     private static final ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
     static int y = Inicio.y;
     static int x = (Inicio.x - 13 * y) / 3;
+    static int turno;
+    static int numeroJugadores;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        JFramaMenuInicio = new javax.swing.JFrame();
+        jPanel3 = new javax.swing.JPanel();
+        btnElegirCuatroJugadores = new javax.swing.JButton();
+        btnElegirDosJugadores = new javax.swing.JButton();
+        btnElegirTresJugadores = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -60,6 +71,85 @@ public class GUILaberinto extends javax.swing.JFrame {
         jButton19 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+
+        JFramaMenuInicio.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        JFramaMenuInicio.setLocation(new java.awt.Point(0, 0));
+        JFramaMenuInicio.setMinimumSize(new java.awt.Dimension(400, 50));
+
+        btnElegirCuatroJugadores.setText("4 jugadores");
+        btnElegirCuatroJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElegirCuatroJugadoresActionPerformed(evt);
+            }
+        });
+
+        btnElegirDosJugadores.setText("2 jugadores");
+        btnElegirDosJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElegirDosJugadoresActionPerformed(evt);
+            }
+        });
+
+        btnElegirTresJugadores.setText("3 jugadores");
+        btnElegirTresJugadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElegirTresJugadoresActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Ingrese el numero de jugadores :");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(479, Short.MAX_VALUE)
+                .addComponent(btnElegirTresJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnElegirCuatroJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(284, 284, 284)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(263, 263, 263)
+                    .addComponent(btnElegirDosJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(587, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(jLabel2)
+                .addGap(84, 84, 84)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnElegirTresJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnElegirCuatroJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(276, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(179, 179, 179)
+                    .addComponent(btnElegirDosJugadores, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(276, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout JFramaMenuInicioLayout = new javax.swing.GroupLayout(JFramaMenuInicio.getContentPane());
+        JFramaMenuInicio.getContentPane().setLayout(JFramaMenuInicioLayout);
+        JFramaMenuInicioLayout.setHorizontalGroup(
+            JFramaMenuInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JFramaMenuInicioLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 34, Short.MAX_VALUE))
+        );
+        JFramaMenuInicioLayout.setVerticalGroup(
+            JFramaMenuInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JFramaMenuInicioLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
@@ -353,6 +443,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       
         double i = Tablero.getFichasSobrantes().get(0).getGiro();
         for (int j = 0; j < 20; j++) {
             dibujarFichaLibre();
@@ -440,29 +531,75 @@ public class GUILaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Se debe poner el codigo para que vaya el siguiente jugador
-        construirTablero();
+        turno++;
+        if(turno == numeroJugadores + 1){
+            turno = 1;
+        }   
+        cambiarBotones();
+        construirTablero(); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        Turno.desplazarJugador(Jugador.jugador1, 'w');
+        Jugador jugador;
+        jugador = asignarTurno(turno);       
+        Turno.desplazarJugador(jugador, 'w');        
         construirTablero();
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        Turno.desplazarJugador(Jugador.jugador1, 's');
+        
+        Jugador jugador;
+        jugador = asignarTurno(turno);
+        Turno.desplazarJugador(jugador, 's');        
+        
         construirTablero();
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        Turno.desplazarJugador(Jugador.jugador1, 'd');
+        
+        Jugador jugador;
+        jugador = asignarTurno(turno);
+        Turno.desplazarJugador(jugador, 'd');
         construirTablero();
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        Turno.desplazarJugador(Jugador.jugador1, 'a');
+        
+        Jugador jugador;
+        jugador = asignarTurno(turno);
+        Turno.desplazarJugador(jugador, 'a');
         construirTablero();
     }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void btnElegirCuatroJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirCuatroJugadoresActionPerformed
+        numeroJugadores = 4;
+        turno = 1;
+        GUILaberinto laberinto = new GUILaberinto();
+        laberinto.setVisible(true);
+        JFramaMenuInicio.setVisible(false); 
+        laberinto.crearListaBotones();
+        construirTablero();
+    }//GEN-LAST:event_btnElegirCuatroJugadoresActionPerformed
+
+    private void btnElegirDosJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirDosJugadoresActionPerformed
+        numeroJugadores = 2;
+        turno = 1;
+        GUILaberinto laberinto = new GUILaberinto();
+        laberinto.setVisible(true);
+        JFramaMenuInicio.setVisible(false); 
+        laberinto.crearListaBotones();        
+        construirTablero();
+    }//GEN-LAST:event_btnElegirDosJugadoresActionPerformed
+
+    private void btnElegirTresJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElegirTresJugadoresActionPerformed
+        numeroJugadores = 3;
+        turno = 1;
+        GUILaberinto laberinto = new GUILaberinto();
+        laberinto.setVisible(true);
+        JFramaMenuInicio.setVisible(false); 
+        laberinto.crearListaBotones();
+        construirTablero();
+    }//GEN-LAST:event_btnElegirTresJugadoresActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -491,9 +628,13 @@ public class GUILaberinto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUILaberinto laberinto = new GUILaberinto();
+                /*GUILaberinto laberinto = new GUILaberinto();
                 laberinto.setVisible(true);
-                laberinto.crearListaBotones();
+                laberinto.crearListaBotones();*/
+                GUILaberinto laberinto = new GUILaberinto();                
+                laberinto.JFramaMenuInicio.setVisible(true);   
+                laberinto.JFramaMenuInicio.setSize(Inicio.x, Inicio.y * 10);
+                laberinto.JFramaMenuInicio.setTitle("Menu de inicio"); 
             }
         });
     }
@@ -552,6 +693,21 @@ public class GUILaberinto extends javax.swing.JFrame {
             }
         }
     }
+    public Jugador asignarTurno(int turno){
+        switch(turno){
+            case 1:
+                return Jugador.jugador1;
+            case 2:
+                return Jugador.jugador2;
+            case 3:
+                return Jugador.jugador3;
+            case 4:
+                return Jugador.jugador4;
+            default:
+                return null;
+        }
+    }
+    
 
     private void crearListaBotones() {
         listaBotones.add(jButton2);
@@ -674,8 +830,28 @@ public class GUILaberinto extends javax.swing.JFrame {
         jPanel2.setLayout(null);
         repaint();
     }
+    public Jugador verifiedTurno(Jugador jugador){
+        
+        if(null != jugador)switch (jugador) {
+            case jugador1:
+                return Jugador.jugador1;
+            case jugador2:
+                return Jugador.jugador2;
+            case jugador3:
+                return Jugador.jugador3;
+            case jugador4:
+                return Jugador.jugador4;
+            default:
+                return null;
+        }
+        return null;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame JFramaMenuInicio;
+    private javax.swing.JButton btnElegirCuatroJugadores;
+    private javax.swing.JButton btnElegirDosJugadores;
+    private javax.swing.JButton btnElegirTresJugadores;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -696,8 +872,10 @@ public class GUILaberinto extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 
 }

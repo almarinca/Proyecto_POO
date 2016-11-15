@@ -636,7 +636,7 @@ public class GUILaberinto extends javax.swing.JFrame {
                 laberinto.crearListaBotones();
                 laberinto.JFramaMenuInicio.setVisible(true);
                 laberinto.JFramaMenuInicio.setSize(Inicio.x, Inicio.y * 10);
-                laberinto.JFramaMenuInicio.setTitle("Menu de inicio");
+                laberinto.JFramaMenuInicio.setTitle("Menu de inicio");laberinto.crearListaBotones();
             }
         });
     }
@@ -816,36 +816,35 @@ public class GUILaberinto extends javax.swing.JFrame {
         }
         imagen = new ImageIcon("Tesoros/BotonPasarTurno.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y / 3, Image.SCALE_SMOOTH));
-        listaBotones.get(18).setIcon(imagen);
-        listaBotones.get(18).setSize(y * 2, y * 2);
-        listaBotones.get(18).setText("");
-        listaBotones.get(18).setContentAreaFilled(false);
-        
-        imagen = new ImageIcon("Tesoros/Botones/2.png");
-        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y * 2, y * 2, Image.SCALE_SMOOTH));
-        listaBotones.get(19).setIcon(imagen);
-        listaBotones.get(19).setSize(y * 2, y * 2);
-        listaBotones.get(19).setText("");
-        listaBotones.get(19).setContentAreaFilled(false);
-
-        imagen = new ImageIcon("Tesoros/Botones/3.png");
-        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y * 2, y * 2, Image.SCALE_SMOOTH));
-        listaBotones.get(20).setIcon(imagen);
-        listaBotones.get(20).setSize(y * 2, y * 2);
-        listaBotones.get(20).setText("");
-        listaBotones.get(20).setContentAreaFilled(false);
-
-        imagen = new ImageIcon("Tesoros/Botones/4.png");
-        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y * 2, y * 2, Image.SCALE_SMOOTH));
-        listaBotones.get(21).setIcon(imagen);
-        listaBotones.get(21).setSize(y * 2, y * 2);
-        listaBotones.get(21).setText("");
-        listaBotones.get(21).setContentAreaFilled(false);
-
         jButton1.setIcon(imagen);
         jButton1.setSize(2 * y, 2 * y / 3);
         jButton1.setText("");
         jButton1.setContentAreaFilled(false);
+
+        imagen = new ImageIcon("Tesoros/Botones/2.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y * 2, y * 2, Image.SCALE_SMOOTH));
+        btnElegirDosJugadores.setIcon(imagen);
+        btnElegirDosJugadores.setSize(y * 4, y * 4);
+        btnElegirDosJugadores.setLocation(4 * y, 5 * y);
+        btnElegirDosJugadores.setText("");
+        btnElegirDosJugadores.setContentAreaFilled(false);
+
+        imagen = new ImageIcon("Tesoros/Botones/3.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y * 2, y * 2, Image.SCALE_SMOOTH));
+        btnElegirTresJugadores.setIcon(imagen);
+        btnElegirTresJugadores.setLocation(7 * y, 5 * y);
+        btnElegirTresJugadores.setSize(y * 4, y * 4);
+        btnElegirTresJugadores.setText("");
+        btnElegirTresJugadores.setContentAreaFilled(false);
+
+        imagen = new ImageIcon("Tesoros/Botones/4.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(y * 2, y * 2, Image.SCALE_SMOOTH));
+        btnElegirCuatroJugadores.setIcon(imagen);
+        btnElegirCuatroJugadores.setLocation(10 * y, 5 * y);
+        btnElegirCuatroJugadores.setSize(y * 4, y * 4);
+        btnElegirCuatroJugadores.setText("");
+        btnElegirCuatroJugadores.setContentAreaFilled(false);
+
         jLabel1.setLocation(y, 5 * y / 3);
         jLabel1.setSize(2 * y, 2 * y);
         jButton1.setLocation(y, 8 * y);
@@ -859,7 +858,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         jLabel1.setLayout(null);
         jPanel1.setLayout(null);
         jPanel2.setLayout(null);
-
+        JFramaMenuInicio.repaint();
         repaint();
     }
 

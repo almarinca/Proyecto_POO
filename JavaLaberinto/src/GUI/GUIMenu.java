@@ -6,7 +6,8 @@
 package GUI;
 
 import BussinessLogic.Inicio;
-import static GUI.GUILaberinto.y;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -35,6 +36,8 @@ public class GUIMenu extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,52 +55,85 @@ public class GUIMenu extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
+        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
+        jButton5.setOpaque(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
+        jLabel1.setText("Elige la cantidad de jugadores:");
+        jLabel1.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(367, 367, 367)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(267, 267, 267)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(491, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5)
+                            .addComponent(jButton4)
+                            .addComponent(jButton1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3)
+                            .addComponent(jButton2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(171, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(265, 265, 265))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jButton1))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addGap(18, 18, 18)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel1)
+                .addGap(1, 1, 1)
                 .addComponent(jButton5)
-                .addContainerGap(354, Short.MAX_VALUE))
+                .addContainerGap(317, Short.MAX_VALUE))
         );
 
         pack();
@@ -107,8 +143,10 @@ public class GUIMenu extends javax.swing.JFrame {
         jButton3.setVisible(true);
         jButton4.setVisible(true);
         jButton5.setVisible(true);
+        jLabel1.setVisible(true);
         jButton2.setEnabled(false);
         jButton1.setEnabled(false);
+        this.repaint();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -164,40 +202,60 @@ public class GUIMenu extends javax.swing.JFrame {
                 menu.setVisible(true);
                 menu.setSize(x, 10 * y);
                 menu.crearBotones();
+                menu.repaint();
             }
         });
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+        ImageIcon imagen;
+        imagen = new ImageIcon("Tesoros/Menu.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(x, 10 * y, Image.SCALE_SMOOTH));
+        g.drawImage(imagen.getImage(), 0, 0, x, y * 10, null);
+        jButton1.repaint();
+        jButton2.repaint();
+        jButton3.repaint();
+        jButton4.repaint();
+        jButton5.repaint();
+        jLabel1.repaint();
     }
 
     public void crearBotones() {
         jButton3.setVisible(false);
         jButton4.setVisible(false);
         jButton5.setVisible(false);
-        jButton1.setSize(3 * y, 2 * y);
-        jButton2.setSize(3 * y, 2 * y);
+        jButton1.setSize(3 * y, 3 * y / 2);
+        jButton2.setSize(3 * y, 3 * y / 2);
         jButton1.setLocation(x / 2 - 3 * y / 2, y);
-        jButton2.setLocation(x / 2 - 3 * y / 2, 7 * y / 2);
+        jButton2.setLocation(x / 2 - 3 * y / 2, 3 * y);
         jButton3.setSize(2 * y, 2 * y);
         jButton4.setSize(2 * y, 2 * y);
         jButton5.setSize(2 * y, 2 * y);
 
-        ImageIcon imagen, imagen2, imagen3;
+        ImageIcon imagen;
         imagen = new ImageIcon("Tesoros/Botones/2.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         jButton3.setIcon(imagen);
         jButton3.setContentAreaFilled(false);
         jButton3.setLocation(x / 2 - 7 * y / 2, 6 * y);
 
-        imagen2 = new ImageIcon("Tesoros/Botones/3.png");
-        imagen2 = new ImageIcon(imagen2.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
-        jButton4.setIcon(imagen2);
+        imagen = new ImageIcon("Tesoros/Botones/3.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
+        jButton4.setIcon(imagen);
         jButton4.setContentAreaFilled(false);
         jButton4.setLocation(x / 2 - y, 6 * y);
 
-        imagen3 = new ImageIcon("Tesoros/Botones/4.png");
-        imagen3 = new ImageIcon(imagen3.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
-        jButton5.setIcon(imagen3);
+        imagen = new ImageIcon("Tesoros/Botones/4.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
+        jButton5.setIcon(imagen);
         jButton5.setContentAreaFilled(false);
         jButton5.setLocation(x / 2 + 3 * y / 2, 6 * y);
+
+        jLabel1.setLocation(x / 2 - jLabel1.getSize().width / 2, 5 * y);
+        jLabel1.setVisible(false);
+
         this.setLayout(null);
     }
 
@@ -207,5 +265,7 @@ public class GUIMenu extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

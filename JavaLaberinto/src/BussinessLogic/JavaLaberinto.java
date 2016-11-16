@@ -3,6 +3,7 @@ package BussinessLogic;
 import static BussinessLogic.Turno.*;
 import Data.*;
 import GUI.GUILaberinto;
+import GUI.GUIMenu;
 import static UI.Interfaz.*;
 
 public class JavaLaberinto {
@@ -19,7 +20,7 @@ public class JavaLaberinto {
         desplazarJugador(Jugador.jugador2, '0');
         desplazarJugador(Jugador.jugador3, '0');
         desplazarJugador(Jugador.jugador4, '0');
-        GUILaberinto.main(args);
+        GUIMenu.main(args);
         printBienvenida();
         int instrucciones;
         boolean inicioInstrucciones = true;

@@ -44,7 +44,7 @@ public class Ficha {
     public void setCaracter(char caracter) {
         this.caracter = caracter;
     }
-
+    
     public char[][] getFicha() {
         return ficha;
     }

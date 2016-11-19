@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public class Inicio {
-    
+
     Toolkit t = Toolkit.getDefaultToolkit();
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
     public static int y = screenSize.height / 10;
-    
+    public static int x = screenSize.width;
+
     public static char asignarTesoroFichasSobrantes(int i, Ficha ficha) {
 
         ImageIcon imagen = null;
@@ -85,7 +86,7 @@ public class Inicio {
                 return ' ';
         }
     }
-    
+
     public static void asignarListaTarjetas(int jugadores) {
 
         int contador = 24;
@@ -121,5 +122,5 @@ public class Inicio {
             }
         }
     }
-    
+
 }

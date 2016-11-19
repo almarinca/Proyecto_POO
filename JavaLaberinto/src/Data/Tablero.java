@@ -27,9 +27,9 @@ public class Tablero {
 
         //FICHAS DONDE ESTAN UBICADOS LOS TESOROS
         asignarFichaFija(0, 0, 0, 30, Tarjeta.Esquina1, new ImageIcon("Tesoros/FichasDeInicio/FichaJugadorVerde.png"));
-        asignarFichaFija(1, 0, 6, 31, Tarjeta.Esquina3, new ImageIcon("Tesoros/FichasDeInicio/FichaJugadorRojo.png"));
-        asignarFichaFija(2, 6, 6, 32, Tarjeta.Esquina4, new ImageIcon("Tesoros/FichasDeInicio/FichaJugadorAmarillo.png"));
-        asignarFichaFija(3, 6, 0, 33, Tarjeta.Esquina2, new ImageIcon("Tesoros/FichasDeInicio/FichaJugadorAzul.png"));
+        asignarFichaFija(1, 0, 6, 31, Tarjeta.Esquina3, new ImageIcon("Tesoros/FichasDeInicio/FichaJugadorAmarillo.png"));
+        asignarFichaFija(2, 6, 6, 32, Tarjeta.Esquina4, new ImageIcon("Tesoros/FichasDeInicio/FichaJugadorAzul.png"));
+        asignarFichaFija(3, 6, 0, 33, Tarjeta.Esquina2, new ImageIcon("Tesoros/FichasDeInicio/FichaJugadorRojo.png"));
         asignarFichaFija(0, 0, 2, 13, Tarjeta.Anillo, new ImageIcon("Tesoros/FichasEstaticas/FichaTTesoroAnillo.png"));
         asignarFichaFija(0, 0, 4, 14, Tarjeta.Mapa, new ImageIcon("Tesoros/FichasEstaticas/FichaTTesoroMapa.png"));
         asignarFichaFija(0, 2, 4, 15, Tarjeta.Corona, new ImageIcon("Tesoros/FichasEstaticas/FichaTTesoroCorona.png"));

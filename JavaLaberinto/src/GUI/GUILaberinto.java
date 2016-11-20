@@ -60,7 +60,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
 
-        jPanel1.setBackground(new java.awt.Color(102, 51, 0));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
         casilla1.setText("jButton4");
@@ -261,7 +260,7 @@ public class GUILaberinto extends javax.swing.JFrame {
 
         turnoJugador.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         turnoJugador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        turnoJugador.setText("Es el turno del Jugador 1");
+        turnoJugador.setText("Es el turno de:");
         turnoJugador.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         indicaciones.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
@@ -272,7 +271,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         turnoJugador1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
         turnoJugador1.setForeground(new java.awt.Color(0, 255, 0));
         turnoJugador1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        turnoJugador1.setText("Color: Verde");
+        turnoJugador1.setText("Jugador 1");
         turnoJugador1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -521,26 +520,26 @@ public class GUILaberinto extends javax.swing.JFrame {
         }
 
         String color = null;
-        turnoJugador.setText("Es el turno del Jugador " + turno);
+        turnoJugador.setText("Es el turno de:");
         switch (turno) {
             case 1:
-                color = "Verde";
+                color = "Jugador 1";
                 turnoJugador1.setForeground(Color.green);
                 break;
             case 2:
-                color = "Rojo";
+                color = "Jugador 2";
                 turnoJugador1.setForeground(Color.red);
                 break;
             case 3:
-                color = "Amarillo";
+                color = "Jugador 3";
                 turnoJugador1.setForeground(Color.yellow);
                 break;
             case 4:
-                color = "Azul";
+                color = "Jugador 4";
                 turnoJugador1.setForeground(Color.blue);
                 break;
         }
-        turnoJugador1.setText("Color: " + color);
+        turnoJugador1.setText(color);
         turnoJugador1.repaint();
     }//GEN-LAST:event_terminarTurnoActionPerformed
 
@@ -604,7 +603,6 @@ public class GUILaberinto extends javax.swing.JFrame {
                 menu.setVisible(true);
                 menu.setSize(Inicio.x, 10 * y);
                 menu.crearBotones();
-                menu.inicio();
             }
         });
     }
@@ -624,8 +622,6 @@ public class GUILaberinto extends javax.swing.JFrame {
             indicacion = ("Muevete por el tablero hacia tu tesoro" + "\n");
         }
         indicaciones.setText(indicacion);
-
-        turnoJugador.setText("Es el turno del Jugador " + turno);
 
         ImageIcon ima = Jugador.values()[4 - turno].getListaTarjetas().get(0).getImagen();
         ima = new ImageIcon(ima.getImage().getScaledInstance(3 * y / 2, (2 * y), Image.SCALE_SMOOTH));

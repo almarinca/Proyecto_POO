@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 public enum Jugador {
+
     jugador4('4', '€', 6, 6, null, new ImageIcon("Tesoros/Jugadores/JugadorAzul.png")),
     jugador3('3', '&', 6, 0, null, new ImageIcon("Tesoros/Jugadores/JugadorAmarillo.png")),
     jugador2('2', '$', 0, 6, null, new ImageIcon("Tesoros/Jugadores/JugadorRoja.png")),

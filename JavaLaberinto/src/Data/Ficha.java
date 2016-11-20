@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class Ficha {
 
-    private char caracter; // me parecio mas adecuado nombrarlo caracter que tesoro por que no solo puede ser un tesoro
+    private char caracter; 
     private char[][] ficha;
     private ImageIcon imagen;
     private double giro;

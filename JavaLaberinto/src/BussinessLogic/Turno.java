@@ -20,14 +20,14 @@ public class Turno {
         f.setFicha(matrizrot);
     }
 
-    public static void correrFila(int opcion, int x, int y, int mx, int my) {
+    public static void correrFila(int casilla, int x, int y, int mx, int my) {
 
         ArrayList<Ficha> fichasSobrantes = Tablero.getFichasSobrantes();
         for (int i = 0; i <= 6; i++) {
             fichasSobrantes.add(Tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)]);
         }
 
-        moverJugadorConFicha(opcion, fichasSobrantes);
+        moverJugadorConFicha(casilla, fichasSobrantes);
 
         for (int i = 0; i <= 6; i++) {
             Tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
@@ -100,32 +100,32 @@ public class Turno {
 
     }
 
-    public static void moverJugadorConFicha(int opcion, ArrayList<Ficha> fichasSobrantes) {
+    public static void moverJugadorConFicha(int casilla, ArrayList<Ficha> fichasSobrantes) {
 
         for (Jugador jugador : Jugador.values()) {
             if (fichasSobrantes.contains(Tablero.getTablero()[jugador.getY()][jugador.getX()])) {
                 int X = jugador.getX();
                 int Y = jugador.getY();
-                switch (opcion) {
+                switch (casilla) {
                     case 1:
                     case 2:
                     case 3:
-                        actualizarPosJugador(Y, 6, 1, 0, X, 0, opcion, jugador);
+                        actualizarPosJugador(Y, 6, 1, 0, X, 0, casilla, jugador);
                         break;
                     case 4:
                     case 6:
                     case 8:
-                        actualizarPosJugador(X, 6, 0, 1, 0, Y, opcion, jugador);
+                        actualizarPosJugador(X, 6, 0, 1, 0, Y, casilla, jugador);
                         break;
                     case 5:
                     case 7:
                     case 9:
-                        actualizarPosJugador(X, 0, 0, -1, 6, Y, opcion, jugador);
+                        actualizarPosJugador(X, 0, 0, -1, 6, Y, casilla, jugador);
                         break;
                     case 10:
                     case 11:
                     case 12:
-                        actualizarPosJugador(Y, 0, -1, 0, X, 6, opcion, jugador);
+                        actualizarPosJugador(Y, 0, -1, 0, X, 6, casilla, jugador);
                         break;
                     default:
                         break;

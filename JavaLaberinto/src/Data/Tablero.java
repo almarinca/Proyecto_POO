@@ -19,9 +19,9 @@ public class Tablero {
 
     public Tablero() {
 
-        crearFichaFija(Ficha.fichaR, 13);
-        crearFichaFija(Ficha.fichaT, 17);
-        crearFichaFija(Ficha.fichaL, 20);
+        crearFichas(Ficha.fichaR, 13);
+        crearFichas(Ficha.fichaT, 17);
+        crearFichas(Ficha.fichaL, 20);
 
         fichasSobrantes = (ArrayList<Ficha>) listaFichas.clone();
 
@@ -95,13 +95,13 @@ public class Tablero {
         this.y = y;
     }
 
-    public void crearFichaFija(char[][] tipo, int cantidad) {
+    public void crearFichas(char[][] tipo, int cantidad) {
 
         for (int k = 0; k < cantidad; k++) {
 
-            char[][] matrizFicha = new char[3][3];  // esta matriz la añadi por que cada ficha debe tener su matriz,
-            for (int i = 0; i < 3; i++) {      // sino al modificarla se modificarian todas las fichas del mismo tipo,
-                for (int j = 0; j < 3; j++) {  // ya que lo que se modifica es la matriz
+            char[][] matrizFicha = new char[3][3];
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
                     matrizFicha[i][j] = tipo[i][j];
                 }
             }
@@ -113,14 +113,14 @@ public class Tablero {
                 imagen = new ImageIcon("Tesoros/FichaRecta.png");
             } else if (tipo == Ficha.fichaT) {
                 imagen = new ImageIcon("Tesoros/FichaT.png");
-            } 
+            }
             imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y, Image.SCALE_SMOOTH));
             ficha.setImagen(imagen);
             if (tipo == Ficha.fichaL && k > 4) {
                 matrizFicha[1][1] = Inicio.asignarTesoroFichasSobrantes(k - 4, ficha);
             }
             ficha.setFicha(matrizFicha);
-            
+            ficha.setCaracter(ficha.getFicha()[1][1]);
             listaFichas.add(ficha);
         }
 

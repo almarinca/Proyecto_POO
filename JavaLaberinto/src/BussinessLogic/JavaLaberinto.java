@@ -20,7 +20,6 @@ public class JavaLaberinto {
         desplazarJugador(Jugador.jugador2, '0');
         desplazarJugador(Jugador.jugador3, '0');
         desplazarJugador(Jugador.jugador4, '0');
-        GUIMenu.main(args);
         printBienvenida();
         int instrucciones;
         boolean inicioInstrucciones = true;

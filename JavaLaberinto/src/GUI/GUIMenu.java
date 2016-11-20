@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 import BussinessLogic.Inicio;
@@ -10,16 +5,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author Danilo
- */
 public class GUIMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form GUIMenu
-     */
     public GUIMenu() {
         initComponents();
     }
@@ -154,58 +143,37 @@ public class GUIMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        GUILaberinto.numeroJugadores = 2;
-        GUILaberinto.main(null);
+        Inicio.asignarListaTarjetas(2);
+        GUILaberinto laberinto = new GUILaberinto();
+        laberinto.numeroJugadores = 2;
+        laberinto.setSize(Inicio.x, 10 * y);
+        laberinto.crearListaBotones();        
+        laberinto.setVisible(true);
+        this.setVisible(false);
+        laberinto.indicaciones();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        GUILaberinto.numeroJugadores = 3;
-        GUILaberinto.main(null);
+        Inicio.asignarListaTarjetas(3);
+        GUILaberinto laberinto = new GUILaberinto();
+        laberinto.numeroJugadores = 3;
+        laberinto.setSize(Inicio.x, 10 * y);
+        laberinto.crearListaBotones();
+        laberinto.setVisible(true);
+        this.setVisible(false);
+        laberinto.indicaciones();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        GUILaberinto.numeroJugadores = 4;
-        GUILaberinto.main(null);
+        Inicio.asignarListaTarjetas(4);
+        GUILaberinto laberinto = new GUILaberinto();
+        laberinto.numeroJugadores = 4;
+        laberinto.setSize(Inicio.x, 10 * y);
+        laberinto.crearListaBotones();
+        laberinto.setVisible(true);
+                this.setVisible(false);
+                laberinto.indicaciones();
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUIMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUIMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUIMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUIMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                GUIMenu menu = new GUIMenu();
-                menu.setVisible(true);
-                menu.setSize(x, 10 * y);
-                menu.crearBotones();
-                menu.repaint();
-            }
-        });
-    }
 
     @Override
     public void paint(Graphics g) {

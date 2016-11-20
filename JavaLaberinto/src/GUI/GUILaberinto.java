@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
-import BussinessLogic.Inicio;
-import BussinessLogic.Turno;
-import static BussinessLogic.Turno.correrFila;
-import Data.Jugador;
-import Data.Tablero;
+import BussinessLogic.*;
+import Data.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -18,6 +10,7 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import sun.awt.image.ToolkitImage;
 
 /**
@@ -41,116 +34,119 @@ public class GUILaberinto extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        casilla1 = new javax.swing.JButton();
+        casilla2 = new javax.swing.JButton();
+        casilla3 = new javax.swing.JButton();
+        casilla6 = new javax.swing.JButton();
+        casilla5 = new javax.swing.JButton();
+        casilla9 = new javax.swing.JButton();
+        casilla7 = new javax.swing.JButton();
+        casilla10 = new javax.swing.JButton();
+        casilla11 = new javax.swing.JButton();
+        casilla12 = new javax.swing.JButton();
+        casilla4 = new javax.swing.JButton();
+        casilla8 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        girarIzquierda = new javax.swing.JButton();
+        girarDerecha = new javax.swing.JButton();
+        fichaSobrante = new javax.swing.JLabel();
+        arriba = new javax.swing.JButton();
+        izquierda = new javax.swing.JButton();
+        derecha = new javax.swing.JButton();
+        abajo = new javax.swing.JButton();
+        terminarTurno = new javax.swing.JButton();
+        turnoJugador = new javax.swing.JLabel();
+        tarjeta = new javax.swing.JLabel();
+        indicaciones = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
-        jButton4.setText("jButton4");
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        casilla1.setText("jButton4");
+        casilla1.setBorder(null);
+        casilla1.setBorderPainted(false);
+        casilla1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                casilla1ActionPerformed(evt);
             }
         });
 
-        jButton5.setText("jButton5");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        casilla2.setText("jButton5");
+        casilla2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                casilla2ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("jButton6");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        casilla3.setText("jButton6");
+        casilla3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                casilla3ActionPerformed(evt);
             }
         });
 
-        jButton8.setText("jButton8");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        casilla6.setText("jButton8");
+        casilla6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                casilla6ActionPerformed(evt);
             }
         });
 
-        jButton13.setText("jButton13");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        casilla5.setText("jButton13");
+        casilla5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                casilla5ActionPerformed(evt);
             }
         });
 
-        jButton15.setText("jButton15");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        casilla9.setText("jButton15");
+        casilla9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                casilla9ActionPerformed(evt);
             }
         });
 
-        jButton14.setText("jButton14");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        casilla7.setText("jButton14");
+        casilla7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                casilla7ActionPerformed(evt);
             }
         });
 
-        jButton10.setText("jButton10");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        casilla10.setText("jButton10");
+        casilla10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                casilla10ActionPerformed(evt);
             }
         });
 
-        jButton11.setText("jButton11");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        casilla11.setText("jButton11");
+        casilla11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                casilla11ActionPerformed(evt);
             }
         });
 
-        jButton12.setText("jButton12");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        casilla12.setText("jButton12");
+        casilla12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                casilla12ActionPerformed(evt);
             }
         });
 
-        jButton7.setText("jButton7");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        casilla4.setText("jButton7");
+        casilla4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                casilla4ActionPerformed(evt);
             }
         });
 
-        jButton9.setText("jButton9");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        casilla8.setText("jButton9");
+        casilla8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                casilla8ActionPerformed(evt);
             }
         });
 
@@ -161,103 +157,112 @@ public class GUILaberinto extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7)
-                    .addComponent(jButton8)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10)
-                    .addComponent(jButton11)
-                    .addComponent(jButton12)
-                    .addComponent(jButton13)
-                    .addComponent(jButton14)
-                    .addComponent(jButton15))
+                    .addComponent(casilla1)
+                    .addComponent(casilla2)
+                    .addComponent(casilla3)
+                    .addComponent(casilla4)
+                    .addComponent(casilla6)
+                    .addComponent(casilla8)
+                    .addComponent(casilla10)
+                    .addComponent(casilla11)
+                    .addComponent(casilla12)
+                    .addComponent(casilla5)
+                    .addComponent(casilla7)
+                    .addComponent(casilla9))
                 .addGap(0, 772, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton4)
+                .addComponent(casilla1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(casilla2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(casilla3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7)
+                .addComponent(casilla4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton8)
+                .addComponent(casilla6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton9)
+                .addComponent(casilla8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton10)
+                .addComponent(casilla10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton11)
+                .addComponent(casilla11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton12)
+                .addComponent(casilla12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton13)
+                .addComponent(casilla5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton14)
+                .addComponent(casilla7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton15)
+                .addComponent(casilla9)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true), "Controles"));
 
-        jButton2.setText("Girar Izquierda");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        girarIzquierda.setText("Girar Izquierda");
+        girarIzquierda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                girarIzquierdaActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Girar Derecha");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        girarDerecha.setText("Girar Derecha");
+        girarDerecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                girarDerechaActionPerformed(evt);
             }
         });
 
-        jLabel1.setBackground(new java.awt.Color(28, 24, 24));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fichaSobrante.setBackground(new java.awt.Color(28, 24, 24));
+        fichaSobrante.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jButton16.setText("Arriba");
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
+        arriba.setText("Arriba");
+        arriba.setEnabled(false);
+        arriba.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
+                arribaActionPerformed(evt);
             }
         });
 
-        jButton17.setText("Izquierda");
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        izquierda.setText("Izquierda");
+        izquierda.setEnabled(false);
+        izquierda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                izquierdaActionPerformed(evt);
             }
         });
 
-        jButton19.setText("Derecha");
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        derecha.setText("Derecha");
+        derecha.setEnabled(false);
+        derecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                derechaActionPerformed(evt);
             }
         });
 
-        jButton18.setText("Abajo");
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        abajo.setText("Abajo");
+        abajo.setEnabled(false);
+        abajo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                abajoActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Terminar Turno");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        terminarTurno.setText("Terminar Turno");
+        terminarTurno.setEnabled(false);
+        terminarTurno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                terminarTurnoActionPerformed(evt);
             }
         });
+
+        turnoJugador.setText("Es el turno del Jugador 1");
+
+        indicaciones.setText("gira la ficha e ingresela donde desees");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -266,48 +271,62 @@ public class GUILaberinto extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jButton2)
-                        .addGap(64, 64, 64)
-                        .addComponent(jButton3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(207, 207, 207)
-                        .addComponent(jButton16))
+                        .addComponent(arriba))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton17)
+                                .addComponent(izquierda)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton19))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(derecha))
+                            .addComponent(fichaSobrante, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(208, 208, 208)
-                        .addComponent(jButton18))
+                        .addComponent(abajo))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(184, 184, 184)
-                        .addComponent(jButton1)))
+                        .addComponent(terminarTurno))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(girarIzquierda)
+                        .addGap(64, 64, 64)
+                        .addComponent(girarDerecha))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(221, 221, 221)
+                        .addComponent(tarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(indicaciones)
+                            .addComponent(turnoJugador))))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(97, 97, 97)
+                .addGap(71, 71, 71)
+                .addComponent(turnoJugador)
+                .addGap(35, 35, 35)
+                .addComponent(tarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(indicaciones)
+                .addGap(67, 67, 67)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64)
-                .addComponent(jButton16)
+                    .addComponent(girarIzquierda)
+                    .addComponent(girarDerecha))
+                .addGap(50, 50, 50)
+                .addComponent(fichaSobrante, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(arriba)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton17)
-                    .addComponent(jButton19))
+                    .addComponent(izquierda)
+                    .addComponent(derecha))
                 .addGap(33, 33, 33)
-                .addComponent(jButton18)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 223, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(abajo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                .addComponent(terminarTurno)
                 .addGap(128, 128, 128))
         );
 
@@ -337,7 +356,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void girarIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_girarIzquierdaActionPerformed
         double i = Tablero.getFichasSobrantes().get(0).getGiro();
         for (int j = 0; j < 20; j++) {
             dibujarFichaLibre();
@@ -352,9 +371,9 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
         dibujarFichaLibre();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_girarIzquierdaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void girarDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_girarDerechaActionPerformed
         double i = Tablero.getFichasSobrantes().get(0).getGiro();
         for (int j = 0; j < 20; j++) {
             dibujarFichaLibre();
@@ -367,116 +386,151 @@ public class GUILaberinto extends javax.swing.JFrame {
         Tablero.getFichasSobrantes().get(0).setGiro(i);
         Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
         dibujarFichaLibre();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_girarDerechaActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        correrFila(7, -6, 3, 1, 0);
+    private void casilla7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla7ActionPerformed
+        Turno.correrFila(7, -6, 3, 1, 0);
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton14ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla7ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+    private void casilla9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla9ActionPerformed
         cambiarBotones();
-        correrFila(9, -6, 5, 1, 0);
+        Turno.correrFila(9, -6, 5, 1, 0);
         construirTablero();
-    }//GEN-LAST:event_jButton15ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla9ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        correrFila(10, 1, -6, 0, 1);
-        cambiarBotones();
-        construirTablero();
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        correrFila(11, 3, -6, 0, 1);
+    private void casilla10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla10ActionPerformed
+        Turno.correrFila(10, 1, -6, 0, 1);
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton11ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla10ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        cambiarBotones();
-        correrFila(1, 1, 0, 0, 1);
-        construirTablero();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        correrFila(2, 3, 0, 0, 1);
+    private void casilla11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla11ActionPerformed
+        Turno.correrFila(11, 3, -6, 0, 1);
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton5ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla11ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        correrFila(3, 5, 0, 0, 1);
+    private void casilla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla1ActionPerformed
+        cambiarBotones();
+        Turno.correrFila(1, 1, 0, 0, 1);
+        construirTablero();
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla1ActionPerformed
+
+    private void casilla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla2ActionPerformed
+        Turno.correrFila(2, 3, 0, 0, 1);
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton6ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla2ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        correrFila(4, 0, 1, 1, 0);
+    private void casilla3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla3ActionPerformed
+        Turno.correrFila(3, 5, 0, 0, 1);
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton7ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla3ActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        correrFila(6, 0, 3, 1, 0);
+    private void casilla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla4ActionPerformed
+        Turno.correrFila(4, 0, 1, 1, 0);
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton8ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla4ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        correrFila(8, 0, 5, 1, 0);
+    private void casilla6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla6ActionPerformed
+        Turno.correrFila(6, 0, 3, 1, 0);
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton9ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla6ActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        correrFila(5, -6, 1, 1, 0);
+    private void casilla8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla8ActionPerformed
+        Turno.correrFila(8, 0, 5, 1, 0);
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton13ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla8ActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        correrFila(12, 5, -6, 0, 1);
+    private void casilla5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla5ActionPerformed
+        Turno.correrFila(5, -6, 1, 1, 0);
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton12ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla5ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void casilla12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla12ActionPerformed
+        Turno.correrFila(12, 5, -6, 0, 1);
+        cambiarBotones();
+        construirTablero();
+        indicaciones();
+        terminarTurno.setEnabled(true);
+    }//GEN-LAST:event_casilla12ActionPerformed
+
+    private void terminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarTurnoActionPerformed
+        Jugador jugador = Jugador.values()[turno - 1];
         turno++;
         if (turno == numeroJugadores + 1) {
             turno = 1;
         }
         cambiarBotones();
         construirTablero();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        indicaciones();
+        terminarTurno.setEnabled(false);
+        
+        if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
+            JOptionPane.showMessageDialog(this, "Felicitaciones jugador" + jugador.getNumero() + " has encontrado un tesoro");
+            jugador.getListaTarjetas().remove(0);
+            if (jugador.getListaTarjetas().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");
+            }
+        }
+    }//GEN-LAST:event_terminarTurnoActionPerformed
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+    private void arribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaActionPerformed
         Jugador jugador;
         jugador = asignarTurno(turno);
         Turno.desplazarJugador(jugador, 'w');
         construirTablero();
-    }//GEN-LAST:event_jButton16ActionPerformed
+    }//GEN-LAST:event_arribaActionPerformed
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void abajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abajoActionPerformed
         Jugador jugador;
         jugador = asignarTurno(turno);
         Turno.desplazarJugador(jugador, 's');
         construirTablero();
-    }//GEN-LAST:event_jButton18ActionPerformed
+    }//GEN-LAST:event_abajoActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+    private void izquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izquierdaActionPerformed
         Jugador jugador;
         jugador = asignarTurno(turno);
         Turno.desplazarJugador(jugador, 'd');
         construirTablero();
-    }//GEN-LAST:event_jButton17ActionPerformed
+    }//GEN-LAST:event_izquierdaActionPerformed
 
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    private void derechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derechaActionPerformed
         Jugador jugador;
         jugador = asignarTurno(turno);
         Turno.desplazarJugador(jugador, 'a');
         construirTablero();
-    }//GEN-LAST:event_jButton19ActionPerformed
+    }//GEN-LAST:event_derechaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -505,10 +559,16 @@ public class GUILaberinto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                GUILaberinto laberinto = new GUILaberinto();
-                laberinto.setVisible(true);
-                laberinto.setSize(Inicio.x, 10 * y);
-                laberinto.crearListaBotones();
+                Tablero tablero = new Tablero();
+                Turno.desplazarJugador(Jugador.jugador1, '0');
+                Turno.desplazarJugador(Jugador.jugador2, '0');
+                Turno.desplazarJugador(Jugador.jugador3, '0');
+                Turno.desplazarJugador(Jugador.jugador4, '0');
+                GUIMenu menu = new GUIMenu();
+                menu.setVisible(true);
+                menu.setSize(Inicio.x, 10 * y);
+                menu.crearBotones();
+
             }
         });
     }
@@ -517,6 +577,28 @@ public class GUILaberinto extends javax.swing.JFrame {
     public void paint(Graphics g) {
         super.paint(g);
         this.construirTablero();
+        this.indicaciones();
+    }
+
+    public void iniciar() {
+
+    }
+
+    public void indicaciones() {
+        String indicacion = "";
+        if (girarIzquierda.isEnabled()) {
+            indicacion = ("gira la ficha e ingresela donde desees");
+        } else {
+            indicacion = ("muevete por el tablero hacia tu tesoro" + "\n");
+        }
+        indicaciones.setText(indicacion);
+
+        turnoJugador.setText("Es el turno del Jugador " + turno);
+
+        ImageIcon ima = Jugador.values()[turno - 1].getListaTarjetas().get(0).getImagen();
+        ima = new ImageIcon(ima.getImage().getScaledInstance(y, (3 * y / 2) - 10, Image.SCALE_SMOOTH));
+        dibujarFicha(tarjeta.getGraphics(), ima, 0, 0, 0, 0, 0);
+
     }
 
     public void construirTablero() {
@@ -553,9 +635,9 @@ public class GUILaberinto extends javax.swing.JFrame {
 
     public void dibujarFichaLibre() {
         ImageIcon ima = Tablero.getFichasSobrantes().get(0).getImagen();
-        ima = new ImageIcon(ima.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
+        ima = new ImageIcon(ima.getImage().getScaledInstance(3 * y / 2, 3 * y / 2, Image.SCALE_SMOOTH));
         double a = Tablero.getFichasSobrantes().get(0).getGiro();
-        dibujarFicha(jLabel1.getGraphics(), ima, 0, 0, a, y, y);
+        dibujarFicha(fichaSobrante.getGraphics(), ima, 0, 0, a, 3 * y / 4, 3 * y / 4);
     }
 
     public void cambiarBotones() {
@@ -568,42 +650,42 @@ public class GUILaberinto extends javax.swing.JFrame {
         }
     }
 
-    private void crearListaBotones() {
+    public void crearListaBotones() {
         turno = 1;
-        listaBotones.add(jButton2);
-        listaBotones.add(jButton3);
-        listaBotones.add(jButton4);
-        listaBotones.add(jButton5);
-        listaBotones.add(jButton6);
-        listaBotones.add(jButton7);
-        listaBotones.add(jButton8);
-        listaBotones.add(jButton9);
-        listaBotones.add(jButton10);
-        listaBotones.add(jButton11);
-        listaBotones.add(jButton12);
-        listaBotones.add(jButton13);
-        listaBotones.add(jButton14);
-        listaBotones.add(jButton15);
-        listaBotones.add(jButton16);
-        listaBotones.add(jButton17);
-        listaBotones.add(jButton18);
-        listaBotones.add(jButton19);
-        jButton16.setEnabled(false);
-        jButton17.setEnabled(false);
-        jButton18.setEnabled(false);
-        jButton19.setEnabled(false);
-        jButton4.setLocation((1 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton5.setLocation((3 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton6.setLocation((5 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton7.setLocation((-1 * (y + 2)) + (2 * y / 7) + y + y / 8, (1 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton8.setLocation((-1 * (y + 2)) + (2 * y / 7) + y + y / 8, (3 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton9.setLocation((-1 * (y + 2)) + (2 * y / 7) + y + y / 8, (5 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton13.setLocation((7 * (y + 2)) + (2 * y / 7) + y + y / 8, (1 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton14.setLocation((7 * (y + 2)) + (2 * y / 7) + y + y / 8, (3 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton15.setLocation((7 * (y + 2)) + (2 * y / 7) + y + y / 8, (5 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton10.setLocation((1 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton11.setLocation((3 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
-        jButton12.setLocation((5 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        listaBotones.add(girarIzquierda);
+        listaBotones.add(girarDerecha);
+        listaBotones.add(casilla1);
+        listaBotones.add(casilla2);
+        listaBotones.add(casilla3);
+        listaBotones.add(casilla4);
+        listaBotones.add(casilla6);
+        listaBotones.add(casilla8);
+        listaBotones.add(casilla10);
+        listaBotones.add(casilla11);
+        listaBotones.add(casilla12);
+        listaBotones.add(casilla5);
+        listaBotones.add(casilla7);
+        listaBotones.add(casilla9);
+        listaBotones.add(arriba);
+        listaBotones.add(izquierda);
+        listaBotones.add(abajo);
+        listaBotones.add(derecha);
+        arriba.setEnabled(false);
+        izquierda.setEnabled(false);
+        abajo.setEnabled(false);
+        derecha.setEnabled(false);
+        casilla1.setLocation((1 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla2.setLocation((3 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla3.setLocation((5 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla4.setLocation((-1 * (y + 2)) + (2 * y / 7) + y + y / 8, (1 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla6.setLocation((-1 * (y + 2)) + (2 * y / 7) + y + y / 8, (3 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla8.setLocation((-1 * (y + 2)) + (2 * y / 7) + y + y / 8, (5 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla5.setLocation((7 * (y + 2)) + (2 * y / 7) + y + y / 8, (1 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla7.setLocation((7 * (y + 2)) + (2 * y / 7) + y + y / 8, (3 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla9.setLocation((7 * (y + 2)) + (2 * y / 7) + y + y / 8, (5 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla10.setLocation((1 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla11.setLocation((3 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
+        casilla12.setLocation((5 * (y + 2)) + (2 * y / 7) + y + y / 8, (7 * (y + 2)) + (2 * y / 7) + y + y / 8);
         jPanel1.setSize(9 * y + 12, 9 * y + 12);
         jPanel1.setLocation(x, 6);
         jPanel2.setSize(4 * y, 9 * y + 12);
@@ -669,22 +751,27 @@ public class GUILaberinto extends javax.swing.JFrame {
         }
         imagen = new ImageIcon("Tesoros/BotonPasarTurno.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y / 3, Image.SCALE_SMOOTH));
-        jButton1.setIcon(imagen);
-        jButton1.setSize(2 * y, 2 * y / 3);
-        jButton1.setText("");
-        jButton1.setContentAreaFilled(false);
+        terminarTurno.setIcon(imagen);
+        terminarTurno.setSize(2 * y, 2 * y / 3);
+        terminarTurno.setText("");
+        terminarTurno.setContentAreaFilled(false);
 
-        jLabel1.setLocation(y, 5 * y / 3);
-        jLabel1.setSize(2 * y, 2 * y);
-        jButton1.setLocation(y, 8 * y);
-        jButton2.setLocation(2 * y - 3 * y / 2, y);
-        jButton3.setLocation(2 * y + y / 2, y);
-        jButton16.setLocation(2 * y - y / 4, 4 * y);
-        jButton18.setLocation(2 * y - y / 4, 5 * y);
-        jButton17.setLocation(2 * y + y / 4, 9 * y / 2);
-        jButton19.setLocation(2 * y - 3 * y / 4, 9 * y / 2);
+        turnoJugador.setLocation(y, y / 2);
+        tarjeta.setLocation(3 * y / 2, y);
+        tarjeta.setSize(y, 3 * y / 2);
+        indicaciones.setLocation(3 * y / 5, 12 * y / 5);
+        indicaciones.setSize(3 * y, y);
+        fichaSobrante.setLocation(5 * y / 4, 17 * y / 4);
+        fichaSobrante.setSize(3 * y / 2, 3 * y / 2);
+        terminarTurno.setLocation(y, 8 * y);
+        girarIzquierda.setLocation(2 * y - 3 * y / 2, 7 * y / 2);
+        girarDerecha.setLocation(2 * y + y / 2, 7 * y / 2);
+        arriba.setLocation(2 * y - y / 4, 6 * y);
+        abajo.setLocation(2 * y - y / 4, 7 * y);
+        izquierda.setLocation(2 * y + y / 4, 13 * y / 2);
+        derecha.setLocation(2 * y - 3 * y / 4, 13 * y / 2);
         this.setLayout(null);
-        jLabel1.setLayout(null);
+        fichaSobrante.setLayout(null);
         jPanel1.setLayout(null);
         jPanel2.setLayout(null);
         repaint();
@@ -706,28 +793,31 @@ public class GUILaberinto extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton abajo;
+    private javax.swing.JButton arriba;
+    private javax.swing.JButton casilla1;
+    private javax.swing.JButton casilla10;
+    private javax.swing.JButton casilla11;
+    private javax.swing.JButton casilla12;
+    private javax.swing.JButton casilla2;
+    private javax.swing.JButton casilla3;
+    private javax.swing.JButton casilla4;
+    private javax.swing.JButton casilla5;
+    private javax.swing.JButton casilla6;
+    private javax.swing.JButton casilla7;
+    private javax.swing.JButton casilla8;
+    private javax.swing.JButton casilla9;
+    private javax.swing.JButton derecha;
+    private javax.swing.JLabel fichaSobrante;
+    private javax.swing.JButton girarDerecha;
+    private javax.swing.JButton girarIzquierda;
+    private javax.swing.JLabel indicaciones;
+    private javax.swing.JButton izquierda;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel tarjeta;
+    private javax.swing.JButton terminarTurno;
+    private javax.swing.JLabel turnoJugador;
     // End of variables declaration//GEN-END:variables
 
 }

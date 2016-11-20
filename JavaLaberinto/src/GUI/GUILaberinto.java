@@ -13,10 +13,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import sun.awt.image.ToolkitImage;
 
-/**
- *
- * @author Danilo
- */
 public class GUILaberinto extends javax.swing.JFrame {
 
     public GUILaberinto() {
@@ -485,7 +481,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_casilla12ActionPerformed
 
     private void terminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarTurnoActionPerformed
-        Jugador jugador = Jugador.values()[turno - 1];
+        Jugador jugador = Jugador.values()[4 - turno];
         turno++;
         if (turno == numeroJugadores + 1) {
             turno = 1;
@@ -494,7 +490,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         construirTablero();
         indicaciones();
         terminarTurno.setEnabled(false);
-        
+
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
             JOptionPane.showMessageDialog(this, "Felicitaciones jugador" + jugador.getNumero() + " has encontrado un tesoro");
             jugador.getListaTarjetas().remove(0);
@@ -580,10 +576,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         this.indicaciones();
     }
 
-    public void iniciar() {
-
-    }
-
     public void indicaciones() {
         String indicacion = "";
         if (girarIzquierda.isEnabled()) {
@@ -595,7 +587,7 @@ public class GUILaberinto extends javax.swing.JFrame {
 
         turnoJugador.setText("Es el turno del Jugador " + turno);
 
-        ImageIcon ima = Jugador.values()[turno - 1].getListaTarjetas().get(0).getImagen();
+        ImageIcon ima = Jugador.values()[4 - turno].getListaTarjetas().get(0).getImagen();
         ima = new ImageIcon(ima.getImage().getScaledInstance(y, (3 * y / 2) - 10, Image.SCALE_SMOOTH));
         dibujarFicha(tarjeta.getGraphics(), ima, 0, 0, 0, 0, 0);
 

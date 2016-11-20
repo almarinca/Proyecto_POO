@@ -2,6 +2,7 @@ package GUI;
 
 import BussinessLogic.*;
 import Data.*;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -54,10 +55,12 @@ public class GUILaberinto extends javax.swing.JFrame {
         turnoJugador = new javax.swing.JLabel();
         tarjeta = new javax.swing.JLabel();
         indicaciones = new javax.swing.JLabel();
+        turnoJugador1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
 
+        jPanel1.setBackground(new java.awt.Color(102, 51, 0));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
         casilla1.setText("jButton4");
@@ -256,9 +259,21 @@ public class GUILaberinto extends javax.swing.JFrame {
             }
         });
 
+        turnoJugador.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        turnoJugador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnoJugador.setText("Es el turno del Jugador 1");
+        turnoJugador.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        indicaciones.setText("gira la ficha e ingresela donde desees");
+        indicaciones.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        indicaciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        indicaciones.setText("Gira la ficha e ingresela donde desees");
+        indicaciones.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        turnoJugador1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        turnoJugador1.setForeground(new java.awt.Color(0, 255, 0));
+        turnoJugador1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        turnoJugador1.setText("Color: Verde");
+        turnoJugador1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -284,30 +299,36 @@ public class GUILaberinto extends javax.swing.JFrame {
                         .addGap(184, 184, 184)
                         .addComponent(terminarTurno))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(girarIzquierda)
-                        .addGap(64, 64, 64)
-                        .addComponent(girarDerecha))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
+                        .addGap(348, 348, 348)
                         .addComponent(tarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(175, 175, 175)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(turnoJugador1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(turnoJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(indicaciones)
-                            .addComponent(turnoJugador))))
-                .addContainerGap(123, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(girarIzquierda)
+                                .addGap(64, 64, 64)
+                                .addComponent(girarDerecha)))))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addComponent(turnoJugador)
-                .addGap(35, 35, 35)
+                .addComponent(turnoJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(turnoJugador1)
+                .addGap(107, 107, 107)
                 .addComponent(tarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(indicaciones)
-                .addGap(67, 67, 67)
+                .addGap(99, 99, 99)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(girarIzquierda)
                     .addComponent(girarDerecha))
@@ -335,7 +356,7 @@ public class GUILaberinto extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -498,6 +519,29 @@ public class GUILaberinto extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");
             }
         }
+
+        String color = null;
+        turnoJugador.setText("Es el turno del Jugador " + turno);
+        switch (turno) {
+            case 1:
+                color = "Verde";
+                turnoJugador1.setForeground(Color.green);
+                break;
+            case 2:
+                color = "Rojo";
+                turnoJugador1.setForeground(Color.red);
+                break;
+            case 3:
+                color = "Amarillo";
+                turnoJugador1.setForeground(Color.yellow);
+                break;
+            case 4:
+                color = "Azul";
+                turnoJugador1.setForeground(Color.blue);
+                break;
+        }
+        turnoJugador1.setText("Color: " + color);
+        turnoJugador1.repaint();
     }//GEN-LAST:event_terminarTurnoActionPerformed
 
     private void arribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaActionPerformed
@@ -584,7 +628,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         turnoJugador.setText("Es el turno del Jugador " + turno);
 
         ImageIcon ima = Jugador.values()[4 - turno].getListaTarjetas().get(0).getImagen();
-        ima = new ImageIcon(ima.getImage().getScaledInstance(y, (3 * y / 2) - 10, Image.SCALE_SMOOTH));
+        ima = new ImageIcon(ima.getImage().getScaledInstance(3 * y / 2, (2 * y), Image.SCALE_SMOOTH));
         dibujarFicha(tarjeta.getGraphics(), ima, 0, 0, 0, 0, 0);
 
     }
@@ -597,7 +641,8 @@ public class GUILaberinto extends javax.swing.JFrame {
             }
         }
         dibujarFichaLibre();
-        for (Jugador jugador : Jugador.values()) {
+        for (int p = 1; p <= numeroJugadores; p++) {
+            Jugador jugador = Jugador.values()[4 - p];
             int j = jugador.getX();
             int i = jugador.getY();
             dibujarFicha(jPanel1.getGraphics(), jugador.getImagen(), (i * (y + 2)) + (2 * y / 7) + y, (j * (y + 2)) + (2 * y / 7) + y, 0, 0, 0);
@@ -744,11 +789,14 @@ public class GUILaberinto extends javax.swing.JFrame {
         terminarTurno.setText("");
         terminarTurno.setContentAreaFilled(false);
 
-        turnoJugador.setLocation(2 * y - turnoJugador.getSize().width / 2, y / 2);
-        tarjeta.setLocation(3 * y / 2, y);
-        tarjeta.setSize(y, 3 * y / 2);
-        indicaciones.setLocation(2 * y - indicaciones.getSize().width / 2, 12 * y / 5);
-        indicaciones.setSize(3 * y, y);
+        turnoJugador.setSize(4 * y, y / 3);
+        turnoJugador1.setSize(4 * y, y / 3);
+        turnoJugador.setLocation(0, y / 2);
+        turnoJugador1.setLocation(0, 3 * y / 4);
+        tarjeta.setLocation(5 * y / 4, y + y / 8);
+        tarjeta.setSize(3 * y / 2, 2 * y);
+        indicaciones.setLocation(0, 16 * y / 5);
+        indicaciones.setSize(4 * y, y / 4);
         fichaSobrante.setLocation(5 * y / 4, 17 * y / 4);
         fichaSobrante.setSize(3 * y / 2, 3 * y / 2);
         terminarTurno.setLocation(y, 8 * y);
@@ -792,6 +840,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     private javax.swing.JLabel tarjeta;
     private javax.swing.JButton terminarTurno;
     private javax.swing.JLabel turnoJugador;
+    private javax.swing.JLabel turnoJugador1;
     // End of variables declaration//GEN-END:variables
 
 }

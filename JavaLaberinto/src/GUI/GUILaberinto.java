@@ -492,7 +492,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         terminarTurno.setEnabled(false);
 
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
-            JOptionPane.showMessageDialog(this, "Felicitaciones jugador" + jugador.getNumero() + " has encontrado un tesoro");
+            JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro");
             jugador.getListaTarjetas().remove(0);
             if (jugador.getListaTarjetas().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");
@@ -501,29 +501,25 @@ public class GUILaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_terminarTurnoActionPerformed
 
     private void arribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaActionPerformed
-        Jugador jugador;
-        jugador = asignarTurno(turno);
+        Jugador jugador = Jugador.values()[4 - turno];
         Turno.desplazarJugador(jugador, 'w');
         construirTablero();
     }//GEN-LAST:event_arribaActionPerformed
 
     private void abajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abajoActionPerformed
-        Jugador jugador;
-        jugador = asignarTurno(turno);
+        Jugador jugador = Jugador.values()[4 - turno];
         Turno.desplazarJugador(jugador, 's');
         construirTablero();
     }//GEN-LAST:event_abajoActionPerformed
 
     private void izquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izquierdaActionPerformed
-        Jugador jugador;
-        jugador = asignarTurno(turno);
+        Jugador jugador = Jugador.values()[4 - turno];
         Turno.desplazarJugador(jugador, 'd');
         construirTablero();
     }//GEN-LAST:event_izquierdaActionPerformed
 
     private void derechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derechaActionPerformed
-        Jugador jugador;
-        jugador = asignarTurno(turno);
+        Jugador jugador = Jugador.values()[4 - turno];
         Turno.desplazarJugador(jugador, 'a');
         construirTablero();
     }//GEN-LAST:event_derechaActionPerformed
@@ -564,7 +560,7 @@ public class GUILaberinto extends javax.swing.JFrame {
                 menu.setVisible(true);
                 menu.setSize(Inicio.x, 10 * y);
                 menu.crearBotones();
-
+                menu.inicio();
             }
         });
     }
@@ -579,9 +575,9 @@ public class GUILaberinto extends javax.swing.JFrame {
     public void indicaciones() {
         String indicacion = "";
         if (girarIzquierda.isEnabled()) {
-            indicacion = ("gira la ficha e ingresela donde desees");
+            indicacion = ("Gira la ficha e ingresala donde desees");
         } else {
-            indicacion = ("muevete por el tablero hacia tu tesoro" + "\n");
+            indicacion = ("Muevete por el tablero hacia tu tesoro" + "\n");
         }
         indicaciones.setText(indicacion);
 
@@ -748,10 +744,10 @@ public class GUILaberinto extends javax.swing.JFrame {
         terminarTurno.setText("");
         terminarTurno.setContentAreaFilled(false);
 
-        turnoJugador.setLocation(y, y / 2);
+        turnoJugador.setLocation(2 * y - turnoJugador.getSize().width / 2, y / 2);
         tarjeta.setLocation(3 * y / 2, y);
         tarjeta.setSize(y, 3 * y / 2);
-        indicaciones.setLocation(3 * y / 5, 12 * y / 5);
+        indicaciones.setLocation(2 * y - indicaciones.getSize().width / 2, 12 * y / 5);
         indicaciones.setSize(3 * y, y);
         fichaSobrante.setLocation(5 * y / 4, 17 * y / 4);
         fichaSobrante.setSize(3 * y / 2, 3 * y / 2);
@@ -769,20 +765,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         repaint();
     }
 
-    public Jugador asignarTurno(int turno) {
-        switch (turno) {
-            case 1:
-                return Jugador.jugador1;
-            case 2:
-                return Jugador.jugador2;
-            case 3:
-                return Jugador.jugador3;
-            case 4:
-                return Jugador.jugador4;
-            default:
-                return null;
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abajo;

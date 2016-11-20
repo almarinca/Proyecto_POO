@@ -2,9 +2,10 @@ package GUI;
 
 import BussinessLogic.Inicio;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 public class GUIMenu extends javax.swing.JFrame {
@@ -147,7 +148,7 @@ public class GUIMenu extends javax.swing.JFrame {
         GUILaberinto laberinto = new GUILaberinto();
         laberinto.numeroJugadores = 2;
         laberinto.setSize(Inicio.x, 10 * y);
-        laberinto.crearListaBotones();        
+        laberinto.crearListaBotones();
         laberinto.setVisible(true);
         this.setVisible(false);
         laberinto.indicaciones();
@@ -171,8 +172,8 @@ public class GUIMenu extends javax.swing.JFrame {
         laberinto.setSize(Inicio.x, 10 * y);
         laberinto.crearListaBotones();
         laberinto.setVisible(true);
-                this.setVisible(false);
-                laberinto.indicaciones();
+        this.setVisible(false);
+        laberinto.indicaciones();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     @Override
@@ -225,6 +226,64 @@ public class GUIMenu extends javax.swing.JFrame {
         jLabel1.setVisible(false);
 
         this.setLayout(null);
+    }
+
+    public void this_mousePressed(JButton boton) {
+        ImageIcon imagen = null;
+        if (boton == jButton3) {
+            imagen = new ImageIcon("Tesoros/Botones/BotonNew2.png");
+        } else if (boton == jButton4) {
+            imagen = new ImageIcon("Tesoros/Botones/BotonNew3.png");
+        } else if (boton == jButton5) {
+            imagen = new ImageIcon("Tesoros/Botones/BotonNew4.png");
+        }
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
+        boton.setIcon(imagen);
+        boton.repaint();
+    }
+
+    public void this_mouseReleased(JButton boton) {
+        ImageIcon imagen = null;
+        if (boton == jButton3) {
+            imagen = new ImageIcon("Tesoros/Botones/2.png");
+        } else if (boton == jButton4) {
+            imagen = new ImageIcon("Tesoros/Botones/3.png");
+        } else if (boton == jButton5) {
+            imagen = new ImageIcon("Tesoros/Botones/4.png");
+        }
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
+        boton.setIcon(imagen);
+        boton.repaint();
+    }
+
+    public void inicio() {
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                this_mousePressed(jButton3);
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                this_mouseReleased(jButton3);
+            }
+        });
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                this_mousePressed(jButton4);
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                this_mouseReleased(jButton4);
+            }
+        });
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                this_mousePressed(jButton5);
+            }
+
+            public void mouseReleased(MouseEvent e) {
+                this_mouseReleased(jButton5);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -194,6 +194,19 @@ public class GUIMenu extends javax.swing.JFrame {
         jButton5.setSize(2 * y, 2 * y);
 
         ImageIcon imagen;
+
+        imagen = new ImageIcon("Tesoros/Botones/CONTINUARJUEGOPRUEBA.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
+        jButton1.setIcon(imagen);
+        jButton1.setText("");
+        jButton1.setContentAreaFilled(false);
+
+        imagen = new ImageIcon("Tesoros/Botones/NEWGAMEPRUEBA.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
+        jButton2.setIcon(imagen);
+        jButton2.setText("");
+        jButton2.setContentAreaFilled(false);
+
         imagen = new ImageIcon("Tesoros/Botones/2.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         jButton3.setIcon(imagen);

@@ -258,7 +258,7 @@ public class GUILaberinto extends javax.swing.JFrame {
             }
         });
 
-        turnoJugador.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        turnoJugador.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
         turnoJugador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnoJugador.setText("Es el turno de:");
         turnoJugador.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -268,7 +268,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         indicaciones.setText("Gira la ficha e ingresela donde desees");
         indicaciones.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        turnoJugador1.setFont(new java.awt.Font("Comic Sans MS", 0, 24)); // NOI18N
+        turnoJugador1.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
         turnoJugador1.setForeground(new java.awt.Color(0, 255, 0));
         turnoJugador1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnoJugador1.setText("Jugador 1");

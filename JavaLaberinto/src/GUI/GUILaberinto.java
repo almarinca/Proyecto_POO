@@ -408,64 +408,56 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.correrFila(7, -6, 3, 1, 0);
         cambiarBotones();
         construirTablero();
-        indicaciones();
-        terminarTurno.setEnabled(true);
+        indicaciones();        
     }//GEN-LAST:event_casilla7ActionPerformed
 
     private void casilla9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla9ActionPerformed
         cambiarBotones();
         Turno.correrFila(9, -6, 5, 1, 0);
         construirTablero();
-        indicaciones();
-        terminarTurno.setEnabled(true);
+        indicaciones();        
     }//GEN-LAST:event_casilla9ActionPerformed
 
     private void casilla10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla10ActionPerformed
         Turno.correrFila(10, 1, -6, 0, 1);
         cambiarBotones();
         construirTablero();
-        indicaciones();
-        terminarTurno.setEnabled(true);
+        indicaciones();        
     }//GEN-LAST:event_casilla10ActionPerformed
 
     private void casilla11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla11ActionPerformed
         Turno.correrFila(11, 3, -6, 0, 1);
         cambiarBotones();
         construirTablero();
-        indicaciones();
-        terminarTurno.setEnabled(true);
+        indicaciones();        
     }//GEN-LAST:event_casilla11ActionPerformed
 
     private void casilla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla1ActionPerformed
         cambiarBotones();
         Turno.correrFila(1, 1, 0, 0, 1);
         construirTablero();
-        indicaciones();
-        terminarTurno.setEnabled(true);
+        indicaciones();        
     }//GEN-LAST:event_casilla1ActionPerformed
 
     private void casilla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla2ActionPerformed
         Turno.correrFila(2, 3, 0, 0, 1);
         cambiarBotones();
         construirTablero();
-        indicaciones();
-        terminarTurno.setEnabled(true);
+        indicaciones();        
     }//GEN-LAST:event_casilla2ActionPerformed
 
     private void casilla3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla3ActionPerformed
         Turno.correrFila(3, 5, 0, 0, 1);
         cambiarBotones();
         construirTablero();
-        indicaciones();
-        terminarTurno.setEnabled(true);
+        indicaciones();        
     }//GEN-LAST:event_casilla3ActionPerformed
 
     private void casilla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla4ActionPerformed
         Turno.correrFila(4, 0, 1, 1, 0);
         cambiarBotones();
         construirTablero();
-        indicaciones();
-        terminarTurno.setEnabled(true);
+        indicaciones();        
     }//GEN-LAST:event_casilla4ActionPerformed
 
     private void casilla6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla6ActionPerformed
@@ -473,7 +465,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla6ActionPerformed
 
     private void casilla8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla8ActionPerformed
@@ -481,7 +472,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla8ActionPerformed
 
     private void casilla5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla5ActionPerformed
@@ -489,7 +479,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla5ActionPerformed
 
     private void casilla12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla12ActionPerformed
@@ -497,7 +486,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla12ActionPerformed
 
     private void terminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarTurnoActionPerformed
@@ -509,7 +497,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(false);
 
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
             JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro");
@@ -518,7 +505,7 @@ public class GUILaberinto extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");
             }
         }
-
+        
         String color = null;
         turnoJugador.setText("Es el turno de:");
         switch (turno) {
@@ -540,7 +527,7 @@ public class GUILaberinto extends javax.swing.JFrame {
                 break;
         }
         turnoJugador1.setText(color);
-        turnoJugador1.repaint();
+        turnoJugador1.repaint();        
     }//GEN-LAST:event_terminarTurnoActionPerformed
 
     private void arribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaActionPerformed
@@ -625,7 +612,7 @@ public class GUILaberinto extends javax.swing.JFrame {
 
         ImageIcon ima = Jugador.values()[4 - turno].getListaTarjetas().get(0).getImagen();
         ima = new ImageIcon(ima.getImage().getScaledInstance(3 * y / 2, (2 * y), Image.SCALE_SMOOTH));
-        dibujarFicha(tarjeta.getGraphics(), ima, 0, 0, 0, 0, 0);
+        dibujarFicha(tarjeta.getGraphics(), ima, 0, 0, 0, 0, 0);              
 
     }
 
@@ -670,7 +657,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     }
 
     public void cambiarBotones() {
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 19; i++) {
             if (listaBotones.get(i).isEnabled()) {
                 listaBotones.get(i).setEnabled(false);
             } else {
@@ -699,6 +686,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         listaBotones.add(izquierda);
         listaBotones.add(abajo);
         listaBotones.add(derecha);
+        listaBotones.add(terminarTurno);
         arriba.setEnabled(false);
         izquierda.setEnabled(false);
         abajo.setEnabled(false);

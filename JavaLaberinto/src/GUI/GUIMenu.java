@@ -2,7 +2,6 @@ package GUI;
 
 import BussinessLogic.Inicio;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -44,21 +43,18 @@ public class GUIMenu extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setOpaque(false);
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setOpaque(false);
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
 
-        jButton5.setOpaque(false);
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -88,17 +84,12 @@ public class GUIMenu extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(267, 267, 267)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addComponent(jButton4)
-                            .addComponent(jButton1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
-                            .addComponent(jButton2))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jButton5)
+                    .addComponent(jButton4)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(171, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -147,7 +138,7 @@ public class GUIMenu extends javax.swing.JFrame {
         GUILaberinto laberinto = new GUILaberinto();
         laberinto.numeroJugadores = 2;
         laberinto.setSize(Inicio.x, 10 * y);
-        laberinto.crearListaBotones();        
+        laberinto.crearListaBotones();
         laberinto.setVisible(true);
         this.setVisible(false);
         laberinto.indicaciones();
@@ -171,8 +162,8 @@ public class GUIMenu extends javax.swing.JFrame {
         laberinto.setSize(Inicio.x, 10 * y);
         laberinto.crearListaBotones();
         laberinto.setVisible(true);
-                this.setVisible(false);
-                laberinto.indicaciones();
+        this.setVisible(false);
+        laberinto.indicaciones();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     @Override
@@ -203,23 +194,45 @@ public class GUIMenu extends javax.swing.JFrame {
         jButton5.setSize(2 * y, 2 * y);
 
         ImageIcon imagen;
+
+        imagen = new ImageIcon("Tesoros/Botones/CONTINUARJUEGOPRUEBA.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
+        jButton1.setIcon(imagen);
+        jButton1.setText("");
+        jButton1.setContentAreaFilled(false);
+
+        imagen = new ImageIcon("Tesoros/Botones/NEWGAMEPRUEBA.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
+        jButton2.setIcon(imagen);
+        jButton2.setText("");
+        jButton2.setContentAreaFilled(false);
+
         imagen = new ImageIcon("Tesoros/Botones/2.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         jButton3.setIcon(imagen);
         jButton3.setContentAreaFilled(false);
         jButton3.setLocation(x / 2 - 7 * y / 2, 6 * y);
+        imagen = new ImageIcon("Tesoros/Botones/BotonNew2.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
+        jButton3.setPressedIcon(imagen);
 
         imagen = new ImageIcon("Tesoros/Botones/3.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         jButton4.setIcon(imagen);
         jButton4.setContentAreaFilled(false);
         jButton4.setLocation(x / 2 - y, 6 * y);
+        imagen = new ImageIcon("Tesoros/Botones/BotonNew3.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
+        jButton4.setPressedIcon(imagen);
 
         imagen = new ImageIcon("Tesoros/Botones/4.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         jButton5.setIcon(imagen);
         jButton5.setContentAreaFilled(false);
         jButton5.setLocation(x / 2 + 3 * y / 2, 6 * y);
+        imagen = new ImageIcon("Tesoros/Botones/BotonNew4.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
+        jButton5.setPressedIcon(imagen);
 
         jLabel1.setLocation(x / 2 - jLabel1.getSize().width / 2, 5 * y);
         jLabel1.setVisible(false);

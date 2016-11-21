@@ -2,6 +2,7 @@ package GUI;
 
 import BussinessLogic.*;
 import Data.*;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -54,6 +55,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         turnoJugador = new javax.swing.JLabel();
         tarjeta = new javax.swing.JLabel();
         indicaciones = new javax.swing.JLabel();
+        turnoJugador1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImages(null);
@@ -256,9 +258,21 @@ public class GUILaberinto extends javax.swing.JFrame {
             }
         });
 
-        turnoJugador.setText("Es el turno del Jugador 1");
+        turnoJugador.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
+        turnoJugador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        turnoJugador.setText("Es el turno de:");
+        turnoJugador.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        indicaciones.setText("gira la ficha e ingresela donde desees");
+        indicaciones.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        indicaciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        indicaciones.setText("Gira la ficha e ingresela donde desees");
+        indicaciones.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+
+        turnoJugador1.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
+        turnoJugador1.setForeground(new java.awt.Color(0, 255, 0));
+        turnoJugador1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        turnoJugador1.setText("Jugador 1");
+        turnoJugador1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -284,30 +298,36 @@ public class GUILaberinto extends javax.swing.JFrame {
                         .addGap(184, 184, 184)
                         .addComponent(terminarTurno))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(girarIzquierda)
-                        .addGap(64, 64, 64)
-                        .addComponent(girarDerecha))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
+                        .addGap(348, 348, 348)
                         .addComponent(tarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(175, 175, 175)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(turnoJugador1))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(turnoJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(indicaciones)
-                            .addComponent(turnoJugador))))
-                .addContainerGap(123, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(girarIzquierda)
+                                .addGap(64, 64, 64)
+                                .addComponent(girarDerecha)))))
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addComponent(turnoJugador)
-                .addGap(35, 35, 35)
+                .addComponent(turnoJugador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(turnoJugador1)
+                .addGap(107, 107, 107)
                 .addComponent(tarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(indicaciones)
-                .addGap(67, 67, 67)
+                .addGap(99, 99, 99)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(girarIzquierda)
                     .addComponent(girarDerecha))
@@ -335,7 +355,7 @@ public class GUILaberinto extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(380, Short.MAX_VALUE))
+                .addContainerGap(289, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -492,38 +512,57 @@ public class GUILaberinto extends javax.swing.JFrame {
         terminarTurno.setEnabled(false);
 
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
-            JOptionPane.showMessageDialog(this, "Felicitaciones jugador" + jugador.getNumero() + " has encontrado un tesoro");
+            JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro");
             jugador.getListaTarjetas().remove(0);
             if (jugador.getListaTarjetas().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");
             }
         }
+
+        String color = null;
+        turnoJugador.setText("Es el turno de:");
+        switch (turno) {
+            case 1:
+                color = "Jugador 1";
+                turnoJugador1.setForeground(Color.green);
+                break;
+            case 2:
+                color = "Jugador 2";
+                turnoJugador1.setForeground(Color.red);
+                break;
+            case 3:
+                color = "Jugador 3";
+                turnoJugador1.setForeground(Color.yellow);
+                break;
+            case 4:
+                color = "Jugador 4";
+                turnoJugador1.setForeground(Color.blue);
+                break;
+        }
+        turnoJugador1.setText(color);
+        turnoJugador1.repaint();
     }//GEN-LAST:event_terminarTurnoActionPerformed
 
     private void arribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaActionPerformed
-        Jugador jugador;
-        jugador = asignarTurno(turno);
+        Jugador jugador = Jugador.values()[4 - turno];
         Turno.desplazarJugador(jugador, 'w');
         construirTablero();
     }//GEN-LAST:event_arribaActionPerformed
 
     private void abajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abajoActionPerformed
-        Jugador jugador;
-        jugador = asignarTurno(turno);
+        Jugador jugador = Jugador.values()[4 - turno];
         Turno.desplazarJugador(jugador, 's');
         construirTablero();
     }//GEN-LAST:event_abajoActionPerformed
 
     private void izquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izquierdaActionPerformed
-        Jugador jugador;
-        jugador = asignarTurno(turno);
+        Jugador jugador = Jugador.values()[4 - turno];
         Turno.desplazarJugador(jugador, 'd');
         construirTablero();
     }//GEN-LAST:event_izquierdaActionPerformed
 
     private void derechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derechaActionPerformed
-        Jugador jugador;
-        jugador = asignarTurno(turno);
+        Jugador jugador = Jugador.values()[4 - turno];
         Turno.desplazarJugador(jugador, 'a');
         construirTablero();
     }//GEN-LAST:event_derechaActionPerformed
@@ -564,7 +603,6 @@ public class GUILaberinto extends javax.swing.JFrame {
                 menu.setVisible(true);
                 menu.setSize(Inicio.x, 10 * y);
                 menu.crearBotones();
-
             }
         });
     }
@@ -579,16 +617,14 @@ public class GUILaberinto extends javax.swing.JFrame {
     public void indicaciones() {
         String indicacion = "";
         if (girarIzquierda.isEnabled()) {
-            indicacion = ("gira la ficha e ingresela donde desees");
+            indicacion = ("Gira la ficha e ingresala donde desees");
         } else {
-            indicacion = ("muevete por el tablero hacia tu tesoro" + "\n");
+            indicacion = ("Muevete por el tablero hacia tu tesoro" + "\n");
         }
         indicaciones.setText(indicacion);
 
-        turnoJugador.setText("Es el turno del Jugador " + turno);
-
         ImageIcon ima = Jugador.values()[4 - turno].getListaTarjetas().get(0).getImagen();
-        ima = new ImageIcon(ima.getImage().getScaledInstance(y, (3 * y / 2) - 10, Image.SCALE_SMOOTH));
+        ima = new ImageIcon(ima.getImage().getScaledInstance(3 * y / 2, (2 * y), Image.SCALE_SMOOTH));
         dibujarFicha(tarjeta.getGraphics(), ima, 0, 0, 0, 0, 0);
 
     }
@@ -601,7 +637,8 @@ public class GUILaberinto extends javax.swing.JFrame {
             }
         }
         dibujarFichaLibre();
-        for (Jugador jugador : Jugador.values()) {
+        for (int p = 1; p <= numeroJugadores; p++) {
+            Jugador jugador = Jugador.values()[4 - p];
             int j = jugador.getX();
             int i = jugador.getY();
             dibujarFicha(jPanel1.getGraphics(), jugador.getImagen(), (i * (y + 2)) + (2 * y / 7) + y, (j * (y + 2)) + (2 * y / 7) + y, 0, 0, 0);
@@ -748,11 +785,14 @@ public class GUILaberinto extends javax.swing.JFrame {
         terminarTurno.setText("");
         terminarTurno.setContentAreaFilled(false);
 
-        turnoJugador.setLocation(y, y / 2);
-        tarjeta.setLocation(3 * y / 2, y);
-        tarjeta.setSize(y, 3 * y / 2);
-        indicaciones.setLocation(3 * y / 5, 12 * y / 5);
-        indicaciones.setSize(3 * y, y);
+        turnoJugador.setSize(4 * y, y / 3);
+        turnoJugador1.setSize(4 * y, y / 3);
+        turnoJugador.setLocation(0, y / 2);
+        turnoJugador1.setLocation(0, 3 * y / 4);
+        tarjeta.setLocation(5 * y / 4, y + y / 8);
+        tarjeta.setSize(3 * y / 2, 2 * y);
+        indicaciones.setLocation(0, 16 * y / 5);
+        indicaciones.setSize(4 * y, y / 4);
         fichaSobrante.setLocation(5 * y / 4, 17 * y / 4);
         fichaSobrante.setSize(3 * y / 2, 3 * y / 2);
         terminarTurno.setLocation(y, 8 * y);
@@ -769,20 +809,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         repaint();
     }
 
-    public Jugador asignarTurno(int turno) {
-        switch (turno) {
-            case 1:
-                return Jugador.jugador1;
-            case 2:
-                return Jugador.jugador2;
-            case 3:
-                return Jugador.jugador3;
-            case 4:
-                return Jugador.jugador4;
-            default:
-                return null;
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton abajo;
@@ -810,6 +836,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     private javax.swing.JLabel tarjeta;
     private javax.swing.JButton terminarTurno;
     private javax.swing.JLabel turnoJugador;
+    private javax.swing.JLabel turnoJugador1;
     // End of variables declaration//GEN-END:variables
 
 }

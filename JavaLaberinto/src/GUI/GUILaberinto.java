@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -18,13 +20,55 @@ public class GUILaberinto extends javax.swing.JFrame {
 
     public GUILaberinto() {
         initComponents();
+        arriba.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                Jugador jugador;
+                switch (e.getKeyCode()) {
+                    case 39: // -> derecha
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 'd');
+                        construirTablero();
+                        break;
+                    case 38:	// -> arriba
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 'w');
+                        construirTablero();
+                        break;
+
+                    case 37: 	// -> izquierda 
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 'a');
+                        construirTablero();
+                        break;
+
+                    case 40:	// -> abajo
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 's');
+                        construirTablero();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+        });
     }
 
     private static final ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
     static int y = Inicio.y;
     static int x = (Inicio.x - 13 * y) / 3;
     static int numeroJugadores;
-    private static int turno;
+    public static int turno;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -408,56 +452,56 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.correrFila(7, -6, 3, 1, 0);
         cambiarBotones();
         construirTablero();
-        indicaciones();        
+        indicaciones();
     }//GEN-LAST:event_casilla7ActionPerformed
 
     private void casilla9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla9ActionPerformed
         cambiarBotones();
         Turno.correrFila(9, -6, 5, 1, 0);
         construirTablero();
-        indicaciones();        
+        indicaciones();
     }//GEN-LAST:event_casilla9ActionPerformed
 
     private void casilla10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla10ActionPerformed
         Turno.correrFila(10, 1, -6, 0, 1);
         cambiarBotones();
         construirTablero();
-        indicaciones();        
+        indicaciones();
     }//GEN-LAST:event_casilla10ActionPerformed
 
     private void casilla11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla11ActionPerformed
         Turno.correrFila(11, 3, -6, 0, 1);
         cambiarBotones();
         construirTablero();
-        indicaciones();        
+        indicaciones();
     }//GEN-LAST:event_casilla11ActionPerformed
 
     private void casilla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla1ActionPerformed
         cambiarBotones();
         Turno.correrFila(1, 1, 0, 0, 1);
         construirTablero();
-        indicaciones();        
+        indicaciones();
     }//GEN-LAST:event_casilla1ActionPerformed
 
     private void casilla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla2ActionPerformed
         Turno.correrFila(2, 3, 0, 0, 1);
         cambiarBotones();
         construirTablero();
-        indicaciones();        
+        indicaciones();
     }//GEN-LAST:event_casilla2ActionPerformed
 
     private void casilla3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla3ActionPerformed
         Turno.correrFila(3, 5, 0, 0, 1);
         cambiarBotones();
         construirTablero();
-        indicaciones();        
+        indicaciones();
     }//GEN-LAST:event_casilla3ActionPerformed
 
     private void casilla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla4ActionPerformed
         Turno.correrFila(4, 0, 1, 1, 0);
         cambiarBotones();
         construirTablero();
-        indicaciones();        
+        indicaciones();
     }//GEN-LAST:event_casilla4ActionPerformed
 
     private void casilla6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla6ActionPerformed
@@ -505,7 +549,7 @@ public class GUILaberinto extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");
             }
         }
-        
+
         String color = null;
         turnoJugador.setText("Es el turno de:");
         switch (turno) {
@@ -527,7 +571,7 @@ public class GUILaberinto extends javax.swing.JFrame {
                 break;
         }
         turnoJugador1.setText(color);
-        turnoJugador1.repaint();        
+        turnoJugador1.repaint();
     }//GEN-LAST:event_terminarTurnoActionPerformed
 
     private void arribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaActionPerformed
@@ -612,7 +656,7 @@ public class GUILaberinto extends javax.swing.JFrame {
 
         ImageIcon ima = Jugador.values()[4 - turno].getListaTarjetas().get(0).getImagen();
         ima = new ImageIcon(ima.getImage().getScaledInstance(3 * y / 2, (2 * y), Image.SCALE_SMOOTH));
-        dibujarFicha(tarjeta.getGraphics(), ima, 0, 0, 0, 0, 0);              
+        dibujarFicha(tarjeta.getGraphics(), ima, 0, 0, 0, 0, 0);
 
     }
 

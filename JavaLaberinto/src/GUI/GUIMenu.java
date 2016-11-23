@@ -132,8 +132,8 @@ public class GUIMenu extends javax.swing.JFrame {
         laberinto.numeroJugadores = 2;
         laberinto.setSize(Inicio.x, 10 * y);
         laberinto.iniciarComponentes();
-        this.setVisible(false);
         laberinto.setVisible(true);
+        this.setVisible(false);        
         laberinto.indicaciones();
     }//GEN-LAST:event_dosJugadoresActionPerformed
 
@@ -141,9 +141,9 @@ public class GUIMenu extends javax.swing.JFrame {
         Inicio.asignarListaTarjetas(3);
         laberinto.numeroJugadores = 3;
         laberinto.setSize(Inicio.x, 10 * y);
-        laberinto.iniciarComponentes();
-        this.setVisible(false);
+        laberinto.iniciarComponentes();        
         laberinto.setVisible(true);
+        this.setVisible(false);
         laberinto.indicaciones();
     }//GEN-LAST:event_tresJugadoresActionPerformed
 
@@ -151,9 +151,9 @@ public class GUIMenu extends javax.swing.JFrame {
         Inicio.asignarListaTarjetas(4);
         laberinto.numeroJugadores = 4;
         laberinto.setSize(Inicio.x, 10 * y);
-        laberinto.iniciarComponentes();
-        this.setVisible(false);
+        laberinto.iniciarComponentes();        
         laberinto.setVisible(true);
+        this.setVisible(false);
         laberinto.indicaciones();
     }//GEN-LAST:event_cuatroJugadoresActionPerformed
 
@@ -200,18 +200,27 @@ public class GUIMenu extends javax.swing.JFrame {
         continuar.setIcon(imagen);
         continuar.setText("");
         continuar.setContentAreaFilled(false);
+        
+        imagen = new ImageIcon("Tesoros/Botones/CONTINUARJUEGO.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
+        continuar.setPressedIcon(imagen);
 
         imagen = new ImageIcon("Tesoros/Botones/NEWGAMEPRUEBA.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
         nuevo.setIcon(imagen);
         nuevo.setText("");
         nuevo.setContentAreaFilled(false);
+          
+        imagen = new ImageIcon("Tesoros/Botones/NEWGAME.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
+        nuevo.setPressedIcon(imagen);
 
         imagen = new ImageIcon("Tesoros/Botones/2.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         dosJugadores.setIcon(imagen);
         dosJugadores.setContentAreaFilled(false);
         dosJugadores.setLocation(x / 2 - 7 * y / 2, 6 * y);
+        
         imagen = new ImageIcon("Tesoros/Botones/BotonNew2.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         dosJugadores.setPressedIcon(imagen);
@@ -221,6 +230,7 @@ public class GUIMenu extends javax.swing.JFrame {
         tresJugadores.setIcon(imagen);
         tresJugadores.setContentAreaFilled(false);
         tresJugadores.setLocation(x / 2 - y, 6 * y);
+        
         imagen = new ImageIcon("Tesoros/Botones/BotonNew3.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         tresJugadores.setPressedIcon(imagen);

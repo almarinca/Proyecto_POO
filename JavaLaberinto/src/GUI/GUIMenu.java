@@ -2,6 +2,7 @@ package GUI;
 
 import BussinessLogic.Inicio;
 import Data.Tablero;
+import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.FileInputStream;
@@ -22,244 +23,231 @@ public class GUIMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        continuar = new javax.swing.JButton();
+        nuevo = new javax.swing.JButton();
+        dosJugadores = new javax.swing.JButton();
+        tresJugadores = new javax.swing.JButton();
+        cuatroJugadores = new javax.swing.JButton();
+        elige = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Continuar Juego");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        continuar.setText("Continuar Juego");
+        continuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                continuarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Nuevo Juego");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        nuevo.setText("Nuevo Juego");
+        nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                nuevoActionPerformed(evt);
             }
         });
 
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        dosJugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                dosJugadoresActionPerformed(evt);
             }
         });
 
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        tresJugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                tresJugadoresActionPerformed(evt);
             }
         });
 
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        cuatroJugadores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                cuatroJugadoresActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 36)); // NOI18N
-        jLabel1.setText("Elige la cantidad de jugadores:");
-        jLabel1.setOpaque(true);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        elige.setFont(new java.awt.Font("Comic Sans MS", 1, 36)); // NOI18N
+        elige.setForeground(new java.awt.Color(255, 255, 255));
+        elige.setText("Elige la cantidad de jugadores:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(267, 267, 267)
+                .addGap(367, 367, 367)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(cuatroJugadores)
+                    .addComponent(tresJugadores)
+                    .addComponent(continuar)
+                    .addComponent(dosJugadores)
+                    .addComponent(nuevo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addContainerGap(138, Short.MAX_VALUE)
+                .addComponent(elige)
                 .addGap(265, 265, 265))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(73, 73, 73)
-                        .addComponent(jButton1))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73)
+                .addComponent(continuar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(nuevo)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(dosJugadores)
                 .addGap(18, 18, 18)
-                .addComponent(jButton4)
+                .addComponent(tresJugadores)
                 .addGap(1, 1, 1)
-                .addComponent(jLabel1)
+                .addComponent(elige)
                 .addGap(1, 1, 1)
-                .addComponent(jButton5)
+                .addComponent(cuatroJugadores)
                 .addContainerGap(317, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        jButton3.setVisible(true);
-        jButton4.setVisible(true);
-        jButton5.setVisible(true);
-        jLabel1.setVisible(true);
-        jButton2.setEnabled(false);
-        jButton1.setEnabled(false);
+    private void nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoActionPerformed
+        dosJugadores.setVisible(true);
+        tresJugadores.setVisible(true);
+        cuatroJugadores.setVisible(true);
+        elige.setVisible(true);
+        nuevo.setEnabled(false);
+        continuar.setEnabled(false);
         this.repaint();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_nuevoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
         Tablero.cargar();
         laberinto.setSize(Inicio.x, 10 * y);
-        laberinto.crearListaBotones();
+        laberinto.iniciarComponentes();
         this.setVisible(false);
         laberinto.setVisible(true);
         laberinto.indicaciones();
         laberinto.cargar();
         laberinto.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_continuarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void dosJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosJugadoresActionPerformed
         Inicio.asignarListaTarjetas(2);
         laberinto.numeroJugadores = 2;
         laberinto.setSize(Inicio.x, 10 * y);
-        laberinto.crearListaBotones();
+        laberinto.iniciarComponentes();
         this.setVisible(false);
         laberinto.setVisible(true);
         laberinto.indicaciones();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_dosJugadoresActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void tresJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresJugadoresActionPerformed
         Inicio.asignarListaTarjetas(3);
         laberinto.numeroJugadores = 3;
         laberinto.setSize(Inicio.x, 10 * y);
-        laberinto.crearListaBotones();
+        laberinto.iniciarComponentes();
         this.setVisible(false);
         laberinto.setVisible(true);
         laberinto.indicaciones();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_tresJugadoresActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void cuatroJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroJugadoresActionPerformed
         Inicio.asignarListaTarjetas(4);
         laberinto.numeroJugadores = 4;
         laberinto.setSize(Inicio.x, 10 * y);
-        laberinto.crearListaBotones();
+        laberinto.iniciarComponentes();
         this.setVisible(false);
         laberinto.setVisible(true);
         laberinto.indicaciones();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_cuatroJugadoresActionPerformed
 
-    @Override
-    public void paint(Graphics g) {
-        super.paint(g);
-        ImageIcon imagen;
-        imagen = new ImageIcon("Tesoros/Menu.png");
-        imagen = new ImageIcon(imagen.getImage().getScaledInstance(x, 10 * y, Image.SCALE_SMOOTH));
-        g.drawImage(imagen.getImage(), 0, 0, x, y * 10, null);
-        jButton1.repaint();
-        jButton2.repaint();
-        jButton3.repaint();
-        jButton4.repaint();
-        jButton5.repaint();
-        jLabel1.repaint();
-    }
+    
 
-    public void crearBotones() {
+    public void iniciarComponentes() {
+        panel = new panelTransparente();
+        panel.setLayout(new javax.swing.GroupLayout(panel));
+        this.getContentPane().add(panel, BorderLayout.CENTER);
+        this.add(panel);
+        ImageIcon image;
+        image = new ImageIcon("Tesoros/Menu.png");
+        image = new ImageIcon(image.getImage().getScaledInstance(x, 10 * y, Image.SCALE_SMOOTH));
+        panel.setBackgroundImage(image.getImage());
+        panel.setLocation(0, 0);
+        panel.setSize(this.getWidth(), this.getHeight());
+        panel.add(dosJugadores);
+        panel.add(tresJugadores);
+        panel.add(cuatroJugadores);
+        panel.add(continuar);
+        panel.add(nuevo);
+        panel.add(elige);
         try {
             FileInputStream archivo = new FileInputStream("laberinto.laby");
             FileInputStream archivo2 = new FileInputStream("botones.laby");
         } catch (FileNotFoundException ex) {
-            jButton1.setVisible(false);
+            continuar.setVisible(false);
         }
-        jButton3.setVisible(false);
-        jButton4.setVisible(false);
-        jButton5.setVisible(false);
-        jButton1.setSize(3 * y, 3 * y / 2);
-        jButton2.setSize(3 * y, 3 * y / 2);
-        jButton1.setLocation(x / 2 - 3 * y / 2, y);
-        jButton2.setLocation(x / 2 - 3 * y / 2, 3 * y);
-        jButton3.setSize(2 * y, 2 * y);
-        jButton4.setSize(2 * y, 2 * y);
-        jButton5.setSize(2 * y, 2 * y);
+        dosJugadores.setVisible(false);
+        tresJugadores.setVisible(false);
+        cuatroJugadores.setVisible(false);
+        continuar.setSize(3 * y, 3 * y / 2);
+        nuevo.setSize(3 * y, 3 * y / 2);
+        continuar.setLocation(x / 2 - 3 * y / 2, y);
+        nuevo.setLocation(x / 2 - 3 * y / 2, 3 * y);
+        dosJugadores.setSize(2 * y, 2 * y);
+        tresJugadores.setSize(2 * y, 2 * y);
+        cuatroJugadores.setSize(2 * y, 2 * y);
 
         ImageIcon imagen;
 
         imagen = new ImageIcon("Tesoros/Botones/CONTINUARJUEGOPRUEBA.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
-        jButton1.setIcon(imagen);
-        jButton1.setText("");
-        jButton1.setContentAreaFilled(false);
+        continuar.setIcon(imagen);
+        continuar.setText("");
+        continuar.setContentAreaFilled(false);
 
         imagen = new ImageIcon("Tesoros/Botones/NEWGAMEPRUEBA.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
-        jButton2.setIcon(imagen);
-        jButton2.setText("");
-        jButton2.setContentAreaFilled(false);
+        nuevo.setIcon(imagen);
+        nuevo.setText("");
+        nuevo.setContentAreaFilled(false);
 
         imagen = new ImageIcon("Tesoros/Botones/2.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
-        jButton3.setIcon(imagen);
-        jButton3.setContentAreaFilled(false);
-        jButton3.setLocation(x / 2 - 7 * y / 2, 6 * y);
+        dosJugadores.setIcon(imagen);
+        dosJugadores.setContentAreaFilled(false);
+        dosJugadores.setLocation(x / 2 - 7 * y / 2, 6 * y);
         imagen = new ImageIcon("Tesoros/Botones/BotonNew2.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
-        jButton3.setPressedIcon(imagen);
+        dosJugadores.setPressedIcon(imagen);
 
         imagen = new ImageIcon("Tesoros/Botones/3.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
-        jButton4.setIcon(imagen);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setLocation(x / 2 - y, 6 * y);
+        tresJugadores.setIcon(imagen);
+        tresJugadores.setContentAreaFilled(false);
+        tresJugadores.setLocation(x / 2 - y, 6 * y);
         imagen = new ImageIcon("Tesoros/Botones/BotonNew3.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
-        jButton4.setPressedIcon(imagen);
+        tresJugadores.setPressedIcon(imagen);
 
         imagen = new ImageIcon("Tesoros/Botones/4.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
-        jButton5.setIcon(imagen);
-        jButton5.setContentAreaFilled(false);
-        jButton5.setLocation(x / 2 + 3 * y / 2, 6 * y);
+        cuatroJugadores.setIcon(imagen);
+        cuatroJugadores.setContentAreaFilled(false);
+        cuatroJugadores.setLocation(x / 2 + 3 * y / 2, 6 * y);
         imagen = new ImageIcon("Tesoros/Botones/BotonNew4.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
-        jButton5.setPressedIcon(imagen);
+        cuatroJugadores.setPressedIcon(imagen);
 
-        jLabel1.setLocation(x / 2 - jLabel1.getSize().width / 2, 5 * y);
-        jLabel1.setVisible(false);
+        elige.setLocation(x / 2 - elige.getSize().width / 2, 5 * y);
+        elige.setVisible(false);
 
         this.setLayout(null);
     }
-
+    
+    private panelTransparente panel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton continuar;
+    private javax.swing.JButton cuatroJugadores;
+    private javax.swing.JButton dosJugadores;
+    private javax.swing.JLabel elige;
+    private javax.swing.JButton nuevo;
+    private javax.swing.JButton tresJugadores;
     // End of variables declaration//GEN-END:variables
 }

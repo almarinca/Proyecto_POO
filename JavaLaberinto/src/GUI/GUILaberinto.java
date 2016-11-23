@@ -541,7 +541,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_casilla12ActionPerformed
 
     private void terminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarTurnoActionPerformed
-        Jugador jugador = null;
+        Jugador jugador;
         try {
             jugador = Jugador.values()[4 - turno];
         } catch (ArrayIndexOutOfBoundsException e) {

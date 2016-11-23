@@ -710,7 +710,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
                 GUIMenu menu = new GUIMenu();
                 menu.setVisible(true);
                 menu.setSize(Inicio.x, 10 * y);
-                menu.crearBotones();
+                menu.iniciarComponentes();
             }
         });
     }
@@ -792,7 +792,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
         }
     }
 
-    public void crearListaBotones() {
+    public void iniciarComponentes() {
         turno = 1;
         listaBotones.add(girarIzquierda);
         listaBotones.add(girarDerecha);

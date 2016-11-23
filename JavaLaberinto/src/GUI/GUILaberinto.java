@@ -12,6 +12,7 @@ import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -602,6 +603,11 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
             jugador.getListaTarjetas().remove(0);
             if (jugador.getListaTarjetas().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");
+                File file = new File("laberinto.laby");
+                file.delete();
+                file = new File("botones.laby");
+                file.delete();
+                System.exit(0);
             }
         }
 
@@ -738,7 +744,12 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
                 dibujarFicha(jPanel1.getGraphics(), Tablero.getTablero()[i][j].getImagen(), (i * (y + 2)) + y, (j * (y + 2)) + y, Tablero.getTablero()[i][j].getGiro(), y / 2, y / 2);
             }
         }
-        dibujarFichaLibre();
+        if (Jugador.values()[4 - turno].getListaTarjetas().size() == 1) {
+            tarjeta.repaint();
+            tarjeta.setText("Vuelve a tu punto de partida");
+        } else {
+            dibujarFichaLibre();
+        }
         for (int p = 1; p <= numeroJugadores; p++) {
             Jugador jugador = Jugador.values()[4 - p];
             int j = jugador.getX();

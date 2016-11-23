@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -18,13 +20,55 @@ public class GUILaberinto extends javax.swing.JFrame {
 
     public GUILaberinto() {
         initComponents();
+        arriba.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                Jugador jugador;
+                switch (e.getKeyCode()) {
+                    case 39: // -> derecha
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 'd');
+                        construirTablero();
+                        break;
+                    case 38:	// -> arriba
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 'w');
+                        construirTablero();
+                        break;
+
+                    case 37: 	// -> izquierda 
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 'a');
+                        construirTablero();
+                        break;
+
+                    case 40:	// -> abajo
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 's');
+                        construirTablero();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+        });
     }
 
     private static final ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
     static int y = Inicio.y;
     static int x = (Inicio.x - 13 * y) / 3;
     static int numeroJugadores;
-    private static int turno;
+    public static int turno;
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -409,7 +453,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla7ActionPerformed
 
     private void casilla9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla9ActionPerformed
@@ -417,7 +460,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.correrFila(9, -6, 5, 1, 0);
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla9ActionPerformed
 
     private void casilla10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla10ActionPerformed
@@ -425,7 +467,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla10ActionPerformed
 
     private void casilla11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla11ActionPerformed
@@ -433,7 +474,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla11ActionPerformed
 
     private void casilla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla1ActionPerformed
@@ -441,7 +481,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.correrFila(1, 1, 0, 0, 1);
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla1ActionPerformed
 
     private void casilla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla2ActionPerformed
@@ -449,7 +488,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla2ActionPerformed
 
     private void casilla3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla3ActionPerformed
@@ -457,7 +495,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla3ActionPerformed
 
     private void casilla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla4ActionPerformed
@@ -465,7 +502,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla4ActionPerformed
 
     private void casilla6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla6ActionPerformed
@@ -473,7 +509,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla6ActionPerformed
 
     private void casilla8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla8ActionPerformed
@@ -481,7 +516,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla8ActionPerformed
 
     private void casilla5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla5ActionPerformed
@@ -489,7 +523,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla5ActionPerformed
 
     private void casilla12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla12ActionPerformed
@@ -497,7 +530,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla12ActionPerformed
 
     private void terminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarTurnoActionPerformed
@@ -509,7 +541,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(false);
 
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
             JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro");
@@ -670,7 +701,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     }
 
     public void cambiarBotones() {
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 19; i++) {
             if (listaBotones.get(i).isEnabled()) {
                 listaBotones.get(i).setEnabled(false);
             } else {
@@ -699,6 +730,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         listaBotones.add(izquierda);
         listaBotones.add(abajo);
         listaBotones.add(derecha);
+        listaBotones.add(terminarTurno);
         arriba.setEnabled(false);
         izquierda.setEnabled(false);
         abajo.setEnabled(false);

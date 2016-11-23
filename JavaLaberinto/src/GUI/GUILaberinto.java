@@ -883,6 +883,34 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
             listaBotones.get(i).setSize(y / 2, y / 2);
             listaBotones.get(i).setText("");
             listaBotones.get(i).setContentAreaFilled(false);
+            switch (i) {
+                case 14:
+                    imagen = new ImageIcon("Tesoros/BotonFlechaClick.png");
+                    imagen = new ImageIcon(imagen.getImage().getScaledInstance(y / 2, y / 2, Image.SCALE_SMOOTH));
+                    imagen = rotarImagen(imagen, i - 14, y / 4, y / 4);
+                    arriba.setPressedIcon(imagen);
+                    break;
+                case 15:
+                    imagen = new ImageIcon("Tesoros/BotonFlechaClick.png");
+                    imagen = new ImageIcon(imagen.getImage().getScaledInstance(y / 2, y / 2, Image.SCALE_SMOOTH));
+                    imagen = rotarImagen(imagen, i - 14, y / 4, y / 4);
+                    izquierda.setPressedIcon(imagen);
+                    break;
+                case 16:
+                    imagen = new ImageIcon("Tesoros/BotonFlechaClick.png");
+                    imagen = new ImageIcon(imagen.getImage().getScaledInstance(y / 2, y / 2, Image.SCALE_SMOOTH));
+                    imagen = rotarImagen(imagen, i - 14, y / 4, y / 4);
+                    abajo.setPressedIcon(imagen);
+                    break;
+                case 17:
+                    imagen = new ImageIcon("Tesoros/BotonFlechaClick.png");
+                    imagen = new ImageIcon(imagen.getImage().getScaledInstance(y / 2, y / 2, Image.SCALE_SMOOTH));
+                    imagen = rotarImagen(imagen, i - 14, y / 4, y / 4);
+                    derecha.setPressedIcon(imagen);
+                    break;
+                default:
+                    break;
+            }
         }
         for (int i = 0; i < 2; i++) {
             if (i == 0) {
@@ -890,13 +918,15 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
                 imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));
             } else {
                 imagen = new ImageIcon("Tesoros/FlechaMoverDerecha.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));               
+                
             }
             listaBotones.get(i).setIcon(imagen);
             listaBotones.get(i).setSize(y, y / 2);
             listaBotones.get(i).setText("");
             listaBotones.get(i).setContentAreaFilled(false);
         }
+        
         imagen = new ImageIcon("Tesoros/BotonPasarTurno.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y / 3, Image.SCALE_SMOOTH));
         terminarTurno.setIcon(imagen);

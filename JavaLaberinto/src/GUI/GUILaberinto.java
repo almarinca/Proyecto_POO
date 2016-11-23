@@ -2,29 +2,76 @@ package GUI;
 
 import BussinessLogic.*;
 import Data.*;
+import static GUI.GUIMenu.y;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import sun.awt.image.ToolkitImage;
 
-public class GUILaberinto extends javax.swing.JFrame {
+public class GUILaberinto extends javax.swing.JFrame implements Serializable {
 
     public GUILaberinto() {
         initComponents();
     }
 
-    private static final ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
+    private static ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
     static int y = Inicio.y;
     static int x = (Inicio.x - 13 * y) / 3;
-    static int numeroJugadores;
+    public static int numeroJugadores;
     private static int turno;
+
+    public void guardar() {
+        try {
+            FileOutputStream archivo = new FileOutputStream("botones.laby");
+            ObjectOutputStream guardar = new ObjectOutputStream(archivo);
+            guardar.writeObject(numeroJugadores);
+            guardar.writeObject(turno);
+            guardar.writeObject(terminarTurno);
+            guardar.close();
+            archivo.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void cargar() {
+        try {
+            FileInputStream archivo = new FileInputStream("botones.laby");
+            ObjectInputStream cargar = new ObjectInputStream(archivo);
+            numeroJugadores = (int) cargar.readObject();
+            turno = (int) cargar.readObject();
+            JButton boton = (JButton) cargar.readObject();
+            if (!boton.isEnabled()) {
+                cambiarBotones();
+            }
+            turno--;
+            terminarTurnoActionPerformed(new ActionEvent(terminarTurno, 0, "nothing"));
+            cargar.close();
+            archivo.close();
+            this.repaint();
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -57,8 +104,13 @@ public class GUILaberinto extends javax.swing.JFrame {
         indicaciones = new javax.swing.JLabel();
         turnoJugador1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconImages(null);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
@@ -409,7 +461,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla7ActionPerformed
 
     private void casilla9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla9ActionPerformed
@@ -417,7 +468,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.correrFila(9, -6, 5, 1, 0);
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla9ActionPerformed
 
     private void casilla10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla10ActionPerformed
@@ -425,7 +475,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla10ActionPerformed
 
     private void casilla11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla11ActionPerformed
@@ -433,7 +482,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla11ActionPerformed
 
     private void casilla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla1ActionPerformed
@@ -441,7 +489,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.correrFila(1, 1, 0, 0, 1);
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla1ActionPerformed
 
     private void casilla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla2ActionPerformed
@@ -449,7 +496,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla2ActionPerformed
 
     private void casilla3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla3ActionPerformed
@@ -457,7 +503,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla3ActionPerformed
 
     private void casilla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla4ActionPerformed
@@ -465,7 +510,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla4ActionPerformed
 
     private void casilla6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla6ActionPerformed
@@ -473,7 +517,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla6ActionPerformed
 
     private void casilla8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla8ActionPerformed
@@ -481,7 +524,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla8ActionPerformed
 
     private void casilla5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla5ActionPerformed
@@ -489,7 +531,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla5ActionPerformed
 
     private void casilla12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla12ActionPerformed
@@ -497,11 +538,15 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(true);
     }//GEN-LAST:event_casilla12ActionPerformed
 
     private void terminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarTurnoActionPerformed
-        Jugador jugador = Jugador.values()[4 - turno];
+        Jugador jugador = null;
+        try {
+            jugador = Jugador.values()[4 - turno];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            jugador = Jugador.jugador1;
+        }
         turno++;
         if (turno == numeroJugadores + 1) {
             turno = 1;
@@ -509,7 +554,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         cambiarBotones();
         construirTablero();
         indicaciones();
-        terminarTurno.setEnabled(false);
 
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
             JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro");
@@ -520,7 +564,6 @@ public class GUILaberinto extends javax.swing.JFrame {
         }
 
         String color = null;
-        turnoJugador.setText("Es el turno de:");
         switch (turno) {
             case 1:
                 color = "Jugador 1";
@@ -566,6 +609,25 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.desplazarJugador(jugador, 'a');
         construirTablero();
     }//GEN-LAST:event_derechaActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int opcion = JOptionPane.showOptionDialog(this, "¿Desea guardar la partida?", "Salir", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.YES_NO_CANCEL_OPTION, null, null, NORMAL);
+        switch (opcion) {
+            case 0:
+                Tablero.guardar();
+                guardar();
+                JOptionPane.showMessageDialog(this, "guardando");
+                System.exit(0);
+                break;
+            case 1:
+                JOptionPane.showMessageDialog(this, "cerrando");
+                System.exit(0);
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(this, "cancelando");
+                break;
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -670,7 +732,7 @@ public class GUILaberinto extends javax.swing.JFrame {
     }
 
     public void cambiarBotones() {
-        for (int i = 0; i < 18; i++) {
+        for (int i = 0; i < 19; i++) {
             if (listaBotones.get(i).isEnabled()) {
                 listaBotones.get(i).setEnabled(false);
             } else {
@@ -699,10 +761,12 @@ public class GUILaberinto extends javax.swing.JFrame {
         listaBotones.add(izquierda);
         listaBotones.add(abajo);
         listaBotones.add(derecha);
+        listaBotones.add(terminarTurno);
         arriba.setEnabled(false);
         izquierda.setEnabled(false);
         abajo.setEnabled(false);
         derecha.setEnabled(false);
+        terminarTurno.setEnabled(false);
         casilla1.setLocation((1 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
         casilla2.setLocation((3 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
         casilla3.setLocation((5 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);

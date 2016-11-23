@@ -72,5 +72,5 @@ public enum Jugador {
     public void setImagen(ImageIcon imagen) {
         this.imagen = imagen;
     }
-
+    
 }

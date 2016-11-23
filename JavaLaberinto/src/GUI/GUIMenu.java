@@ -1,10 +1,16 @@
 package GUI;
 
 import BussinessLogic.Inicio;
+import BussinessLogic.Turno;
+import Data.Jugador;
+import Data.Tablero;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 public class GUIMenu extends javax.swing.JFrame {
 
@@ -14,6 +20,7 @@ public class GUIMenu extends javax.swing.JFrame {
 
     static int y = Inicio.y;
     static int x = Inicio.x;
+    private static GUILaberinto laberinto = new GUILaberinto();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -130,39 +137,43 @@ public class GUIMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // este codigo se pondra cuando se guarden los archivos
+        Tablero.cargar();
+        laberinto.setSize(Inicio.x, 10 * y);
+        laberinto.crearListaBotones();
+        this.setVisible(false);
+        laberinto.setVisible(true);
+        laberinto.indicaciones();
+        laberinto.cargar();
+        laberinto.repaint();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Inicio.asignarListaTarjetas(2);
-        GUILaberinto laberinto = new GUILaberinto();
         laberinto.numeroJugadores = 2;
         laberinto.setSize(Inicio.x, 10 * y);
         laberinto.crearListaBotones();
-        laberinto.setVisible(true);
         this.setVisible(false);
+        laberinto.setVisible(true);
         laberinto.indicaciones();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         Inicio.asignarListaTarjetas(3);
-        GUILaberinto laberinto = new GUILaberinto();
         laberinto.numeroJugadores = 3;
         laberinto.setSize(Inicio.x, 10 * y);
         laberinto.crearListaBotones();
-        laberinto.setVisible(true);
         this.setVisible(false);
+        laberinto.setVisible(true);
         laberinto.indicaciones();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Inicio.asignarListaTarjetas(4);
-        GUILaberinto laberinto = new GUILaberinto();
         laberinto.numeroJugadores = 4;
         laberinto.setSize(Inicio.x, 10 * y);
         laberinto.crearListaBotones();
-        laberinto.setVisible(true);
         this.setVisible(false);
+        laberinto.setVisible(true);
         laberinto.indicaciones();
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -182,6 +193,12 @@ public class GUIMenu extends javax.swing.JFrame {
     }
 
     public void crearBotones() {
+        try {
+            FileInputStream archivo = new FileInputStream("laberinto.laby");
+            FileInputStream archivo2 = new FileInputStream("botones.laby");
+        } catch (FileNotFoundException ex) {
+            jButton1.setVisible(false);
+        }
         jButton3.setVisible(false);
         jButton4.setVisible(false);
         jButton5.setVisible(false);

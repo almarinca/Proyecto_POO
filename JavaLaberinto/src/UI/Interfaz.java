@@ -4,7 +4,7 @@ import Data.*;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Interfaz {
+public abstract class Interfaz {
 
     static Scanner in = new Scanner(System.in);
 

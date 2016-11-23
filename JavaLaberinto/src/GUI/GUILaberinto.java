@@ -30,7 +30,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
 
     public GUILaberinto() {
         initComponents();
-        arriba.addKeyListener(new KeyListener() {
+        KeyListener listener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
             }
@@ -71,7 +71,11 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
             public void keyReleased(KeyEvent e) {
             }
 
-        });
+        };
+        arriba.addKeyListener(listener);
+        abajo.addKeyListener(listener);
+        izquierda.addKeyListener(listener);
+        derecha.addKeyListener(listener);
     }
 
     private static ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();

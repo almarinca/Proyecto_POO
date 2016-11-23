@@ -3,7 +3,6 @@ package GUI;
 import BussinessLogic.Inicio;
 import Data.Tablero;
 import java.awt.BorderLayout;
-import java.awt.Graphics;
 import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

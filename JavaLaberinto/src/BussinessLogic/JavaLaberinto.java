@@ -2,11 +2,9 @@ package BussinessLogic;
 
 import static BussinessLogic.Turno.*;
 import Data.*;
-import GUI.GUILaberinto;
-import GUI.GUIMenu;
 import static UI.Interfaz.*;
 
-public class JavaLaberinto {
+public abstract class JavaLaberinto {
 
     static boolean salir = false;
 

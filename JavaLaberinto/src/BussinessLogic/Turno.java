@@ -3,7 +3,7 @@ package BussinessLogic;
 import Data.*;
 import java.util.ArrayList;
 
-public class Turno {
+public abstract class Turno {
 
     public static void rotarFicha(Ficha f) {
 

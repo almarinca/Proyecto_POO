@@ -6,17 +6,27 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import sun.awt.image.ToolkitImage;
 
-public class GUILaberinto extends javax.swing.JFrame {
+public class GUILaberinto extends javax.swing.JFrame implements Serializable {
 
     public GUILaberinto() {
         initComponents();
@@ -64,11 +74,47 @@ public class GUILaberinto extends javax.swing.JFrame {
         });
     }
 
-    private static final ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
+    private static ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
     static int y = Inicio.y;
     static int x = (Inicio.x - 13 * y) / 3;
-    static int numeroJugadores;
-    public static int turno;
+    public static int numeroJugadores;
+    private static int turno;
+
+    public void guardar() {
+        try {
+            FileOutputStream archivo = new FileOutputStream("botones.laby");
+            ObjectOutputStream guardar = new ObjectOutputStream(archivo);
+            guardar.writeObject(numeroJugadores);
+            guardar.writeObject(turno);
+            guardar.writeObject(terminarTurno);
+            guardar.close();
+            archivo.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void cargar() {
+        try {
+            FileInputStream archivo = new FileInputStream("botones.laby");
+            ObjectInputStream cargar = new ObjectInputStream(archivo);
+            numeroJugadores = (int) cargar.readObject();
+            turno = (int) cargar.readObject();
+            JButton boton = (JButton) cargar.readObject();
+            if (!boton.isEnabled()) {
+                cambiarBotones();
+            }
+            turno--;
+            terminarTurnoActionPerformed(new ActionEvent(terminarTurno, 0, "nothing"));
+            cargar.close();
+            archivo.close();
+            this.repaint();
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -101,8 +147,13 @@ public class GUILaberinto extends javax.swing.JFrame {
         indicaciones = new javax.swing.JLabel();
         turnoJugador1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setIconImages(null);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
 
@@ -533,7 +584,12 @@ public class GUILaberinto extends javax.swing.JFrame {
     }//GEN-LAST:event_casilla12ActionPerformed
 
     private void terminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarTurnoActionPerformed
-        Jugador jugador = Jugador.values()[4 - turno];
+        Jugador jugador;
+        try {
+            jugador = Jugador.values()[4 - turno];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            jugador = Jugador.jugador1;
+        }
         turno++;
         if (turno == numeroJugadores + 1) {
             turno = 1;
@@ -547,11 +603,15 @@ public class GUILaberinto extends javax.swing.JFrame {
             jugador.getListaTarjetas().remove(0);
             if (jugador.getListaTarjetas().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");
+                File file = new File("laberinto.laby");
+                file.delete();
+                file = new File("botones.laby");
+                file.delete();
+                System.exit(0);
             }
         }
 
         String color = null;
-        turnoJugador.setText("Es el turno de:");
         switch (turno) {
             case 1:
                 color = "Jugador 1";
@@ -597,6 +657,23 @@ public class GUILaberinto extends javax.swing.JFrame {
         Turno.desplazarJugador(jugador, 'a');
         construirTablero();
     }//GEN-LAST:event_derechaActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int opcion = JOptionPane.showOptionDialog(this, "¿Desea guardar la partida?", "Salir", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.YES_NO_CANCEL_OPTION, null, null, NORMAL);
+        switch (opcion) {
+            case 0:
+                Tablero.guardar();
+                guardar();
+                JOptionPane.showMessageDialog(this, "Guardado Correctamente");
+                System.exit(0);
+                break;
+            case 1:
+                System.exit(0);
+                break;
+            case 2:
+                break;
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -667,7 +744,12 @@ public class GUILaberinto extends javax.swing.JFrame {
                 dibujarFicha(jPanel1.getGraphics(), Tablero.getTablero()[i][j].getImagen(), (i * (y + 2)) + y, (j * (y + 2)) + y, Tablero.getTablero()[i][j].getGiro(), y / 2, y / 2);
             }
         }
-        dibujarFichaLibre();
+        if (Jugador.values()[4 - turno].getListaTarjetas().size() == 1) {
+            tarjeta.repaint();
+            tarjeta.setText("Vuelve a tu punto de partida");
+        } else {
+            dibujarFichaLibre();
+        }
         for (int p = 1; p <= numeroJugadores; p++) {
             Jugador jugador = Jugador.values()[4 - p];
             int j = jugador.getX();
@@ -735,6 +817,7 @@ public class GUILaberinto extends javax.swing.JFrame {
         izquierda.setEnabled(false);
         abajo.setEnabled(false);
         derecha.setEnabled(false);
+        terminarTurno.setEnabled(false);
         casilla1.setLocation((1 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
         casilla2.setLocation((3 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);
         casilla3.setLocation((5 * (y + 2)) + (2 * y / 7) + y + y / 8, (-1 * (y + 2)) + (2 * y / 7) + y + y / 8);

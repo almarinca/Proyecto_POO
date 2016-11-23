@@ -3,16 +3,21 @@ package Data;
 import BussinessLogic.Inicio;
 import java.util.ArrayList;
 import static BussinessLogic.Turno.rotarFicha;
-import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Toolkit;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 
-public class Tablero {
+public class Tablero implements Serializable {
     //ATRIBUTOS	
 
     private static Ficha[][] tablero = new Ficha[7][7];
-    private static ArrayList<Ficha> listaFichas = new ArrayList<>();
+    private static final ArrayList<Ficha> listaFichas = new ArrayList<>();
     private static ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
     private static ArrayList<Tarjeta> listaTarjetas = new ArrayList<>();
     int y = Inicio.y;
@@ -163,5 +168,43 @@ public class Tablero {
 
     public static void setFichasSobrantes(ArrayList<Ficha> fichasSobrantes) {
         Tablero.fichasSobrantes = fichasSobrantes;
+    }
+
+    public static void guardar() {
+        try {
+            FileOutputStream archivo = new FileOutputStream("laberinto.laby");
+            ObjectOutputStream guardar = new ObjectOutputStream(archivo);
+            guardar.writeObject(tablero);
+            for (Jugador jugador : Jugador.values()) {
+                guardar.writeObject(jugador.getListaTarjetas());
+                guardar.writeObject(jugador.getX());
+                guardar.writeObject(jugador.getY());
+            }
+            guardar.writeObject(fichasSobrantes);
+            guardar.close();
+            archivo.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public static void cargar() {
+        try {
+            FileInputStream archivo = new FileInputStream("laberinto.laby");
+            ObjectInputStream cargar = new ObjectInputStream(archivo);
+            tablero = (Ficha[][]) cargar.readObject();
+            for (Jugador jugador : Jugador.values()) {
+                jugador.setListaTarjetas((ArrayList<Tarjeta>) cargar.readObject());
+                jugador.setX((int) cargar.readObject());
+                jugador.setY((int) cargar.readObject());
+            }
+            fichasSobrantes = (ArrayList<Ficha>) cargar.readObject();
+            cargar.close();
+            archivo.close();
+        } catch (IOException | ClassNotFoundException ex) {
+            System.out.println(ex);
+        }
     }
 }

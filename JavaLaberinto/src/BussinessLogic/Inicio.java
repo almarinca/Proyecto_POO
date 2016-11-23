@@ -7,7 +7,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
-public class Inicio {
+public abstract class Inicio {
 
     Toolkit t = Toolkit.getDefaultToolkit();
     static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

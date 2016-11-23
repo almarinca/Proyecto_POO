@@ -1,8 +1,9 @@
 package Data;
 
+import java.io.Serializable;
 import javax.swing.ImageIcon;
 
-public class Ficha {
+public class Ficha implements Serializable {
 
     private char caracter; 
     private char[][] ficha;

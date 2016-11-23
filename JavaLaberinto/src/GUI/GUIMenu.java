@@ -1,15 +1,11 @@
 package GUI;
 
 import BussinessLogic.Inicio;
-import BussinessLogic.Turno;
-import Data.Jugador;
 import Data.Tablero;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 public class GUIMenu extends javax.swing.JFrame {
@@ -20,7 +16,7 @@ public class GUIMenu extends javax.swing.JFrame {
 
     static int y = Inicio.y;
     static int x = Inicio.x;
-    private static GUILaberinto laberinto = new GUILaberinto();
+    private static final GUILaberinto laberinto = new GUILaberinto();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

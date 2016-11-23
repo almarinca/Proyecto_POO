@@ -2,12 +2,13 @@ package GUI;
 
 import BussinessLogic.*;
 import Data.*;
-import static GUI.GUIMenu.y;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
@@ -21,7 +22,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import sun.awt.image.ToolkitImage;
 
@@ -29,6 +29,48 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
 
     public GUILaberinto() {
         initComponents();
+        arriba.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                Jugador jugador;
+                switch (e.getKeyCode()) {
+                    case 39: // -> derecha
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 'd');
+                        construirTablero();
+                        break;
+                    case 38:	// -> arriba
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 'w');
+                        construirTablero();
+                        break;
+
+                    case 37: 	// -> izquierda 
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 'a');
+                        construirTablero();
+                        break;
+
+                    case 40:	// -> abajo
+                        jugador = Jugador.values()[4 - turno];
+                        Turno.desplazarJugador(jugador, 's');
+                        construirTablero();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+
+        });
     }
 
     private static ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
@@ -616,15 +658,13 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
             case 0:
                 Tablero.guardar();
                 guardar();
-                JOptionPane.showMessageDialog(this, "guardando");
+                JOptionPane.showMessageDialog(this, "Guardado Correctamente");
                 System.exit(0);
                 break;
             case 1:
-                JOptionPane.showMessageDialog(this, "cerrando");
                 System.exit(0);
                 break;
             case 2:
-                JOptionPane.showMessageDialog(this, "cancelando");
                 break;
         }
     }//GEN-LAST:event_formWindowClosing

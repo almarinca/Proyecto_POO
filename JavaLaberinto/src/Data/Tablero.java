@@ -3,8 +3,6 @@ package Data;
 import BussinessLogic.Inicio;
 import java.util.ArrayList;
 import static BussinessLogic.Turno.rotarFicha;
-import GUI.GUILaberinto;
-import GUI.GUIMenu;
 import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,16 +11,13 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 
 public class Tablero implements Serializable {
     //ATRIBUTOS	
 
     private static Ficha[][] tablero = new Ficha[7][7];
-    private static ArrayList<Ficha> listaFichas = new ArrayList<>();
+    private static final ArrayList<Ficha> listaFichas = new ArrayList<>();
     private static ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
     private static ArrayList<Tarjeta> listaTarjetas = new ArrayList<>();
     int y = Inicio.y;

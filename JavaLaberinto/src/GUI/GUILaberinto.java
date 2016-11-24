@@ -933,7 +933,11 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
         terminarTurno.setSize(2 * y, 2 * y / 3);
         terminarTurno.setText("");
         terminarTurno.setContentAreaFilled(false);
-
+        
+        imagen = new ImageIcon("Tesoros/BotonPasarTurnoClick.png");
+        imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y / 3, Image.SCALE_SMOOTH));
+        terminarTurno.setPressedIcon(imagen);
+        
         turnoJugador.setSize(4 * y, y / 3);
         turnoJugador1.setSize(4 * y, y / 3);
         turnoJugador.setLocation(0, y / 2);

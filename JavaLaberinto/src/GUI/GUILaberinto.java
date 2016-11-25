@@ -28,6 +28,12 @@ import sun.awt.image.ToolkitImage;
 
 public class GUILaberinto extends javax.swing.JFrame implements Serializable {
 
+    private static ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
+    private static int y = Inicio.y;
+    private static int x = (Inicio.x - 13 * y) / 3;
+    private static int numeroJugadores;
+    private static int turno;
+
     public GUILaberinto() {
         initComponents();
         KeyListener listener = new KeyListener() {
@@ -78,12 +84,6 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
         derecha.addKeyListener(listener);
     }
 
-    private static ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
-    static int y = Inicio.y;
-    static int x = (Inicio.x - 13 * y) / 3;
-    public static int numeroJugadores;
-    private static int turno;
-
     public void guardar() {
         try {
             FileOutputStream archivo = new FileOutputStream("botones.laby");
@@ -118,6 +118,32 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
         } catch (IOException | ClassNotFoundException ex) {
             System.out.println(ex);
         }
+    }
+    
+    public void girarFichaLibre(int signo, int giros) {
+        double rotaciones = Tablero.getFichasSobrantes().get(0).getGiro();
+        for (int j = 0; j < 20; j++) {
+            dibujarFichaLibre();
+            rotaciones = rotaciones + 0.05 * signo;
+            Tablero.getFichasSobrantes().get(0).setGiro(rotaciones);
+        }
+        if (rotaciones < 0) {
+            rotaciones = rotaciones + 4;
+        } else if (rotaciones > 3) {
+            rotaciones = rotaciones - 4;
+        }
+        Tablero.getFichasSobrantes().get(0).setGiro(rotaciones);
+        for (int i = 0; i < giros; i++) {
+            Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
+        }
+        dibujarFichaLibre();
+    }
+    
+    public void ingresarFichaLibre(int casilla, int columna, int fila, int cambioX, int cambioY){
+        Turno.correrFila(casilla, columna, fila, cambioX, cambioY);
+        cambiarBotones();
+        construirTablero();
+        actualizarIndicaciones();
     }
 
     @SuppressWarnings("unchecked")
@@ -470,121 +496,61 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void girarIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_girarIzquierdaActionPerformed
-        double i = Tablero.getFichasSobrantes().get(0).getGiro();
-        for (int j = 0; j < 20; j++) {
-            dibujarFichaLibre();
-            i = i - 0.05;
-            Tablero.getFichasSobrantes().get(0).setGiro(i);
-        }
-        if (i < 0) {
-            i = i + 4;
-        }
-        Tablero.getFichasSobrantes().get(0).setGiro(i);
-        Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
-        Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
-        Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
-        dibujarFichaLibre();
+        girarFichaLibre(-1, 3);
     }//GEN-LAST:event_girarIzquierdaActionPerformed
 
     private void girarDerechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_girarDerechaActionPerformed
-        double i = Tablero.getFichasSobrantes().get(0).getGiro();
-        for (int j = 0; j < 20; j++) {
-            dibujarFichaLibre();
-            i = i + 0.05;
-            Tablero.getFichasSobrantes().get(0).setGiro(i);
-        }
-        if (i > 3) {
-            i = i - 4;
-        }
-        Tablero.getFichasSobrantes().get(0).setGiro(i);
-        Turno.rotarFicha(Tablero.getFichasSobrantes().get(0));
-        dibujarFichaLibre();
+        girarFichaLibre(1, 1);
     }//GEN-LAST:event_girarDerechaActionPerformed
 
     private void casilla7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla7ActionPerformed
-        Turno.correrFila(7, -6, 3, 1, 0);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(7, -6, 3, 1, 0);
     }//GEN-LAST:event_casilla7ActionPerformed
 
     private void casilla9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla9ActionPerformed
-        cambiarBotones();
-        Turno.correrFila(9, -6, 5, 1, 0);
-        construirTablero();
-        indicaciones();
+                ingresarFichaLibre(9, -6, 5, 1, 0);        
     }//GEN-LAST:event_casilla9ActionPerformed
 
     private void casilla10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla10ActionPerformed
-        Turno.correrFila(10, 1, -6, 0, 1);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(10, 1, -6, 0, 1);
     }//GEN-LAST:event_casilla10ActionPerformed
 
     private void casilla11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla11ActionPerformed
-        Turno.correrFila(11, 3, -6, 0, 1);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(11, 3, -6, 0, 1);
     }//GEN-LAST:event_casilla11ActionPerformed
 
     private void casilla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla1ActionPerformed
-        cambiarBotones();
-        Turno.correrFila(1, 1, 0, 0, 1);
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(1, 1, 0, 0, 1);        
     }//GEN-LAST:event_casilla1ActionPerformed
 
     private void casilla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla2ActionPerformed
-        Turno.correrFila(2, 3, 0, 0, 1);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(2, 3, 0, 0, 1);        
     }//GEN-LAST:event_casilla2ActionPerformed
 
     private void casilla3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla3ActionPerformed
-        Turno.correrFila(3, 5, 0, 0, 1);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(3, 5, 0, 0, 1);        
     }//GEN-LAST:event_casilla3ActionPerformed
 
     private void casilla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla4ActionPerformed
-        Turno.correrFila(4, 0, 1, 1, 0);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(4, 0, 1, 1, 0);        
     }//GEN-LAST:event_casilla4ActionPerformed
 
     private void casilla6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla6ActionPerformed
-        Turno.correrFila(6, 0, 3, 1, 0);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(6, 0, 3, 1, 0);
     }//GEN-LAST:event_casilla6ActionPerformed
 
     private void casilla8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla8ActionPerformed
-        Turno.correrFila(8, 0, 5, 1, 0);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(8, 0, 5, 1, 0);
     }//GEN-LAST:event_casilla8ActionPerformed
 
     private void casilla5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla5ActionPerformed
-        Turno.correrFila(5, -6, 1, 1, 0);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(5, -6, 1, 1, 0);        
     }//GEN-LAST:event_casilla5ActionPerformed
 
     private void casilla12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla12ActionPerformed
-        Turno.correrFila(12, 5, -6, 0, 1);
-        cambiarBotones();
-        construirTablero();
-        indicaciones();
+        ingresarFichaLibre(12, 5, -6, 0, 1);
     }//GEN-LAST:event_casilla12ActionPerformed
 
     private void terminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_terminarTurnoActionPerformed
@@ -600,7 +566,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
         }
         cambiarBotones();
         construirTablero();
-        indicaciones();
+        actualizarIndicaciones();
 
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
             JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro");
@@ -723,10 +689,10 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
     public void paint(Graphics g) {
         super.paint(g);
         this.construirTablero();
-        this.indicaciones();
+        this.actualizarIndicaciones();
     }
 
-    public void indicaciones() {
+    public void actualizarIndicaciones() {
         String indicacion = "";
         if (girarIzquierda.isEnabled()) {
             indicacion = ("Gira la ficha e ingresala donde desees");
@@ -918,26 +884,26 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
                 imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));
             } else {
                 imagen = new ImageIcon("Tesoros/FlechaMoverDerecha.png");
-                imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));               
-                
+                imagen = new ImageIcon(imagen.getImage().getScaledInstance(y, y / 2, Image.SCALE_SMOOTH));
+
             }
             listaBotones.get(i).setIcon(imagen);
             listaBotones.get(i).setSize(y, y / 2);
             listaBotones.get(i).setText("");
             listaBotones.get(i).setContentAreaFilled(false);
         }
-        
+
         imagen = new ImageIcon("Tesoros/BotonPasarTurno.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y / 3, Image.SCALE_SMOOTH));
         terminarTurno.setIcon(imagen);
         terminarTurno.setSize(2 * y, 2 * y / 3);
         terminarTurno.setText("");
         terminarTurno.setContentAreaFilled(false);
-        
+
         imagen = new ImageIcon("Tesoros/BotonPasarTurnoClick.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y / 3, Image.SCALE_SMOOTH));
         terminarTurno.setPressedIcon(imagen);
-        
+
         turnoJugador.setSize(4 * y, y / 3);
         turnoJugador1.setSize(4 * y, y / 3);
         turnoJugador.setLocation(0, y / 2);
@@ -960,6 +926,10 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
         jPanel1.setLayout(null);
         jPanel2.setLayout(null);
         repaint();
+    }
+
+    public static void setNumeroJugadores(int numeroJugadores) {
+        GUILaberinto.numeroJugadores = numeroJugadores;
     }
 
 

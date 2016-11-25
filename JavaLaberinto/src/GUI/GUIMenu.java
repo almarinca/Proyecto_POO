@@ -1,6 +1,8 @@
 package GUI;
 
 import BussinessLogic.Inicio;
+import static BussinessLogic.Inicio.x;
+import static BussinessLogic.Inicio.y;
 import Data.Tablero;
 import java.awt.BorderLayout;
 import java.awt.Image;
@@ -14,8 +16,7 @@ public class GUIMenu extends javax.swing.JFrame {
         initComponents();
     }
 
-    static int y = Inicio.y;
-    static int x = Inicio.x;
+    
     private static final GUILaberinto laberinto = new GUILaberinto();
 
     @SuppressWarnings("unchecked")
@@ -118,43 +119,43 @@ public class GUIMenu extends javax.swing.JFrame {
 
     private void continuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarActionPerformed
         Tablero.cargar();
-        laberinto.setSize(Inicio.x, 10 * y);
+        laberinto.setSize(x, 10 * y);
         laberinto.iniciarComponentes();
         this.setVisible(false);
         laberinto.setVisible(true);
-        laberinto.indicaciones();
+        laberinto.actualizarIndicaciones();
         laberinto.cargar();
         laberinto.repaint();
     }//GEN-LAST:event_continuarActionPerformed
 
     private void dosJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosJugadoresActionPerformed
         Inicio.asignarListaTarjetas(2);
-        laberinto.numeroJugadores = 2;
-        laberinto.setSize(Inicio.x, 10 * y);
+        laberinto.setNumeroJugadores(2);
+        laberinto.setSize(x, 10 * y);
         laberinto.iniciarComponentes();
         laberinto.setVisible(true);
         this.setVisible(false);        
-        laberinto.indicaciones();
+        laberinto.actualizarIndicaciones();
     }//GEN-LAST:event_dosJugadoresActionPerformed
 
     private void tresJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresJugadoresActionPerformed
         Inicio.asignarListaTarjetas(3);
-        laberinto.numeroJugadores = 3;
-        laberinto.setSize(Inicio.x, 10 * y);
+        laberinto.setNumeroJugadores(3);
+        laberinto.setSize(x, 10 * y);
         laberinto.iniciarComponentes();        
         laberinto.setVisible(true);
         this.setVisible(false);
-        laberinto.indicaciones();
+        laberinto.actualizarIndicaciones();
     }//GEN-LAST:event_tresJugadoresActionPerformed
 
     private void cuatroJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroJugadoresActionPerformed
         Inicio.asignarListaTarjetas(4);
-        laberinto.numeroJugadores = 4;
-        laberinto.setSize(Inicio.x, 10 * y);
+        laberinto.setNumeroJugadores(4);
+        laberinto.setSize(x, 10 * y);
         laberinto.iniciarComponentes();        
         laberinto.setVisible(true);
         this.setVisible(false);
-        laberinto.indicaciones();
+        laberinto.actualizarIndicaciones();
     }//GEN-LAST:event_cuatroJugadoresActionPerformed
 
     

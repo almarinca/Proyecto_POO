@@ -26,7 +26,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import sun.awt.image.ToolkitImage;
 
-public class GUILaberinto extends javax.swing.JFrame implements Serializable {
+public class Laberinto extends javax.swing.JFrame implements Serializable {
 
     private static ArrayList<javax.swing.JButton> listaBotones = new ArrayList<>();
     private static int y = Inicio.y;
@@ -34,7 +34,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
     private static int numeroJugadores;
     private static int turno;
 
-    public GUILaberinto() {
+    public Laberinto() {
         initComponents();
         KeyListener listener = new KeyListener() {
             @Override
@@ -119,7 +119,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
             System.out.println(ex);
         }
     }
-    
+
     public void girarFichaLibre(int signo, int giros) {
         double rotaciones = Tablero.getFichasSobrantes().get(0).getGiro();
         for (int j = 0; j < 20; j++) {
@@ -138,8 +138,8 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
         }
         dibujarFichaLibre();
     }
-    
-    public void ingresarFichaLibre(int casilla, int columna, int fila, int cambioX, int cambioY){
+
+    public void ingresarFichaLibre(int casilla, int columna, int fila, int cambioX, int cambioY) {
         Turno.correrFila(casilla, columna, fila, cambioX, cambioY);
         cambiarBotones();
         construirTablero();
@@ -178,6 +178,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
         turnoJugador1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Laberinto");
         setIconImages(null);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -496,7 +497,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     private void girarIzquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_girarIzquierdaActionPerformed
         girarFichaLibre(-1, 3);
     }//GEN-LAST:event_girarIzquierdaActionPerformed
@@ -510,7 +511,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_casilla7ActionPerformed
 
     private void casilla9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla9ActionPerformed
-                ingresarFichaLibre(9, -6, 5, 1, 0);        
+        ingresarFichaLibre(9, -6, 5, 1, 0);
     }//GEN-LAST:event_casilla9ActionPerformed
 
     private void casilla10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla10ActionPerformed
@@ -522,19 +523,19 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_casilla11ActionPerformed
 
     private void casilla1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla1ActionPerformed
-        ingresarFichaLibre(1, 1, 0, 0, 1);        
+        ingresarFichaLibre(1, 1, 0, 0, 1);
     }//GEN-LAST:event_casilla1ActionPerformed
 
     private void casilla2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla2ActionPerformed
-        ingresarFichaLibre(2, 3, 0, 0, 1);        
+        ingresarFichaLibre(2, 3, 0, 0, 1);
     }//GEN-LAST:event_casilla2ActionPerformed
 
     private void casilla3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla3ActionPerformed
-        ingresarFichaLibre(3, 5, 0, 0, 1);        
+        ingresarFichaLibre(3, 5, 0, 0, 1);
     }//GEN-LAST:event_casilla3ActionPerformed
 
     private void casilla4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla4ActionPerformed
-        ingresarFichaLibre(4, 0, 1, 1, 0);        
+        ingresarFichaLibre(4, 0, 1, 1, 0);
     }//GEN-LAST:event_casilla4ActionPerformed
 
     private void casilla6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla6ActionPerformed
@@ -546,7 +547,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_casilla8ActionPerformed
 
     private void casilla5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla5ActionPerformed
-        ingresarFichaLibre(5, -6, 1, 1, 0);        
+        ingresarFichaLibre(5, -6, 1, 1, 0);
     }//GEN-LAST:event_casilla5ActionPerformed
 
     private void casilla12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_casilla12ActionPerformed
@@ -659,14 +660,15 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUILaberinto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Laberinto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUILaberinto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Laberinto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUILaberinto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Laberinto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUILaberinto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Laberinto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -677,7 +679,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
                 Turno.desplazarJugador(Jugador.jugador2, '0');
                 Turno.desplazarJugador(Jugador.jugador3, '0');
                 Turno.desplazarJugador(Jugador.jugador4, '0');
-                GUIMenu menu = new GUIMenu();
+                Menu menu = new Menu();
                 menu.setVisible(true);
                 menu.setSize(Inicio.x, 10 * y);
                 menu.iniciarComponentes();
@@ -929,7 +931,7 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
     }
 
     public static void setNumeroJugadores(int numeroJugadores) {
-        GUILaberinto.numeroJugadores = numeroJugadores;
+        Laberinto.numeroJugadores = numeroJugadores;
     }
 
 

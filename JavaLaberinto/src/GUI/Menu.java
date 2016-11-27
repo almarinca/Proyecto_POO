@@ -9,15 +9,16 @@ import java.awt.Image;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
-public class GUIMenu extends javax.swing.JFrame {
+public class Menu extends javax.swing.JFrame {
 
-    public GUIMenu() {
+    public Menu() {
         initComponents();
     }
 
     
-    private static final GUILaberinto laberinto = new GUILaberinto();
+    private static final Laberinto laberinto = new Laberinto();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -129,37 +130,43 @@ public class GUIMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_continuarActionPerformed
 
     private void dosJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosJugadoresActionPerformed
-        Inicio.asignarListaTarjetas(2);
-        laberinto.setNumeroJugadores(2);
-        laberinto.setSize(x, 10 * y);
-        laberinto.iniciarComponentes();
-        laberinto.setVisible(true);
-        this.setVisible(false);        
-        laberinto.actualizarIndicaciones();
+        crearLaberinto(2);  
     }//GEN-LAST:event_dosJugadoresActionPerformed
 
     private void tresJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresJugadoresActionPerformed
-        Inicio.asignarListaTarjetas(3);
-        laberinto.setNumeroJugadores(3);
-        laberinto.setSize(x, 10 * y);
-        laberinto.iniciarComponentes();        
-        laberinto.setVisible(true);
-        this.setVisible(false);
-        laberinto.actualizarIndicaciones();
+        crearLaberinto(3);  
     }//GEN-LAST:event_tresJugadoresActionPerformed
 
     private void cuatroJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroJugadoresActionPerformed
-        Inicio.asignarListaTarjetas(4);
-        laberinto.setNumeroJugadores(4);
-        laberinto.setSize(x, 10 * y);
-        laberinto.iniciarComponentes();        
-        laberinto.setVisible(true);
-        this.setVisible(false);
-        laberinto.actualizarIndicaciones();
+        crearLaberinto(4);        
     }//GEN-LAST:event_cuatroJugadoresActionPerformed
 
     
 
+    public void crearLaberinto(int jugadores){
+        Inicio.asignarListaTarjetas(jugadores);
+        laberinto.setNumeroJugadores(jugadores);
+        laberinto.setSize(x, 10 * y);
+        laberinto.iniciarComponentes();        
+        laberinto.setVisible(true);
+        this.setVisible(false);
+        laberinto.actualizarIndicaciones();
+        JOptionPane.showMessageDialog(this, "Bienvenido al LABERINTO.\n" + "\n"
+                + "Un laberinto de pasadizos que uno puede mover a su antojo para encontrar la mayor cantidad posible de tesoros y secretos. \n"
+                + "El ganador será el que mueva más hábilmente los pasadizos. \n"
+                + "¿Quién logrará desbaratar las trampas de este célebre laberinto para ser el primero en obtener todos sus tesoros? \n"
+                + "\n" + "\n"
+                + "Tu ficha estara en una de las esquinas, sabras cual es al ver el color que aparecera en la frase que indica que es tu turno. \n"
+                + "Tu turno consta de dos partes, primero tienes que introducir la ficha sobrante en el tablero, esta la podras ver al lado \n"
+                + "izquierdo del tablero, girala cuanto desees utilizando los botones verdes sobre ella, y usa los botones triangulares para \n"
+                + "intriducirla en la fila que mas te convenga, al hacerlo conseguiras desplazar los muros, lo que podra facilitar tu camino \n"
+                + "(si un jugador sacado del tablero en uno de estos movimientos aparecerá en la ficha recién ingresada). \n"
+                + "Despues intenta alcanzar tu tesoro, el cual puedes ver en la tarjeta al lado superior izquierdo, muevete cuanto quieras a \n" 
+                + "lo largo del tablero utilizando los botones de desplazamiento o las flechas del teclado, si al finalizar tu turno estas \n"
+                + "sobre el tesoro que requieres lo habras obtenido, sino quedate en la posicion que mas te parezca para esto presiona el \n" 
+                + "boton de terminar turno, el primero en encontrar todos sus tesoros y volver a la esquina donde inicio gana.\n"  , " ",JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Tesoros/mago.png"));
+    }
+    
     public void iniciarComponentes() {
         panel = new panelTransparente();
         panel.setLayout(new javax.swing.GroupLayout(panel));

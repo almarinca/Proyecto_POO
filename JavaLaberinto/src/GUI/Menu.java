@@ -17,7 +17,7 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
     }
 
-    private static final Laberinto laberinto = new Laberinto();
+    private static final GUILaberinto laberinto = new GUILaberinto();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

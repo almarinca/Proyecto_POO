@@ -8,7 +8,7 @@ public abstract class JavaLaberinto {
 
     static boolean salir = false;
 
-    public static void main(String[] args) {
+    public static void iniciarUI() {
 
         Tablero tablero = new Tablero();
         int contador = 1;

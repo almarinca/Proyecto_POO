@@ -713,7 +713,39 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
         }
         if (Jugador.values()[4 - turno].getListaTarjetas().size() == 1) {
             tarjeta.repaint();
-            tarjeta.setText("Vuelve a tu punto de partida");
+            switch (turno) {
+                case 1:
+                    {
+                       ImageIcon image = Tarjeta.Esquina1.getImagen();
+                       image = new ImageIcon(image.getImage().getScaledInstance(3 * y / 2, (2 * y), Image.SCALE_SMOOTH));
+                       tarjeta.setIcon(image); 
+                        break;
+                    }
+                case 2:
+                    {
+                       ImageIcon image = Tarjeta.Esquina2.getImagen();
+                       image = new ImageIcon(image.getImage().getScaledInstance(3 * y / 2, (2 * y), Image.SCALE_SMOOTH));
+                       tarjeta.setIcon(image); 
+                        
+                        break;
+                    }
+                case 3:
+                    {
+                       ImageIcon image = Tarjeta.Esquina3.getImagen();
+                       image = new ImageIcon(image.getImage().getScaledInstance(3 * y / 2, (2 * y), Image.SCALE_SMOOTH));
+                       tarjeta.setIcon(image);                         
+                        break;
+                    }
+                case 4:
+                    {
+                        ImageIcon image = Tarjeta.Esquina4.getImagen();
+                       image = new ImageIcon(image.getImage().getScaledInstance(3 * y / 2, (2 * y), Image.SCALE_SMOOTH));
+                       tarjeta.setIcon(image);                         
+                        break;
+                    }
+                default:
+                    break;
+            }
         } else {
             dibujarFichaLibre();
         }

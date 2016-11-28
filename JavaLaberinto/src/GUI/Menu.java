@@ -152,6 +152,11 @@ public class Menu extends javax.swing.JFrame {
                 + "Un laberinto de pasadizos que uno puede mover a su antojo para encontrar la mayor cantidad posible de tesoros y secretos. \n"
                 + "El ganador será el que mueva más hábilmente los pasadizos. \n"
                 + "¿Quién logrará desbaratar las trampas de este célebre laberinto para ser el primero en obtener todos sus tesoros?", " ", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Tesoros/mago.png"));
+        JOptionPane.showMessageDialog(this, "", "Instrucciones", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Tesoros/Instruccion1.png"));
+        JOptionPane.showMessageDialog(this, "", "Instrucciones", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Tesoros/Instruccion2.png"));
+        JOptionPane.showMessageDialog(this, "", "Instrucciones", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Tesoros/Instruccion3.png"));
+        JOptionPane.showMessageDialog(this, "", "Instrucciones", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Tesoros/Instruccion4.png"));
+        JOptionPane.showMessageDialog(this, "", "Instrucciones", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Tesoros/Instruccion5.png"));
     }
 
     public void iniciarComponentes() {

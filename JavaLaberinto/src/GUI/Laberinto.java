@@ -71,6 +71,7 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
                     case 10:    // -> enter
                         terminarTurnoActionPerformed(new ActionEvent(terminarTurno, 0, "nothing"));
                         break;
+
                     default:
                         break;
                 }

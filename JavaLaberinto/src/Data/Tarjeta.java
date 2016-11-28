@@ -29,10 +29,10 @@ public enum Tarjeta {
     Libro(23, 'x', new ImageIcon("Tesoros/Tarjetas/TarjetaLibro.png")),
     BolsaDeMonedas(24, 'y', new ImageIcon("Tesoros/Tarjetas/TarjetaBolsaDeMonedas.png")),
     Aux(25, ' ',new ImageIcon("Tesoros/Tarjetas")),
-    Esquina1(26, '@', new ImageIcon("Tesoros/Tarjetas")),
-    Esquina2(27, '$',new ImageIcon("Tesoros/Tarjetas")),
-    Esquina3(28, '&',new ImageIcon("Tesoros/Tarjetas")),
-    Esquina4(29, '€',new ImageIcon("Tesoros/Tarjetas"));
+    Esquina1(26, '@', new ImageIcon("Tesoros/Tarjetas/TarjetaVerde.png")),
+    Esquina2(27, '$',new ImageIcon("Tesoros/Tarjetas/TarjetaRoja.png")),
+    Esquina3(28, '&',new ImageIcon("Tesoros/Tarjetas/TarjetaAmarilla.png")),
+    Esquina4(29, '€',new ImageIcon("Tesoros/Tarjetas/TarjetaAzul.png"));
 
     private int numero;
     private char simbolo;

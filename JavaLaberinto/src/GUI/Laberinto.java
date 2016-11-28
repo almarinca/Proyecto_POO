@@ -142,8 +142,8 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
         construirTablero();
         actualizarIndicaciones();
     }
-    
-    public void moverJugador(char direccion){
+
+    public void moverJugador(char direccion) {
         Jugador jugador = Jugador.values()[4 - turno];
         Turno.desplazarJugador(jugador, direccion);
         construirTablero();
@@ -711,12 +711,7 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
                 dibujarFicha(jPanel1.getGraphics(), Tablero.getTablero()[i][j].getImagen(), (i * (y + 2)) + y, (j * (y + 2)) + y, Tablero.getTablero()[i][j].getGiro(), y / 2, y / 2);
             }
         }
-        if (Jugador.values()[4 - turno].getListaTarjetas().size() == 1) {
-            tarjeta.repaint();
-            tarjeta.setText("Vuelve a tu punto de partida");
-        } else {
-            dibujarFichaLibre();
-        }
+        dibujarFichaLibre();
         for (int p = 1; p <= numeroJugadores; p++) {
             Jugador jugador = Jugador.values()[4 - p];
             int j = jugador.getX();

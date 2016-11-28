@@ -20,7 +20,6 @@ public abstract class Turno {
         f.setFicha(matrizrot);
     }
 
-         
     public static void correrFila(int casilla, int columna, int fila, int cambioX, int cambioY) {
 
         ArrayList<Ficha> fichasSobrantes = Tablero.getFichasSobrantes();
@@ -36,8 +35,6 @@ public abstract class Turno {
         }
         Tablero.setFichasSobrantes(fichasSobrantes);
     }
-
-    
 
     public static boolean desplazarJugador(Jugador jugador, char mover) {
         boolean movimientoValido = true;
@@ -93,11 +90,11 @@ public abstract class Turno {
     }
 
     public static void redibujarJugadores() {
-        
+
         for (Jugador jugador : Jugador.values()) {
-        Tablero.getTablero()[jugador.getY()][jugador.getX()].getFicha()[1][1] = jugador.getNumero();
+            Tablero.getTablero()[jugador.getY()][jugador.getX()].getFicha()[1][1] = jugador.getNumero();
         }
-        
+
     }
 
     public static void moverJugadorConFicha(int casilla, ArrayList<Ficha> fichasSobrantes) {

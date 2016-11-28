@@ -14,7 +14,7 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 
 public class Tablero implements Serializable {
-    
+
     private static Ficha[][] tablero = new Ficha[7][7];
     private static final ArrayList<Ficha> listaFichas = new ArrayList<>();
     private static ArrayList<Ficha> fichasSobrantes = new ArrayList<>();
@@ -171,7 +171,7 @@ public class Tablero implements Serializable {
 
     public static void guardar() {
         try {
-            FileOutputStream archivo = new FileOutputStream("laberinto.laby");
+            FileOutputStream archivo = new FileOutputStream("laberinto.maze");
             ObjectOutputStream guardar = new ObjectOutputStream(archivo);
             guardar.writeObject(tablero);
             for (Jugador jugador : Jugador.values()) {
@@ -191,7 +191,7 @@ public class Tablero implements Serializable {
 
     public static void cargar() {
         try {
-            FileInputStream archivo = new FileInputStream("laberinto.laby");
+            FileInputStream archivo = new FileInputStream("laberinto.maze");
             ObjectInputStream cargar = new ObjectInputStream(archivo);
             tablero = (Ficha[][]) cargar.readObject();
             for (Jugador jugador : Jugador.values()) {

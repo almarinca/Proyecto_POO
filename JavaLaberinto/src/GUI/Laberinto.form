@@ -401,7 +401,7 @@
         <Component class="javax.swing.JLabel" name="turnoJugador">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="22" style="0"/>
+              <Font name="Comic Sans MS" size="20" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Es el turno de:"/>
@@ -413,7 +413,7 @@
         <Component class="javax.swing.JLabel" name="indicaciones">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="18" style="0"/>
+              <Font name="Comic Sans MS" size="14" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Gira la ficha e ingresela donde desees"/>
@@ -423,7 +423,7 @@
         <Component class="javax.swing.JLabel" name="turnoJugador1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Comic Sans MS" size="22" style="0"/>
+              <Font name="Comic Sans MS" size="20" style="0"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="ff" red="0" type="rgb"/>

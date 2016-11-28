@@ -2,8 +2,6 @@ package GUI;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.net.URL;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 public class panelTransparente extends JPanel {

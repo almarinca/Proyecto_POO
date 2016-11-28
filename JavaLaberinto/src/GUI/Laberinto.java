@@ -86,11 +86,12 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
         abajo.addKeyListener(listener);
         izquierda.addKeyListener(listener);
         derecha.addKeyListener(listener);
+        terminarTurno.addKeyListener(listener);
     }
 
     public void guardar() {
         try {
-            FileOutputStream archivo = new FileOutputStream("botones.laby");
+            FileOutputStream archivo = new FileOutputStream("botones.maze");
             ObjectOutputStream guardar = new ObjectOutputStream(archivo);
             guardar.writeObject(numeroJugadores);
             guardar.writeObject(turno);
@@ -106,7 +107,7 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
 
     public void cargar() {
         try {
-            FileInputStream archivo = new FileInputStream("botones.laby");
+            FileInputStream archivo = new FileInputStream("botones.maze");
             ObjectInputStream cargar = new ObjectInputStream(archivo);
             numeroJugadores = (int) cargar.readObject();
             turno = (int) cargar.readObject();

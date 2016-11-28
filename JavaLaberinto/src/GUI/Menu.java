@@ -177,8 +177,8 @@ public class Menu extends javax.swing.JFrame {
         panel.add(nuevo);
         panel.add(elige);
         try {
-            FileInputStream archivo = new FileInputStream("laberinto.laby");
-            FileInputStream archivo2 = new FileInputStream("botones.laby");
+            FileInputStream archivo = new FileInputStream("laberinto.maze");
+            FileInputStream archivo2 = new FileInputStream("botones.maze");
         } catch (FileNotFoundException ex) {
             continuar.setVisible(false);
         }

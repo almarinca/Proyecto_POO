@@ -171,7 +171,7 @@ public class Tablero implements Serializable {
 
     public static void guardar() {
         try {
-            FileOutputStream archivo = new FileOutputStream("laberinto.laby");
+            FileOutputStream archivo = new FileOutputStream("laberinto.maze");
             ObjectOutputStream guardar = new ObjectOutputStream(archivo);
             guardar.writeObject(tablero);
             for (Jugador jugador : Jugador.values()) {
@@ -191,7 +191,7 @@ public class Tablero implements Serializable {
 
     public static void cargar() {
         try {
-            FileInputStream archivo = new FileInputStream("laberinto.laby");
+            FileInputStream archivo = new FileInputStream("laberinto.maze");
             ObjectInputStream cargar = new ObjectInputStream(archivo);
             tablero = (Ficha[][]) cargar.readObject();
             for (Jugador jugador : Jugador.values()) {

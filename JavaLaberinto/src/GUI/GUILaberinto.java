@@ -573,13 +573,15 @@ public class GUILaberinto extends javax.swing.JFrame implements Serializable {
         actualizarIndicaciones();
 
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
-            JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro\nTe faltan " + (jugador.getListaTarjetas().size() - 2) + " tesoros por encontrar");
+            if (jugador.getListaTarjetas().size() > 1) {
+                JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro\nTe faltan " + (jugador.getListaTarjetas().size() - 2) + " tesoros por encontrar");
+            }
             jugador.getListaTarjetas().remove(0);
             if (jugador.getListaTarjetas().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");
-                File file = new File("laberinto.laby");
+                File file = new File("laberinto.maze");
                 file.delete();
-                file = new File("botones.laby");
+                file = new File("botones.maze");
                 file.delete();
                 System.exit(0);
             }

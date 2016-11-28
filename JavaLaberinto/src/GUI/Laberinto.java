@@ -68,6 +68,10 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
                         construirTablero();
                         break;
 
+                    case 10:    // -> enter
+                        terminarTurnoActionPerformed(new ActionEvent(terminarTurno, 0, "nothing"));
+                        break;
+
                     default:
                         break;
                 }
@@ -82,11 +86,12 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
         abajo.addKeyListener(listener);
         izquierda.addKeyListener(listener);
         derecha.addKeyListener(listener);
+        terminarTurno.addKeyListener(listener);
     }
 
     public void guardar() {
         try {
-            FileOutputStream archivo = new FileOutputStream("botones.laby");
+            FileOutputStream archivo = new FileOutputStream("botones.maze");
             ObjectOutputStream guardar = new ObjectOutputStream(archivo);
             guardar.writeObject(numeroJugadores);
             guardar.writeObject(turno);
@@ -102,7 +107,7 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
 
     public void cargar() {
         try {
-            FileInputStream archivo = new FileInputStream("botones.laby");
+            FileInputStream archivo = new FileInputStream("botones.maze");
             ObjectInputStream cargar = new ObjectInputStream(archivo);
             numeroJugadores = (int) cargar.readObject();
             turno = (int) cargar.readObject();
@@ -384,17 +389,17 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
             }
         });
 
-        turnoJugador.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
+        turnoJugador.setFont(new java.awt.Font("Comic Sans MS", 0, 20)); // NOI18N
         turnoJugador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnoJugador.setText("Es el turno de:");
         turnoJugador.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        indicaciones.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        indicaciones.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
         indicaciones.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         indicaciones.setText("Gira la ficha e ingresela donde desees");
         indicaciones.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
 
-        turnoJugador1.setFont(new java.awt.Font("Comic Sans MS", 0, 22)); // NOI18N
+        turnoJugador1.setFont(new java.awt.Font("Comic Sans MS", 0, 20)); // NOI18N
         turnoJugador1.setForeground(new java.awt.Color(0, 255, 0));
         turnoJugador1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         turnoJugador1.setText("Jugador 1");
@@ -570,7 +575,7 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
         actualizarIndicaciones();
 
         if (jugador.getListaTarjetas().get(0).getSimbolo() == Tablero.getTablero()[jugador.getY()][jugador.getX()].getCaracter()) {
-            JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro");
+            JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " has encontrado un tesoro\nTe faltan " + (jugador.getListaTarjetas().size() - 2) + " tesoros por encontrar");
             jugador.getListaTarjetas().remove(0);
             if (jugador.getListaTarjetas().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "Felicitaciones jugador " + jugador.getNumero() + " eres el ganador");

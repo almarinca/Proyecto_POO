@@ -46,26 +46,18 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
                 Jugador jugador;
                 switch (e.getKeyCode()) {
                     case 39: // -> derecha
-                        jugador = Jugador.values()[4 - turno];
-                        Turno.desplazarJugador(jugador, 'd');
-                        construirTablero();
+                        moverJugador('d');
                         break;
                     case 38:	// -> arriba
-                        jugador = Jugador.values()[4 - turno];
-                        Turno.desplazarJugador(jugador, 'w');
-                        construirTablero();
+                        moverJugador('w');
                         break;
 
                     case 37: 	// -> izquierda 
-                        jugador = Jugador.values()[4 - turno];
-                        Turno.desplazarJugador(jugador, 'a');
-                        construirTablero();
+                        moverJugador('a');
                         break;
 
                     case 40:	// -> abajo
-                        jugador = Jugador.values()[4 - turno];
-                        Turno.desplazarJugador(jugador, 's');
-                        construirTablero();
+                        moverJugador('s');
                         break;
 
                     case 10:    // -> enter
@@ -149,6 +141,12 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
         cambiarBotones();
         construirTablero();
         actualizarIndicaciones();
+    }
+    
+    public void moverJugador(char direccion){
+        Jugador jugador = Jugador.values()[4 - turno];
+        Turno.desplazarJugador(jugador, direccion);
+        construirTablero();
     }
 
     @SuppressWarnings("unchecked")
@@ -611,27 +609,19 @@ public class Laberinto extends javax.swing.JFrame implements Serializable {
     }//GEN-LAST:event_terminarTurnoActionPerformed
 
     private void arribaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arribaActionPerformed
-        Jugador jugador = Jugador.values()[4 - turno];
-        Turno.desplazarJugador(jugador, 'w');
-        construirTablero();
+        moverJugador('w');
     }//GEN-LAST:event_arribaActionPerformed
 
     private void abajoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abajoActionPerformed
-        Jugador jugador = Jugador.values()[4 - turno];
-        Turno.desplazarJugador(jugador, 's');
-        construirTablero();
+        moverJugador('s');
     }//GEN-LAST:event_abajoActionPerformed
 
     private void izquierdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_izquierdaActionPerformed
-        Jugador jugador = Jugador.values()[4 - turno];
-        Turno.desplazarJugador(jugador, 'd');
-        construirTablero();
+        moverJugador('d');
     }//GEN-LAST:event_izquierdaActionPerformed
 
     private void derechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_derechaActionPerformed
-        Jugador jugador = Jugador.values()[4 - turno];
-        Turno.desplazarJugador(jugador, 'a');
-        construirTablero();
+        moverJugador('a');
     }//GEN-LAST:event_derechaActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing

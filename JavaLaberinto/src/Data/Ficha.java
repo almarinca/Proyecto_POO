@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 
 public class Ficha implements Serializable {
 
-    private char caracter; 
+    private char caracter;
     private char[][] ficha;
     private ImageIcon imagen;
     private double giro;
@@ -45,7 +45,7 @@ public class Ficha implements Serializable {
     public void setCaracter(char caracter) {
         this.caracter = caracter;
     }
-    
+
     public char[][] getFicha() {
         return ficha;
     }

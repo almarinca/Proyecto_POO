@@ -17,7 +17,6 @@ public class Menu extends javax.swing.JFrame {
         initComponents();
     }
 
-    
     private static final Laberinto laberinto = new Laberinto();
 
     @SuppressWarnings("unchecked")
@@ -130,43 +129,31 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_continuarActionPerformed
 
     private void dosJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dosJugadoresActionPerformed
-        crearLaberinto(2);  
+        crearLaberinto(2);
     }//GEN-LAST:event_dosJugadoresActionPerformed
 
     private void tresJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tresJugadoresActionPerformed
-        crearLaberinto(3);  
+        crearLaberinto(3);
     }//GEN-LAST:event_tresJugadoresActionPerformed
 
     private void cuatroJugadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cuatroJugadoresActionPerformed
-        crearLaberinto(4);        
+        crearLaberinto(4);
     }//GEN-LAST:event_cuatroJugadoresActionPerformed
 
-    
-
-    public void crearLaberinto(int jugadores){
+    public void crearLaberinto(int jugadores) {
         Inicio.asignarListaTarjetas(jugadores);
         laberinto.setNumeroJugadores(jugadores);
         laberinto.setSize(x, 10 * y);
-        laberinto.iniciarComponentes();        
+        laberinto.iniciarComponentes();
         laberinto.setVisible(true);
         this.setVisible(false);
         laberinto.actualizarIndicaciones();
         JOptionPane.showMessageDialog(this, "Bienvenido al LABERINTO.\n" + "\n"
                 + "Un laberinto de pasadizos que uno puede mover a su antojo para encontrar la mayor cantidad posible de tesoros y secretos. \n"
                 + "El ganador será el que mueva más hábilmente los pasadizos. \n"
-                + "¿Quién logrará desbaratar las trampas de este célebre laberinto para ser el primero en obtener todos sus tesoros? \n"
-                + "\n" + "\n"
-                + "Tu ficha estara en una de las esquinas, sabras cual es al ver el color que aparecera en la frase que indica que es tu turno. \n"
-                + "Tu turno consta de dos partes, primero tienes que introducir la ficha sobrante en el tablero, esta la podras ver al lado \n"
-                + "izquierdo del tablero, girala cuanto desees utilizando los botones verdes sobre ella, y usa los botones triangulares para \n"
-                + "intriducirla en la fila que mas te convenga, al hacerlo conseguiras desplazar los muros, lo que podra facilitar tu camino \n"
-                + "(si un jugador sacado del tablero en uno de estos movimientos aparecerá en la ficha recién ingresada). \n"
-                + "Despues intenta alcanzar tu tesoro, el cual puedes ver en la tarjeta al lado superior izquierdo, muevete cuanto quieras a \n" 
-                + "lo largo del tablero utilizando los botones de desplazamiento o las flechas del teclado, si al finalizar tu turno estas \n"
-                + "sobre el tesoro que requieres lo habras obtenido, sino quedate en la posicion que mas te parezca para esto presiona el \n" 
-                + "boton de terminar turno, el primero en encontrar todos sus tesoros y volver a la esquina donde inicio gana.\n"  , " ",JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Tesoros/mago.png"));
+                + "¿Quién logrará desbaratar las trampas de este célebre laberinto para ser el primero en obtener todos sus tesoros?", " ", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Tesoros/mago.png"));
     }
-    
+
     public void iniciarComponentes() {
         panel = new panelTransparente();
         panel.setLayout(new javax.swing.GroupLayout(panel));
@@ -208,7 +195,7 @@ public class Menu extends javax.swing.JFrame {
         continuar.setIcon(imagen);
         continuar.setText("");
         continuar.setContentAreaFilled(false);
-        
+
         imagen = new ImageIcon("Tesoros/Botones/CONTINUARJUEGO.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
         continuar.setPressedIcon(imagen);
@@ -218,7 +205,7 @@ public class Menu extends javax.swing.JFrame {
         nuevo.setIcon(imagen);
         nuevo.setText("");
         nuevo.setContentAreaFilled(false);
-          
+
         imagen = new ImageIcon("Tesoros/Botones/NEWGAME.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(3 * y, 3 * y / 2, Image.SCALE_SMOOTH));
         nuevo.setPressedIcon(imagen);
@@ -228,7 +215,7 @@ public class Menu extends javax.swing.JFrame {
         dosJugadores.setIcon(imagen);
         dosJugadores.setContentAreaFilled(false);
         dosJugadores.setLocation(x / 2 - 7 * y / 2, 6 * y);
-        
+
         imagen = new ImageIcon("Tesoros/Botones/BotonNew2.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         dosJugadores.setPressedIcon(imagen);
@@ -238,7 +225,7 @@ public class Menu extends javax.swing.JFrame {
         tresJugadores.setIcon(imagen);
         tresJugadores.setContentAreaFilled(false);
         tresJugadores.setLocation(x / 2 - y, 6 * y);
-        
+
         imagen = new ImageIcon("Tesoros/Botones/BotonNew3.png");
         imagen = new ImageIcon(imagen.getImage().getScaledInstance(2 * y, 2 * y, Image.SCALE_SMOOTH));
         tresJugadores.setPressedIcon(imagen);
@@ -257,7 +244,7 @@ public class Menu extends javax.swing.JFrame {
 
         this.setLayout(null);
     }
-    
+
     private panelTransparente panel;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton continuar;

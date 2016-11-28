@@ -14,7 +14,7 @@ import java.io.Serializable;
 import javax.swing.ImageIcon;
 
 public class Tablero implements Serializable {
-    
+
     private static Ficha[][] tablero = new Ficha[7][7];
     private static final ArrayList<Ficha> listaFichas = new ArrayList<>();
     private static ArrayList<Ficha> fichasSobrantes = new ArrayList<>();

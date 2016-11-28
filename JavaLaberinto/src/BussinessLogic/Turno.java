@@ -20,17 +20,18 @@ public abstract class Turno {
         f.setFicha(matrizrot);
     }
 
-    public static void correrFila(int casilla, int x, int y, int mx, int my) {
+         
+    public static void correrFila(int casilla, int columna, int fila, int cambioX, int cambioY) {
 
         ArrayList<Ficha> fichasSobrantes = Tablero.getFichasSobrantes();
         for (int i = 0; i <= 6; i++) {
-            fichasSobrantes.add(Tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)]);
+            fichasSobrantes.add(Tablero.getTablero()[Math.abs(i * cambioY + fila)][Math.abs(i * cambioX + columna)]);
         }
 
         moverJugadorConFicha(casilla, fichasSobrantes);
 
         for (int i = 0; i <= 6; i++) {
-            Tablero.getTablero()[Math.abs(i * my + y)][Math.abs(i * mx + x)] = fichasSobrantes.get(0);
+            Tablero.getTablero()[Math.abs(i * cambioY + fila)][Math.abs(i * cambioX + columna)] = fichasSobrantes.get(0);
             fichasSobrantes.remove(0);
         }
         Tablero.setFichasSobrantes(fichasSobrantes);
@@ -92,12 +93,11 @@ public abstract class Turno {
     }
 
     public static void redibujarJugadores() {
-
-        Tablero.getTablero()[Jugador.jugador4.getY()][Jugador.jugador4.getX()].getFicha()[1][1] = Jugador.jugador4.getNumero();
-        Tablero.getTablero()[Jugador.jugador3.getY()][Jugador.jugador3.getX()].getFicha()[1][1] = Jugador.jugador3.getNumero();
-        Tablero.getTablero()[Jugador.jugador2.getY()][Jugador.jugador2.getX()].getFicha()[1][1] = Jugador.jugador2.getNumero();
-        Tablero.getTablero()[Jugador.jugador1.getY()][Jugador.jugador1.getX()].getFicha()[1][1] = Jugador.jugador1.getNumero();
-
+        
+        for (Jugador jugador : Jugador.values()) {
+        Tablero.getTablero()[jugador.getY()][jugador.getX()].getFicha()[1][1] = jugador.getNumero();
+        }
+        
     }
 
     public static void moverJugadorConFicha(int casilla, ArrayList<Ficha> fichasSobrantes) {
